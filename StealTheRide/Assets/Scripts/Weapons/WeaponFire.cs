@@ -4,17 +4,31 @@ using UnityEngine;
 
 public class WeaponFire : MonoBehaviour
 {
-    private bool isReloaded = true;
+    public bool isReloaded = true;
     public int magazine = 6;
     public int bulletsInMagazine = 6;
     public GameObject bullet;
+    private string weaponInfo;
+    public float reloadCooldown;
+    public float fireCooldown;
+    private float timeStampFiring;
+    private float timeStampReload;
 
-   
 
-    // Update is called once per frame
-    void FixedUpdate()
+    public string getWeaponInfo()
     {
-        if (Input.GetMouseButtonDown(0))
+        return weaponInfo;
+    }
+
+    private void Start()
+    {
+        timeStampFiring = Time.time;
+        timeStampReload = Time.time;
+}
+
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0) && timeStampFiring <= Time.time)
         {
             if (bulletsInMagazine > 0)
             {
@@ -25,6 +39,8 @@ public class WeaponFire : MonoBehaviour
                     bulletsInMagazine--;
                     isReloaded = false;
                     Debug.Log("Firing");
+                    weaponInfo = "Load next bullet";
+                    timeStampFiring = Time.time + fireCooldown;
                 }
 
                 else
@@ -38,25 +54,35 @@ public class WeaponFire : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            if (isReloaded == false)
+            if (isReloaded == false && bulletsInMagazine > 0)
             {
                 isReloaded = true;
                 Debug.Log("The gun has been reloaded");
+                weaponInfo = "Ready to shoot";
+
             }
                 
+            else if (bulletsInMagazine > 0)
+            {
+                Debug.Log("There is already a bullet in the chamber!");
+                weaponInfo = "Ready to shoot";
+            }
             else
             {
-                Debug.Log("There is already a bullet in the chamber - ejecting shell");
-                bulletsInMagazine--;
+                Debug.Log("You have no bullets in magazine - reload");
+                weaponInfo = "No ammo in magazine \nreload";
             }
                 
         }
 
-        if (Input.GetButtonDown("Reload"))
+        if (Input.GetButtonDown("Reload") && timeStampReload <= Time.time)
         {
             bulletsInMagazine = magazine;
             isReloaded = true;
             Debug.Log("Reloading");
+            weaponInfo = "Reloaded \nready to Shoot";
+            timeStampReload = Time.time + reloadCooldown;
+            timeStampFiring = Time.time + reloadCooldown;
         }
 
     }
