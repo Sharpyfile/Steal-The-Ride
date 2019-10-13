@@ -1,11 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    // Start is called before the first frame update
-
     public float speed = 2f;
     public int damage = 10;
     private Vector2 direction;
@@ -28,6 +24,7 @@ public class Bullet : MonoBehaviour
     private void FixedUpdate()
     {
         bullet.AddForce(direction * speed, ForceMode2D.Force);
+        //TODO: bullet removal
     }
 
 }

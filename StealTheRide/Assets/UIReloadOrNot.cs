@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class UIReloadOrNot : MonoBehaviour
@@ -9,7 +8,7 @@ public class UIReloadOrNot : MonoBehaviour
 
     void Update()
     {
-        text.text = weapon.getWeaponInfo();
+        text.text = weapon.GetWeaponInfo();
     }
 }
 
