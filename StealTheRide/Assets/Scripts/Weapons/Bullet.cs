@@ -3,9 +3,10 @@
 public class Bullet : MonoBehaviour
 {
     public float speed = 2f;
-    public int damage = 10;
+    public int damage;
     private Vector2 direction;
     public Rigidbody2D bullet;
+    public GameObject thisBullet;
 
     private void Start()
     {
@@ -22,8 +23,20 @@ public class Bullet : MonoBehaviour
 
     private void FixedUpdate()
     {
-        bullet.AddForce(direction * speed, ForceMode2D.Force);
-        //TODO: bullet removal
+        bullet.AddForce(direction * speed, ForceMode2D.Impulse);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            collision.gameObject.SendMessage("ApplyDamageEnemy", damage);
+            Destroy(thisBullet);
+
+        }
+        if (collision.gameObject.tag == "Wall")
+            Destroy(thisBullet);
+
     }
 
 }

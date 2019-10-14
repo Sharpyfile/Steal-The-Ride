@@ -3,10 +3,11 @@
 public class EnemyBullet : MonoBehaviour
 {
     public float speed = 2f;
-    public int damage = 10;
+    public int damage;
 
     public Rigidbody2D bullet;
     public Transform player;
+    public GameObject thisBullet;
 
     private Vector2 direction;
 
@@ -27,6 +28,17 @@ public class EnemyBullet : MonoBehaviour
     private void FixedUpdate()
     {
         bullet.AddForce(direction * speed, ForceMode2D.Force);
-        //TODO: bullet removal
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.SendMessage("ApplyDamagePlayer", damage);
+            Destroy(thisBullet);
+        }
+        if (collision.gameObject.tag == "Wall")
+            Destroy(thisBullet);
+
     }
 }
