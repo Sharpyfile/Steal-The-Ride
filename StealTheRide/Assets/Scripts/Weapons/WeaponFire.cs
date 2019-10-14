@@ -51,7 +51,7 @@ public class WeaponFire : MonoBehaviour
     {
         if (isCocked)
         {
-            GameObject.Instantiate(bullet, this.transform.position, this.transform.rotation).SetActive(true);
+            GameObject.Instantiate(bullet, transform.position, transform.rotation).SetActive(true);
 
             bulletsInMagazine--;
             isCocked = false;

@@ -1,42 +1,44 @@
 ﻿using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class EnemyBullet : MonoBehaviour
 {
     public float speed = 2f;
     public int damage;
-    private Vector2 direction;
+
     public Rigidbody2D bullet;
+    public Transform player;
     public GameObject thisBullet;
+
+    private Vector2 direction;
 
     private void Start()
     {
         bullet = GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void Awake()
     {
-        Vector2 target = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+        Vector2 playerPosition = new Vector2(player.position.x, player.position.y);
         Vector2 bulletPosition = new Vector2(transform.position.x, transform.position.y);
-        direction = target - bulletPosition;
+        direction = playerPosition - bulletPosition;
         direction.Normalize();
     }
 
     private void FixedUpdate()
     {
-        bullet.AddForce(direction * speed, ForceMode2D.Impulse);
+        bullet.AddForce(direction * speed, ForceMode2D.Force);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.SendMessage("ApplyDamageEnemy", damage);
+            collision.gameObject.SendMessage("ApplyDamagePlayer", damage);
             Destroy(thisBullet);
-
         }
         if (collision.gameObject.tag == "Wall")
             Destroy(thisBullet);
 
     }
-
 }
