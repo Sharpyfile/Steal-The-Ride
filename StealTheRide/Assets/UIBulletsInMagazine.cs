@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class UIBulletsInMagazine : MonoBehaviour
@@ -9,6 +8,6 @@ public class UIBulletsInMagazine : MonoBehaviour
 
     void Update()
     {
-        text.text = "Bullets in the magazine: \n" + weapon.bulletsInMagazine + "/" + weapon.magazine;
+        text.text = "Bullets in the magazine: \n" + weapon.bulletsInMagazine + "/" + weapon.magazineSize;
     }
 }
