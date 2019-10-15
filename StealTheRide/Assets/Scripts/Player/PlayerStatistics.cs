@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStatistics : MonoBehaviour
 {
@@ -45,6 +46,10 @@ public class PlayerStatistics : MonoBehaviour
         playerHealth -= damage;
         Debug.Log("You have been hit");
         if (playerHealth <= 0)
+        {
             Debug.Log("You are dead");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+            
     }
 }
