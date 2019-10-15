@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyStatistics : MonoBehaviour
 {
@@ -25,8 +26,11 @@ public class EnemyStatistics : MonoBehaviour
         Debug.Log("You hit the enemy!");
         if (enemyHealth <= 0)
         {
-            Destroy(enemy);
             Debug.Log("You killed the enemy!");
+            Destroy(enemy);
+            
+            if (GameObject.FindGameObjectsWithTag("Enemy").Length <= 1)
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
             
     }
