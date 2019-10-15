@@ -3,15 +3,18 @@
 public class WeaponFire : MonoBehaviour
 {
     public bool isCocked = true;
-    public int magazine = 6;
+    public int magazineSize = 6;
     public int bulletsInMagazine = 6;
     public GameObject bullet;
-    public float reloadCooldown;
+    public GameObject reloadSlider;
+    public float reloadTime = 1;
     public float fireCooldown;
 
     private string weaponInfo;
     private float timestampFiring;
     private float timestampReload;
+    private bool isReloading = false;
+    private GameObject reloadSliderInstance;
 
     public string GetWeaponInfo()
     {
@@ -26,21 +29,31 @@ public class WeaponFire : MonoBehaviour
 
     void Update()
     {
-        if (bulletsInMagazine > 0)
+        if (!isReloading)
         {
-            if (Input.GetMouseButtonDown(0) && timestampFiring <= Time.time)
+            if (bulletsInMagazine > 0)
             {
-                Fire();
-            } else if (Input.GetMouseButtonDown(1))
-            {
-                Pull();
+                if (Input.GetMouseButtonDown(0) && timestampFiring <= Time.time)
+                {
+                    Fire();
+                }
+                else if (Input.GetMouseButtonDown(1))
+                {
+                    Pull();
+                }
             }
-        } else
-        {
-            Debug.Log("You have no bullets in magazine - reload");
+            else
+            {
+                Debug.Log("You have no bullets in magazine - reload");
+            }
         }
 
-        if (Input.GetButtonDown("Reload") && timestampReload <= Time.time)
+        if (isReloading && timestampReload <= Time.time)
+        {
+            ReloadTick();
+        }
+
+        if (Input.GetButtonDown("Reload"))
         {
             Reload();
         }
@@ -81,11 +94,40 @@ public class WeaponFire : MonoBehaviour
 
     private void Reload()
     {
-        bulletsInMagazine = magazine;
-        isCocked = true;
-        timestampReload = Time.time + reloadCooldown;
-        timestampFiring = Time.time + reloadCooldown;
-        weaponInfo = "Reloaded \nready to Shoot";
-        Debug.Log("Reloading");
+        if (!isReloading)
+        {
+            if (bulletsInMagazine < magazineSize)
+            {
+                isReloading = true;
+                timestampReload = Time.time + reloadTime;
+                reloadSlider.GetComponent<ReloadSlider>().Set(Time.time, (magazineSize - bulletsInMagazine) * reloadTime);
+                reloadSlider.SetActive(true);
+            }
+        }
+        else
+        {
+            StopReloading();
+        }
+    }
+
+    private void ReloadTick()
+    {
+        Debug.Log("Loading bullet...");
+        bulletsInMagazine++;
+        if (bulletsInMagazine == magazineSize)
+        {
+            StopReloading();
+            Debug.Log("Fully reloaded!");
+        }
+        else
+        {
+            timestampReload = Time.time + reloadTime;
+        }
+    }
+
+    private void StopReloading()
+    {
+        isReloading = false;
+        reloadSlider.SetActive(false);
     }
 }
