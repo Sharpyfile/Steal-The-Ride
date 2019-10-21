@@ -3,7 +3,7 @@
 public class WeaponFire : MonoBehaviour
 {
     public bool isCocked = true;
-    public bool isSuperShot = false;
+    public static bool isSuperShot = false;
     public int magazineSize = 6;
     public int bulletsInMagazine = 6;
     public GameObject bullet;
@@ -87,6 +87,7 @@ public class WeaponFire : MonoBehaviour
 
     private void SuperFire()
     {
+        isSuperShot = true;
         GameObject.Instantiate(bullet, transform.position, transform.rotation).SetActive(true);
 
         bulletsInMagazine--;
@@ -94,6 +95,8 @@ public class WeaponFire : MonoBehaviour
         Debug.Log("Firing");
         weaponInfo = "Load next bullet";
         timestampFiring = Time.time + fireCooldown;
+
+        isSuperShot = false;
     }
 
     private void Pull()
