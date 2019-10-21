@@ -3,6 +3,7 @@
 public class WeaponFire : MonoBehaviour
 {
     public bool isCocked = true;
+    public bool isSuperShot = false;
     public int magazineSize = 6;
     public int bulletsInMagazine = 6;
     public GameObject bullet;
@@ -33,9 +34,16 @@ public class WeaponFire : MonoBehaviour
         {
             if (bulletsInMagazine > 0)
             {
-                if (Input.GetMouseButtonDown(0) && timestampFiring <= Time.time)
+                if (Input.GetMouseButton(0) && timestampFiring <= Time.time)
                 {
-                    Fire();
+                    if (isCocked)
+                    {
+                        Fire();
+                    }
+                    else if (Input.GetMouseButtonDown(1))
+                    {
+                        SuperFire();
+                    }
                 }
                 else if (Input.GetMouseButtonDown(1))
                 {
@@ -75,6 +83,17 @@ public class WeaponFire : MonoBehaviour
         {
             Debug.Log("You need to load the bullet in the chamber");
         }
+    }
+
+    private void SuperFire()
+    {
+        GameObject.Instantiate(bullet, transform.position, transform.rotation).SetActive(true);
+
+        bulletsInMagazine--;
+        //isCocked = false;
+        Debug.Log("Firing");
+        weaponInfo = "Load next bullet";
+        timestampFiring = Time.time + fireCooldown;
     }
 
     private void Pull()

@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour
     public Rigidbody2D bullet;
     public GameObject thisBullet;
 
+    public bool isSuperShot;
+
     private void Start()
     {
         bullet = GetComponent<Rigidbody2D>();
