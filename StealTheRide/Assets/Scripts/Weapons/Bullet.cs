@@ -20,8 +20,8 @@ public class Bullet : MonoBehaviour
 
         if (WeaponFire.isSuperShot)
         {
-            target.x += Random.Range(-0.3f, 0.3f);
-            target.y += Random.Range(-0.3f, 0.3f);
+            target.x += Random.Range(-spreadFactor, spreadFactor);
+            target.y += Random.Range(-spreadFactor, spreadFactor);
         }
 
         Vector2 bulletPosition = new Vector2(transform.position.x, transform.position.y);
