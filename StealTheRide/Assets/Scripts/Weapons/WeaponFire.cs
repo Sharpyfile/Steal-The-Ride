@@ -39,10 +39,18 @@ public class WeaponFire : MonoBehaviour
                     if (isCocked)
                     {
                         Fire();
+                        weaponInfo = "Load next bullet";
                     }
                     else if (Input.GetMouseButtonDown(1))
                     {
-                        SuperFire();
+                        isSuperShot = true;
+                        Fire();
+                        weaponInfo = "SUPER FIRE!";
+                        isSuperShot = false;
+                    }
+                    else
+                    {
+                        Debug.Log("You need to load the bullet in the chamber");
                     }
                 }
                 else if (Input.GetMouseButtonDown(1))
@@ -52,6 +60,7 @@ public class WeaponFire : MonoBehaviour
             }
             else
             {
+                weaponInfo = "No bullets!";
                 Debug.Log("You have no bullets in magazine - reload");
             }
         }
@@ -70,34 +79,17 @@ public class WeaponFire : MonoBehaviour
 
     private void Fire()
     {
-        if (isCocked)
-        {
+        
             GameObject.Instantiate(bullet, transform.position, transform.rotation).SetActive(true);
 
             bulletsInMagazine--;
             isCocked = false;
             Debug.Log("Firing");
-            weaponInfo = "Load next bullet";
+            //weaponInfo = "Load next bullet";
             timestampFiring = Time.time + fireCooldown;
-        } else
-        {
-            Debug.Log("You need to load the bullet in the chamber");
-        }
+
     }
 
-    private void SuperFire()
-    {
-        isSuperShot = true;
-        GameObject.Instantiate(bullet, transform.position, transform.rotation).SetActive(true);
-
-        bulletsInMagazine--;
-        //isCocked = false;
-        Debug.Log("Firing");
-        weaponInfo = "Load next bullet";
-        timestampFiring = Time.time + fireCooldown;
-
-        isSuperShot = false;
-    }
 
     private void Pull()
     {
@@ -135,6 +127,7 @@ public class WeaponFire : MonoBehaviour
     private void ReloadTick()
     {
         Debug.Log("Loading bullet...");
+        weaponInfo = "Reloading...";
         bulletsInMagazine++;
         if (bulletsInMagazine == magazineSize)
         {
@@ -151,5 +144,6 @@ public class WeaponFire : MonoBehaviour
     {
         isReloading = false;
         reloadSlider.SetActive(false);
+        weaponInfo = "Load next bullet";
     }
 }

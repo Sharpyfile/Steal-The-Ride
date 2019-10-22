@@ -993,7 +993,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecb24440576ea3843ba116e574d2be5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 1.5
+  range: 2.5
   enemySpeed: 0.01
   stoppingDistance: 1
   retreatDistance: 0.5
@@ -4134,7 +4134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecb24440576ea3843ba116e574d2be5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 1.5
+  range: 2.5
   enemySpeed: 0.01
   stoppingDistance: 1
   retreatDistance: 0.5
