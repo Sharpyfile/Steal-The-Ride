@@ -4,6 +4,7 @@ public class Bullet : MonoBehaviour
 {
     public float speed = 2f;
     public int damage;
+    public float spreadFactor = 0.3f;
     private Vector2 direction;
     public Rigidbody2D bullet;
     public GameObject thisBullet;
@@ -16,6 +17,13 @@ public class Bullet : MonoBehaviour
     private void Awake()
     {
         Vector2 target = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+
+        if (WeaponFire.isSuperShot)
+        {
+            target.x += Random.Range(-spreadFactor, spreadFactor);
+            target.y += Random.Range(-spreadFactor, spreadFactor);
+        }
+
         Vector2 bulletPosition = new Vector2(transform.position.x, transform.position.y);
         direction = target - bulletPosition;
         direction.Normalize();
