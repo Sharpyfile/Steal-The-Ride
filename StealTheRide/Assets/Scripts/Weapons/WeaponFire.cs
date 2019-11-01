@@ -8,6 +8,7 @@ public class WeaponFire : MonoBehaviour
     public int bulletsInMagazine = 6;
     public GameObject bullet;
     public GameObject reloadSlider;
+    public PlayerStatistics player;
     public float reloadTime = 1;
     public float fireCooldown;
 
@@ -39,13 +40,11 @@ public class WeaponFire : MonoBehaviour
                     if (isCocked)
                     {
                         Fire();
-                        weaponInfo = "Load next bullet";
                     }
                     else if (Input.GetMouseButtonDown(1))
                     {
                         isSuperShot = true;
                         Fire();
-                        weaponInfo = "SUPER FIRE!";
                         isSuperShot = false;
                     }
                     else
@@ -79,15 +78,22 @@ public class WeaponFire : MonoBehaviour
 
     private void Fire()
     {
-        
+        if (!player.GetDucked())
+        {
             GameObject.Instantiate(bullet, transform.position, transform.rotation).SetActive(true);
 
             bulletsInMagazine--;
             isCocked = false;
             Debug.Log("Firing");
-            //weaponInfo = "Load next bullet";
+            if (!isSuperShot)
+            {
+                weaponInfo = "Load next bullet";
+            } else
+            {
+                weaponInfo = "SUPER FIRE!";
+            }
             timestampFiring = Time.time + fireCooldown;
-
+        }
     }
 
 
