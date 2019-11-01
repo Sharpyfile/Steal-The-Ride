@@ -4,12 +4,15 @@ using UnityEngine.SceneManagement;
 public class PlayerStatistics : MonoBehaviour
 {
     public Rigidbody2D player;
+    public SpriteRenderer playerSprite;
     private float speed;
     private Vector2 playerInput;
     public float walkingSpeed = 2f;
     public float sprintingSpeed = 5f;
     private Vector3 mousePosition;
     public int playerHealth = 10;
+
+    private bool ducked = false;
 
     void Start()
     {
@@ -18,8 +21,24 @@ public class PlayerStatistics : MonoBehaviour
     
     void FixedUpdate()
     {
+        PlayerDuck(Input.GetKey(KeyCode.LeftControl));
         PlayerMove();
         PlayerRotate();
+    }
+
+    void PlayerDuck(bool on)
+    {
+        if (ducked && !on)
+        {
+            ducked = false;
+            playerSprite.color = new Color(255, 0, 0);
+            player.constraints = RigidbodyConstraints2D.None;
+        } else if (!ducked && on)
+        {
+            ducked = true;
+            playerSprite.color = new Color(0, 255, 0);
+            player.constraints = RigidbodyConstraints2D.FreezePosition;
+        }
     }
 
     void PlayerMove()
