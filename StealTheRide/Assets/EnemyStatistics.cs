@@ -26,11 +26,15 @@ public class EnemyStatistics : MonoBehaviour
         Debug.Log("You hit the enemy!");
         if (enemyHealth <= 0)
         {
+            AudioManager.instance.Play("Death");
             Debug.Log("You killed the enemy!");
             Destroy(enemy);
             
             if (GameObject.FindGameObjectsWithTag("Enemy").Length <= 1)
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        } else
+        {
+            AudioManager.instance.Play("Pain");
         }
             
     }

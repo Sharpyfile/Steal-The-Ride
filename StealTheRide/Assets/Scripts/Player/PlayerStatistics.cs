@@ -83,8 +83,12 @@ public class PlayerStatistics : MonoBehaviour
         Debug.Log("You have been hit");
         if (playerHealth <= 0)
         {
+            AudioManager.instance.Play("Death");
             Debug.Log("You are dead");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        } else
+        {
+            AudioManager.instance.Play("Pain");
         }
     }
 

@@ -7,7 +7,6 @@ public class Bullet : MonoBehaviour
     public float spreadFactor = 0.3f;
     private Vector2 direction;
     public Rigidbody2D bullet;
-    public GameObject thisBullet;
 
     private void Start()
     {
@@ -39,11 +38,11 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             collision.gameObject.SendMessage("ApplyDamageEnemy", damage);
-            Destroy(thisBullet);
+            Destroy(gameObject);
 
         }
         if (collision.gameObject.tag == "Wall")
-            Destroy(thisBullet);
+            Destroy(gameObject);
 
     }
 
