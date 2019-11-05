@@ -37,30 +37,29 @@ public class WeaponFire : MonoBehaviour
             {
                 if (Input.GetMouseButton(0) && timestampFiring <= Time.time)
                 {
-                    if (isCocked)
-                    {
-                        Fire();
-                    }
-                    else if (Input.GetMouseButtonDown(1))
+                    if (Input.GetMouseButtonDown(1))
                     {
                         isSuperShot = true;
                         Fire();
                         isSuperShot = false;
-                    }
-                    else
+                    } else if (Input.GetMouseButtonDown(0))
                     {
-                        Debug.Log("You need to load the bullet in the chamber");
+                        if (isCocked)
+                        {
+                            Fire();
+                        }
+                        else
+                        {
+                            AudioManager.instance.Play("RevolverEmptyChamber");
+                            Debug.Log("You need to load the bullet in the chamber");
+                        }
                     }
+                    
                 }
                 else if (Input.GetMouseButtonDown(1))
                 {
                     Pull();
                 }
-            }
-            else
-            {
-                weaponInfo = "No bullets!";
-                Debug.Log("You have no bullets in magazine - reload");
             }
         }
 
@@ -81,16 +80,28 @@ public class WeaponFire : MonoBehaviour
         if (!player.GetDucked())
         {
             GameObject.Instantiate(bullet, transform.position, transform.rotation).SetActive(true);
-
+            if (isSuperShot)
+            {
+                AudioManager.instance.Play("RevolverCock");
+            }
+            AudioManager.instance.Play("RevolverShot");
             bulletsInMagazine--;
             isCocked = false;
             Debug.Log("Firing");
-            if (!isSuperShot)
+            if (bulletsInMagazine > 0)
             {
-                weaponInfo = "Load next bullet";
+                if (!isSuperShot)
+                {
+                    weaponInfo = "Load next bullet";
+                }
+                else
+                {
+                    weaponInfo = "SUPER FIRE!";
+                }
             } else
             {
-                weaponInfo = "SUPER FIRE!";
+                weaponInfo = "No bullets!";
+                Debug.Log("You have no bullets in magazine - reload");
             }
             timestampFiring = Time.time + fireCooldown;
         }
@@ -103,6 +114,7 @@ public class WeaponFire : MonoBehaviour
         {
             isCocked = true;
             weaponInfo = "Ready to shoot";
+            AudioManager.instance.Play("RevolverCock");
             Debug.Log("The gun has been reloaded");
 
         } else if (bulletsInMagazine > 0)
@@ -135,6 +147,7 @@ public class WeaponFire : MonoBehaviour
         Debug.Log("Loading bullet...");
         weaponInfo = "Reloading...";
         bulletsInMagazine++;
+        AudioManager.instance.Play("RevolverReloadTick");
         if (bulletsInMagazine == magazineSize)
         {
             StopReloading();

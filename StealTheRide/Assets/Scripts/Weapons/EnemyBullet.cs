@@ -7,7 +7,6 @@ public class EnemyBullet : MonoBehaviour
 
     public Rigidbody2D bullet;
     public Transform player;
-    public GameObject thisBullet;
 
     private Vector2 direction;
 
@@ -35,10 +34,10 @@ public class EnemyBullet : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.SendMessage("ApplyDamagePlayer", damage);
-            Destroy(thisBullet);
+            Destroy(gameObject);
         }
         if (collision.gameObject.tag == "Wall")
-            Destroy(thisBullet);
+            Destroy(gameObject);
 
     }
 }
