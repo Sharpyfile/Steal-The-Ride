@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class EnemyBullet : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class EnemyBullet : MonoBehaviour
     public Transform player;
 
     private Vector2 direction;
+    bool isReady;
 
     private void Start()
     {
@@ -24,10 +26,19 @@ public class EnemyBullet : MonoBehaviour
         direction.Normalize();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        bullet.AddForce(direction * speed, ForceMode2D.Force);
+        Vector2 position = transform.position;
+
+        position += direction * speed * Time.deltaTime;
+
+        transform.position = position;
     }
+
+    //private void FixedUpdate()
+    //{
+    //    bullet.AddForce(direction * speed, ForceMode2D.Force);
+    //}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -40,4 +51,5 @@ public class EnemyBullet : MonoBehaviour
             Destroy(gameObject);
 
     }
+
 }

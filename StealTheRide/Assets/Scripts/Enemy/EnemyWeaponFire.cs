@@ -6,6 +6,8 @@ public class EnemyWeaponFire : MonoBehaviour
     public GameObject bullet;
 
     private float range = 1.5f;
+    private int magazineSize = 6;
+    private int bulletsInMagazine = 6;
     private float timestampFiring;
     private Transform playerToFollow;
 
@@ -17,9 +19,14 @@ public class EnemyWeaponFire : MonoBehaviour
 
     void Update()
     {
-        if (timestampFiring <= Time.time && Vector2.Distance(transform.position, playerToFollow.position) < range)
+        if (timestampFiring <= Time.time && Vector2.Distance(transform.position, playerToFollow.position) < range && bulletsInMagazine > 0)
         {
             Fire();
+        }
+
+        if(bulletsInMagazine == 0)
+        {
+            Invoke("Reload", 6);
         }
     }
 
@@ -27,5 +34,11 @@ public class EnemyWeaponFire : MonoBehaviour
     {
         timestampFiring = Time.time + fireCooldown;
         GameObject.Instantiate(bullet, transform.position, transform.rotation).SetActive(true);
+        bulletsInMagazine--;
+    }
+
+    void Reload()
+    {
+        bulletsInMagazine = 6;
     }
 }

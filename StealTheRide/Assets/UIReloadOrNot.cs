@@ -3,12 +3,21 @@ using UnityEngine.UI;
 
 public class UIReloadOrNot : MonoBehaviour
 {
-    public WeaponFire weapon;
+    public RevolverFire revolver;
+    public RepeaterFire repeater;
+    
     public Text text;
 
     void Update()
     {
-        text.text = weapon.GetWeaponInfo();
+        if (PlayerFire.isRevolverActive)
+        {
+            text.text = revolver.GetWeaponInfo();
+        }
+        else if (PlayerFire.isRepeaterActive)
+        {
+            text.text = repeater.GetWeaponInfo();
+        }
     }
 }
 
