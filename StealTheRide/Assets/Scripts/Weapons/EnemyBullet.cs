@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class EnemyBullet : MonoBehaviour
 {
@@ -7,9 +8,9 @@ public class EnemyBullet : MonoBehaviour
 
     public Rigidbody2D bullet;
     public Transform player;
-    public GameObject thisBullet;
 
     private Vector2 direction;
+    bool isReady;
 
     private void Start()
     {
@@ -25,20 +26,30 @@ public class EnemyBullet : MonoBehaviour
         direction.Normalize();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        bullet.AddForce(direction * speed, ForceMode2D.Force);
+        Vector2 position = transform.position;
+
+        position += direction * speed * Time.deltaTime;
+
+        transform.position = position;
     }
+
+    //private void FixedUpdate()
+    //{
+    //    bullet.AddForce(direction * speed, ForceMode2D.Force);
+    //}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.SendMessage("ApplyDamagePlayer", damage);
-            Destroy(thisBullet);
+            Destroy(gameObject);
         }
         if (collision.gameObject.tag == "Wall")
-            Destroy(thisBullet);
+            Destroy(gameObject);
 
     }
+
 }

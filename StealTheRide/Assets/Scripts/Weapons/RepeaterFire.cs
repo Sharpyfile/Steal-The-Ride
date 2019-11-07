@@ -1,13 +1,16 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class WeaponFire : MonoBehaviour
+public class RepeaterFire : MonoBehaviour
 {
-    public bool isCocked = true;
-    public bool isSuperShot = false;
+    //public bool isCocked = true;
+    //public static bool isSuperShot = false;
     public int magazineSize = 6;
-    public int bulletsInMagazine = 6;
+    public int bulletsInMagazine = 15;
     public GameObject bullet;
     public GameObject reloadSlider;
+    public PlayerStatistics player;
     public float reloadTime = 1;
     public float fireCooldown;
 
@@ -30,29 +33,18 @@ public class WeaponFire : MonoBehaviour
 
     void Update()
     {
+        Bullet.speed = 5.0f;
+
         if (!isReloading)
         {
             if (bulletsInMagazine > 0)
             {
                 if (Input.GetMouseButton(0) && timestampFiring <= Time.time)
                 {
-                    if (isCocked)
-                    {
-                        Fire();
-                    }
-                    else if (Input.GetMouseButtonDown(1))
-                    {
-                        SuperFire();
-                    }
+                    Fire();
                 }
-                else if (Input.GetMouseButtonDown(1))
-                {
-                    Pull();
-                }
-            }
-            else
-            {
-                Debug.Log("You have no bullets in magazine - reload");
+
+
             }
         }
 
@@ -70,46 +62,41 @@ public class WeaponFire : MonoBehaviour
 
     private void Fire()
     {
-        if (isCocked)
+        if (!player.GetDucked())
         {
             GameObject.Instantiate(bullet, transform.position, transform.rotation).SetActive(true);
 
+            AudioManager.instance.Play("RevolverShot");
             bulletsInMagazine--;
-            isCocked = false;
             Debug.Log("Firing");
-            weaponInfo = "Load next bullet";
+            AudioManager.instance.Play("RevolverCock");
+
+            if (bulletsInMagazine == 0)       
+            {
+                weaponInfo = "No bullets!";
+                Debug.Log("You have no bullets in magazine - reload");
+            }
             timestampFiring = Time.time + fireCooldown;
-        } else
-        {
-            Debug.Log("You need to load the bullet in the chamber");
         }
     }
 
-    private void SuperFire()
-    {
-        GameObject.Instantiate(bullet, transform.position, transform.rotation).SetActive(true);
 
-        bulletsInMagazine--;
-        //isCocked = false;
-        Debug.Log("Firing");
-        weaponInfo = "Load next bullet";
-        timestampFiring = Time.time + fireCooldown;
-    }
+    //private void Pull()
+    //{
+    //    if (isCocked == false)
+    //    {
+    //        isCocked = true;
+    //        weaponInfo = "Ready to shoot";
+    //        AudioManager.instance.Play("RevolverCock");
+    //        Debug.Log("The gun has been reloaded");
 
-    private void Pull()
-    {
-        if (isCocked == false)
-        {
-            isCocked = true;
-            weaponInfo = "Ready to shoot";
-            Debug.Log("The gun has been reloaded");
-
-        } else if (bulletsInMagazine > 0)
-        {
-            weaponInfo = "Ready to shoot";
-            Debug.Log("There is already a bullet in the chamber!");
-        }
-    }
+    //    }
+    //    else if (bulletsInMagazine > 0)
+    //    {
+    //        weaponInfo = "Ready to shoot";
+    //        Debug.Log("There is already a bullet in the chamber!");
+    //    }
+    //}
 
     private void Reload()
     {
@@ -132,7 +119,9 @@ public class WeaponFire : MonoBehaviour
     private void ReloadTick()
     {
         Debug.Log("Loading bullet...");
+        weaponInfo = "Reloading...";
         bulletsInMagazine++;
+        AudioManager.instance.Play("RevolverReloadTick");
         if (bulletsInMagazine == magazineSize)
         {
             StopReloading();
@@ -148,5 +137,6 @@ public class WeaponFire : MonoBehaviour
     {
         isReloading = false;
         reloadSlider.SetActive(false);
+        weaponInfo = "";
     }
 }
