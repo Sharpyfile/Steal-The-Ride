@@ -2,46 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RepeaterFire : MonoBehaviour
+public class RepeaterFire : WeaponFire
 {
-    //public bool isCocked = true;
+    public bool isLeverForward;
+    public bool isLeverBackward;
     //public static bool isSuperShot = false;
-    public int magazineSize = 6;
-    public int bulletsInMagazine = 15;
-    public GameObject bullet;
-    public GameObject reloadSlider;
-    public PlayerStatistics player;
-    public float reloadTime = 1;
-    public float fireCooldown;
 
-    private string weaponInfo;
-    private float timestampFiring;
-    private float timestampReload;
-    private bool isReloading = false;
     private GameObject reloadSliderInstance;
 
-    public string GetWeaponInfo()
-    {
-        return weaponInfo;
-    }
 
     void Start()
     {
+
         timestampFiring = Time.time;
         timestampReload = Time.time;
     }
 
     void Update()
     {
-        Bullet.speed = 5.0f;
-
         if (!isReloading)
         {
             if (bulletsInMagazine > 0)
             {
-                if (Input.GetMouseButton(0) && timestampFiring <= Time.time)
+                if (Input.GetMouseButtonDown(0) && timestampFiring <= Time.time )
                 {
-                    Fire();
+                    if (isLeverForward && isLeverBackward)
+                    {
+                        Fire();
+                    }
+                    else
+                    {
+                        PullForward();
+                    }
+                }
+                if (Input.GetMouseButtonDown(1) && timestampFiring <= Time.time)
+                {
+                    if (isLeverForward)
+                    {
+                        PullBack();
+                    }
                 }
 
 
@@ -69,8 +68,9 @@ public class RepeaterFire : MonoBehaviour
             AudioManager.instance.Play("RevolverShot");
             bulletsInMagazine--;
             Debug.Log("Firing");
-            AudioManager.instance.Play("RevolverCock");
-
+            isLeverForward = false;
+            isLeverBackward = false;
+            weaponInfo = "Pull forward!";
             if (bulletsInMagazine == 0)       
             {
                 weaponInfo = "No bullets!";
@@ -81,62 +81,39 @@ public class RepeaterFire : MonoBehaviour
     }
 
 
-    //private void Pull()
-    //{
-    //    if (isCocked == false)
-    //    {
-    //        isCocked = true;
-    //        weaponInfo = "Ready to shoot";
-    //        AudioManager.instance.Play("RevolverCock");
-    //        Debug.Log("The gun has been reloaded");
-
-    //    }
-    //    else if (bulletsInMagazine > 0)
-    //    {
-    //        weaponInfo = "Ready to shoot";
-    //        Debug.Log("There is already a bullet in the chamber!");
-    //    }
-    //}
-
-    private void Reload()
+    private void PullForward()
     {
-        if (!isReloading)
+        if (isLeverForward == false)
         {
-            if (bulletsInMagazine < magazineSize)
-            {
-                isReloading = true;
-                timestampReload = Time.time + reloadTime;
-                reloadSlider.GetComponent<ReloadSlider>().Set(Time.time, (magazineSize - bulletsInMagazine) * reloadTime);
-                reloadSlider.SetActive(true);
-            }
+            isLeverForward = true;
+            weaponInfo = "Pull back!";
+            AudioManager.instance.Play("RevolverCock");
+            //Debug.Log("The gun has been reloaded");
+            timestampFiring = Time.time + fireCooldown;
         }
-        else
+        else if (bulletsInMagazine > 0)
         {
-            StopReloading();
+            weaponInfo = "Ready to shoot";
+            Debug.Log("There is already a bullet in the chamber!");
         }
     }
 
-    private void ReloadTick()
+    private void PullBack()
     {
-        Debug.Log("Loading bullet...");
-        weaponInfo = "Reloading...";
-        bulletsInMagazine++;
-        AudioManager.instance.Play("RevolverReloadTick");
-        if (bulletsInMagazine == magazineSize)
+        if (isLeverBackward == false)
         {
-            StopReloading();
-            Debug.Log("Fully reloaded!");
+            isLeverBackward = true;
+            weaponInfo = "Ready to shoot";
+            AudioManager.instance.Play("RevolverCock");
+            //Debug.Log("The gun has been reloaded");
+            timestampFiring = Time.time + fireCooldown;
         }
-        else
+        else if (bulletsInMagazine > 0)
         {
-            timestampReload = Time.time + reloadTime;
+            weaponInfo = "Ready to shoot";
+            Debug.Log("There is already a bullet in the chamber!");
         }
     }
 
-    private void StopReloading()
-    {
-        isReloading = false;
-        reloadSlider.SetActive(false);
-        weaponInfo = "";
-    }
+    
 }

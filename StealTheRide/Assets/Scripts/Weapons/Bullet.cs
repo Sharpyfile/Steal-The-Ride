@@ -2,9 +2,27 @@
 
 public class Bullet : MonoBehaviour
 {
-    public static float speed = 2f;
+    public float speed;
+    public float Speed
+    {
+        get { return speed; }
+        set { speed = value; }
+    }
+
     public int damage;
-    public float spreadFactor = 0.3f;
+    public int Damage
+    {
+        get { return damage; }
+        set { damage = value; }
+    }
+
+    public float spreadFactor;
+    public float SpreadFactor
+    {
+        get { return spreadFactor; }
+        set { spreadFactor = value; }
+    }
+
     private Vector2 direction;
     public Rigidbody2D bullet;
 
@@ -55,9 +73,5 @@ public class Bullet : MonoBehaviour
 
     }
 
-    public void SetSpeed(float newSpeed)
-    {
-        speed = 5;
-    }
 
 }
