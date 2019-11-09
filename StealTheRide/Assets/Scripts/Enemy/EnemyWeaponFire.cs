@@ -4,6 +4,8 @@ public class EnemyWeaponFire : MonoBehaviour
 {
     public float fireCooldown = 2f;
     public GameObject bullet;
+    public ParticleSystem particleSystem;
+    public int fireParticleCount = 10;
 
     private float range = 1.5f;
     private int magazineSize = 6;
@@ -33,6 +35,7 @@ public class EnemyWeaponFire : MonoBehaviour
     void Fire()
     {
         timestampFiring = Time.time + fireCooldown;
+        particleSystem.Emit(fireParticleCount);
         GameObject.Instantiate(bullet, transform.position, transform.rotation).SetActive(true);
         bulletsInMagazine--;
     }

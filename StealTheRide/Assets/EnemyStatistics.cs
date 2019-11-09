@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class EnemyStatistics : MonoBehaviour
 {
-    public Transform player;
     public int enemyHealth;
     public GameObject enemy;
+
+    private Transform player;
 
     void Start()
     {

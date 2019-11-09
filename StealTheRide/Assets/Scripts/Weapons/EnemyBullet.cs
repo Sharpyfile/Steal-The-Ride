@@ -5,9 +5,11 @@ public class EnemyBullet : MonoBehaviour
 {
     public float speed = 2f;
     public int damage;
-
     public Rigidbody2D bullet;
-    public Transform player;
+    public GameObject hitSolidPSPrefab;
+    public GameObject hitEnemyPSPrefab;
+
+    private Transform player;
 
     private Vector2 direction;
     bool isReady;
@@ -20,6 +22,7 @@ public class EnemyBullet : MonoBehaviour
 
     private void Awake()
     {
+        player = GameObject.FindWithTag("Player").transform;
         Vector2 playerPosition = new Vector2(player.position.x, player.position.y);
         Vector2 bulletPosition = new Vector2(transform.position.x, transform.position.y);
         direction = playerPosition - bulletPosition;
@@ -44,12 +47,22 @@ public class EnemyBullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            LaunchPS(hitEnemyPSPrefab);
             collision.gameObject.SendMessage("ApplyDamagePlayer", damage);
             Destroy(gameObject);
         }
         if (collision.gameObject.tag == "Wall")
+        {
+            LaunchPS(hitSolidPSPrefab);
             Destroy(gameObject);
+        }
 
     }
 
+    private void LaunchPS(GameObject psPrefab)
+    {
+        GameObject psObject = Instantiate(psPrefab, transform.position, transform.rotation);
+        ParticleSystem ps = psObject.GetComponent<ParticleSystem>();
+        Destroy(psObject, ps.main.duration);
+    }
 }

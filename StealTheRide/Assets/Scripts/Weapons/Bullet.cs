@@ -86,6 +86,4 @@ public class Bullet : MonoBehaviour
         ParticleSystem ps = psObject.GetComponent<ParticleSystem>();
         Destroy(psObject, ps.main.duration);
     }
-
-
 }
