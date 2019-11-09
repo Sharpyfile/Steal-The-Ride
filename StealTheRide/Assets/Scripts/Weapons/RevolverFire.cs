@@ -4,9 +4,10 @@ public class RevolverFire : WeaponFire
 {
     public bool isCocked = true;
     public static bool isSuperShot = false;
+    public ParticleSystem particleSystem;
+    public int fireParticleCount = 10;
 
     private GameObject reloadSliderInstance;
-
 
     void Start()
     {
@@ -69,6 +70,7 @@ public class RevolverFire : WeaponFire
         if (!player.GetDucked())
         {
             GameObject.Instantiate(bullet, transform.position, transform.rotation).SetActive(true);
+            particleSystem.Emit(fireParticleCount);
             if (isSuperShot)
             {
                 AudioManager.instance.Play("RevolverCock");

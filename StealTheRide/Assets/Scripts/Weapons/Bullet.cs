@@ -2,7 +2,10 @@
 
 public class Bullet : MonoBehaviour
 {
+    public GameObject hitSolidPSPrefab;
+    public GameObject hitEnemyPSPrefab;
     public float speed;
+    
     public float Speed
     {
         get { return speed; }
@@ -64,13 +67,24 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
+            LaunchPS(hitEnemyPSPrefab);
             collision.gameObject.SendMessage("ApplyDamageEnemy", damage);
             Destroy(gameObject);
 
         }
         if (collision.gameObject.tag == "Wall")
+        {
+            LaunchPS(hitSolidPSPrefab);
             Destroy(gameObject);
+        }
 
+    }
+
+    private void LaunchPS(GameObject psPrefab)
+    {
+        GameObject psObject = Instantiate(psPrefab, transform.position, transform.rotation);
+        ParticleSystem ps = psObject.GetComponent<ParticleSystem>();
+        Destroy(psObject, ps.main.duration);
     }
 
 
