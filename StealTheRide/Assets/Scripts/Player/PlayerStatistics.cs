@@ -6,6 +6,7 @@ public class PlayerStatistics : MonoBehaviour
 {
     public Rigidbody2D player;
     public SpriteRenderer playerSprite;
+    public GameObject bleedPSPrefab;
     public float walkingSpeed = 2f;
     public float sprintingSpeed = 5f;
     public int playerHealth = 10;
@@ -77,9 +78,14 @@ public class PlayerStatistics : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 
-    void ApplyDamagePlayer(int damage)
+    void ApplyDamagePlayer(EnemyBullet bullet)
     {
-        playerHealth -= damage;
+        float psAngle = Mathf.Atan2(bullet.Direction.y, bullet.Direction.x) * Mathf.Rad2Deg;
+        GameObject psObject = Instantiate(bleedPSPrefab, transform.position, bleedPSPrefab.transform.rotation * Quaternion.AngleAxis(psAngle, Vector3.forward));
+        ParticleSystem ps = psObject.GetComponent<ParticleSystem>();
+        Destroy(psObject, ps.main.duration);
+
+        playerHealth -= bullet.damage;
         Debug.Log("You have been hit");
         if (playerHealth <= 0)
         {

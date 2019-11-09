@@ -1,44 +1,26 @@
 ﻿using UnityEngine;
 
-public class RevolverFire : MonoBehaviour
+public class RevolverFire : WeaponFire
 {
     public bool isCocked = true;
     public static bool isSuperShot = false;
-    public int magazineSize = 6;
-    public int bulletsInMagazine = 6;
-    public GameObject bullet;
-    public GameObject reloadSlider;
-    public PlayerStatistics player;
-    public float reloadTime = 1;
-    public float fireCooldown;
+    public ParticleSystem particleSystem;
+    public int fireParticleCount = 6;
 
-    private string weaponInfo;
-    private float timestampFiring;
-    private float timestampReload;
-    private bool isReloading = false;
     private GameObject reloadSliderInstance;
-
-    public string GetWeaponInfo()
-    {
-        return weaponInfo;
-    }
 
     void Start()
     {
-
         timestampFiring = Time.time;
         timestampReload = Time.time;
     }
 
     void Awake()
     {
-        Bullet.speed = 2.0f;
     }
 
     void Update()
     {
-        Bullet.speed = 2.0f;
-
         if (!isReloading)
         {
             if (bulletsInMagazine > 0)
@@ -88,6 +70,7 @@ public class RevolverFire : MonoBehaviour
         if (!player.GetDucked())
         {
             GameObject.Instantiate(bullet, transform.position, transform.rotation).SetActive(true);
+            particleSystem.Emit(fireParticleCount);
             if (isSuperShot)
             {
                 AudioManager.instance.Play("RevolverCock");
@@ -132,45 +115,4 @@ public class RevolverFire : MonoBehaviour
         }
     }
 
-    private void Reload()
-    {
-        if (!isReloading)
-        {
-            if (bulletsInMagazine < magazineSize)
-            {
-                isReloading = true;
-                timestampReload = Time.time + reloadTime;
-                reloadSlider.GetComponent<ReloadSlider>().Set(Time.time, (magazineSize - bulletsInMagazine) * reloadTime);
-                reloadSlider.SetActive(true);
-            }
-        }
-        else
-        {
-            StopReloading();
-        }
-    }
-
-    private void ReloadTick()
-    {
-        Debug.Log("Loading bullet...");
-        weaponInfo = "Reloading...";
-        bulletsInMagazine++;
-        AudioManager.instance.Play("RevolverReloadTick");
-        if (bulletsInMagazine == magazineSize)
-        {
-            StopReloading();
-            Debug.Log("Fully reloaded!");
-        }
-        else
-        {
-            timestampReload = Time.time + reloadTime;
-        }
-    }
-
-    private void StopReloading()
-    {
-        isReloading = false;
-        reloadSlider.SetActive(false);
-        weaponInfo = "Load next bullet";
-    }
 }

@@ -2,11 +2,34 @@
 
 public class Bullet : MonoBehaviour
 {
-    public static float speed = 2f;
-    public int damage;
-    public float spreadFactor = 0.3f;
-    private Vector2 direction;
+    public GameObject hitSolidPSPrefab;
+    public GameObject hitEnemyPSPrefab;
     public Rigidbody2D bullet;
+    public float speed;
+    
+    public float Speed
+    {
+        get { return speed; }
+        set { speed = value; }
+    }
+
+    public int damage;
+    public int Damage
+    {
+        get { return damage; }
+        set { damage = value; }
+    }
+
+    public float spreadFactor;
+    public float SpreadFactor
+    {
+        get { return spreadFactor; }
+        set { spreadFactor = value; }
+    }
+
+    public Vector2 Direction { get => direction; set => direction = value; }
+
+    private Vector2 direction;
 
     private void Start()
     {
@@ -46,18 +69,23 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.SendMessage("ApplyDamageEnemy", damage);
+            LaunchPS(hitEnemyPSPrefab);
+            collision.gameObject.SendMessage("ApplyDamageEnemy", this);
             Destroy(gameObject);
 
         }
         if (collision.gameObject.tag == "Wall")
+        {
+            LaunchPS(hitSolidPSPrefab);
             Destroy(gameObject);
+        }
 
     }
 
-    public void SetSpeed(float newSpeed)
+    private void LaunchPS(GameObject psPrefab)
     {
-        speed = 5;
+        GameObject psObject = Instantiate(psPrefab, transform.position, transform.rotation);
+        ParticleSystem ps = psObject.GetComponent<ParticleSystem>();
+        Destroy(psObject, ps.main.duration);
     }
-
 }
