@@ -9,7 +9,7 @@ public class EnemyRotation : MonoBehaviour
     public float stoppingDistance;
     public float retreatDistance;
 
-    public Transform playerToFollow;
+    private Transform playerToFollow;
 
     void Start()
     {

@@ -2,11 +2,34 @@
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 2f;
-    public int damage;
-    public float spreadFactor = 0.3f;
-    private Vector2 direction;
+    public GameObject hitSolidPSPrefab;
+    public GameObject hitEnemyPSPrefab;
     public Rigidbody2D bullet;
+    public float speed;
+    
+    public float Speed
+    {
+        get { return speed; }
+        set { speed = value; }
+    }
+
+    public int damage;
+    public int Damage
+    {
+        get { return damage; }
+        set { damage = value; }
+    }
+
+    public float spreadFactor;
+    public float SpreadFactor
+    {
+        get { return spreadFactor; }
+        set { spreadFactor = value; }
+    }
+
+    public Vector2 Direction { get => direction; set => direction = value; }
+
+    private Vector2 direction;
 
     private void Start()
     {
@@ -17,7 +40,7 @@ public class Bullet : MonoBehaviour
     {
         Vector2 target = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
 
-        if (WeaponFire.isSuperShot)
+        if (RevolverFire.isSuperShot)
         {
             target.x += Random.Range(-spreadFactor, spreadFactor);
             target.y += Random.Range(-spreadFactor, spreadFactor);
@@ -28,22 +51,41 @@ public class Bullet : MonoBehaviour
         direction.Normalize();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        bullet.AddForce(direction * speed, ForceMode2D.Impulse);
+        Vector2 position = transform.position;
+
+        position += direction * speed * Time.deltaTime;
+
+        transform.position = position;
     }
+
+    //private void FixedUpdate()
+    //{
+    //    bullet.AddForce(direction * speed, ForceMode2D.Impulse);
+    //}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.SendMessage("ApplyDamageEnemy", damage);
+            LaunchPS(hitEnemyPSPrefab);
+            collision.gameObject.SendMessage("ApplyDamageEnemy", this);
             Destroy(gameObject);
 
         }
         if (collision.gameObject.tag == "Wall")
+        {
+            LaunchPS(hitSolidPSPrefab);
             Destroy(gameObject);
+        }
 
     }
 
+    private void LaunchPS(GameObject psPrefab)
+    {
+        GameObject psObject = Instantiate(psPrefab, transform.position, transform.rotation);
+        ParticleSystem ps = psObject.GetComponent<ParticleSystem>();
+        Destroy(psObject, ps.main.duration);
+    }
 }
