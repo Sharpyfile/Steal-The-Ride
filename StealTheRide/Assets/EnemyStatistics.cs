@@ -7,6 +7,7 @@ public class EnemyStatistics : MonoBehaviour
 {
     public int enemyHealth;
     public GameObject enemy;
+    public GameObject bleedPSPrefab;
 
     private Transform player;
 
@@ -21,9 +22,14 @@ public class EnemyStatistics : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 
-    void ApplyDamageEnemy(int damage)
+    void ApplyDamageEnemy(Bullet bullet)
     {
-        enemyHealth -= damage;
+        float psAngle = Mathf.Atan2(bullet.Direction.y, bullet.Direction.x) * Mathf.Rad2Deg;
+        GameObject psObject = Instantiate(bleedPSPrefab, transform.position, bleedPSPrefab.transform.rotation * Quaternion.AngleAxis(psAngle, Vector3.forward));
+        ParticleSystem ps = psObject.GetComponent<ParticleSystem>();
+        Destroy(psObject, ps.main.duration);
+
+        enemyHealth -= bullet.damage;
         Debug.Log("You hit the enemy!");
         if (enemyHealth <= 0)
         {

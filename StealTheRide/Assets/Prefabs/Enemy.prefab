@@ -282,7 +282,6 @@ MonoBehaviour:
   enemySpeed: 0.01
   stoppingDistance: 1
   retreatDistance: 0.5
-  playerToFollow: {fileID: 0}
 --- !u!114 &684621307598192031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,9 +294,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eaa7cadb07412341b5e11aec552d83f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   enemyHealth: 10
   enemy: {fileID: 684621307598192034}
+  bleedPSPrefab: {fileID: 4658403827353296317, guid: 25c4f96bfb5915f47b26b03fd39c4354,
+    type: 3}
 --- !u!61 &684621307598192030
 BoxCollider2D:
   m_ObjectHideFlags: 0

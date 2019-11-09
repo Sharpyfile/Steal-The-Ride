@@ -488,10 +488,10 @@ MonoBehaviour:
     type: 3}
   hitEnemyPSPrefab: {fileID: 4658403827353296317, guid: 209db73b6b01c6b47aed8437b6ce414c,
     type: 3}
+  bullet: {fileID: 206355648}
   speed: 0
   damage: 0
   spreadFactor: 0
-  bullet: {fileID: 206355648}
 --- !u!50 &206355648
 Rigidbody2D:
   serializedVersion: 4
@@ -1728,6 +1728,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1736386675401957925, guid: 36bc1a0c57716c544ac4164d3c003472,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1736386675401957925, guid: 36bc1a0c57716c544ac4164d3c003472,
+        type: 3}
+      propertyPath: m_UseCustomVertexStreams
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1736386675401957925, guid: 36bc1a0c57716c544ac4164d3c003472,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1736386675401957925, guid: 36bc1a0c57716c544ac4164d3c003472,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[2]
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36bc1a0c57716c544ac4164d3c003472, type: 3}
 --- !u!1 &935365576
@@ -2226,6 +2246,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1736386675401957925, guid: 36bc1a0c57716c544ac4164d3c003472,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1736386675401957925, guid: 36bc1a0c57716c544ac4164d3c003472,
+        type: 3}
+      propertyPath: m_UseCustomVertexStreams
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1736386675401957925, guid: 36bc1a0c57716c544ac4164d3c003472,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1736386675401957925, guid: 36bc1a0c57716c544ac4164d3c003472,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[2]
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36bc1a0c57716c544ac4164d3c003472, type: 3}
 --- !u!1 &1279527744
@@ -2424,6 +2464,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1736386675401957925, guid: 36bc1a0c57716c544ac4164d3c003472,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1736386675401957925, guid: 36bc1a0c57716c544ac4164d3c003472,
+        type: 3}
+      propertyPath: m_UseCustomVertexStreams
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1736386675401957925, guid: 36bc1a0c57716c544ac4164d3c003472,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1736386675401957925, guid: 36bc1a0c57716c544ac4164d3c003472,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[2]
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36bc1a0c57716c544ac4164d3c003472, type: 3}
 --- !u!1 &1333758784
@@ -2559,6 +2619,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1335733541}
   playerSprite: {fileID: 1681683485}
+  bleedPSPrefab: {fileID: 4658403827353296317, guid: 25c4f96bfb5915f47b26b03fd39c4354,
+    type: 3}
   walkingSpeed: 1
   sprintingSpeed: 2
   playerHealth: 10
@@ -4316,6 +4378,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1736386675401957925, guid: 36bc1a0c57716c544ac4164d3c003472,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1736386675401957925, guid: 36bc1a0c57716c544ac4164d3c003472,
+        type: 3}
+      propertyPath: m_UseCustomVertexStreams
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1736386675401957925, guid: 36bc1a0c57716c544ac4164d3c003472,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1736386675401957925, guid: 36bc1a0c57716c544ac4164d3c003472,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[2]
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36bc1a0c57716c544ac4164d3c003472, type: 3}
 --- !u!1001 &1267940352993712449
@@ -4384,6 +4466,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267940354642793687, guid: 08b9677c5dca4544aad4daab9d5e0705,
+        type: 3}
+      propertyPath: moveWithTransform
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267940354642793687, guid: 08b9677c5dca4544aad4daab9d5e0705,
+        type: 3}
+      propertyPath: EmissionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267940354642793687, guid: 08b9677c5dca4544aad4daab9d5e0705,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.49574798
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267940354642793687, guid: 08b9677c5dca4544aad4daab9d5e0705,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267940354642793687, guid: 08b9677c5dca4544aad4daab9d5e0705,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267940354642793684, guid: 08b9677c5dca4544aad4daab9d5e0705,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267940354642793684, guid: 08b9677c5dca4544aad4daab9d5e0705,
+        type: 3}
+      propertyPath: m_UseCustomVertexStreams
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267940354642793684, guid: 08b9677c5dca4544aad4daab9d5e0705,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267940354642793684, guid: 08b9677c5dca4544aad4daab9d5e0705,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[2]
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08b9677c5dca4544aad4daab9d5e0705, type: 3}

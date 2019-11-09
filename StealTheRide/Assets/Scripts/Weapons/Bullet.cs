@@ -4,6 +4,7 @@ public class Bullet : MonoBehaviour
 {
     public GameObject hitSolidPSPrefab;
     public GameObject hitEnemyPSPrefab;
+    public Rigidbody2D bullet;
     public float speed;
     
     public float Speed
@@ -26,8 +27,9 @@ public class Bullet : MonoBehaviour
         set { spreadFactor = value; }
     }
 
+    public Vector2 Direction { get => direction; set => direction = value; }
+
     private Vector2 direction;
-    public Rigidbody2D bullet;
 
     private void Start()
     {
@@ -68,7 +70,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             LaunchPS(hitEnemyPSPrefab);
-            collision.gameObject.SendMessage("ApplyDamageEnemy", damage);
+            collision.gameObject.SendMessage("ApplyDamageEnemy", this);
             Destroy(gameObject);
 
         }

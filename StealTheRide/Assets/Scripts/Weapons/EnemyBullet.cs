@@ -10,9 +10,11 @@ public class EnemyBullet : MonoBehaviour
     public GameObject hitEnemyPSPrefab;
 
     private Transform player;
-
     private Vector2 direction;
+
     bool isReady;
+
+    public Vector2 Direction { get => direction; set => direction = value; }
 
     private void Start()
     {
@@ -48,7 +50,7 @@ public class EnemyBullet : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             LaunchPS(hitEnemyPSPrefab);
-            collision.gameObject.SendMessage("ApplyDamagePlayer", damage);
+            collision.gameObject.SendMessage("ApplyDamagePlayer", this);
             Destroy(gameObject);
         }
         if (collision.gameObject.tag == "Wall")
