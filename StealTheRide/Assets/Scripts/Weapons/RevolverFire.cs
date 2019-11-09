@@ -5,7 +5,7 @@ public class RevolverFire : WeaponFire
     public bool isCocked = true;
     public static bool isSuperShot = false;
     public ParticleSystem particleSystem;
-    public int fireParticleCount = 10;
+    public int fireParticleCount = 6;
 
     private GameObject reloadSliderInstance;
 

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ShotgunFire : WeaponFire
 {
+    public ParticleSystem particleSystem;
+    public int fireParticleCount = 8;
 
     private GameObject reloadSliderInstance;
 
@@ -48,6 +50,7 @@ public class ShotgunFire : WeaponFire
         if (!player.GetDucked())
         {
             GameObject.Instantiate(bullet, transform.position, transform.rotation).SetActive(true);
+            particleSystem.Emit(fireParticleCount);
 
             AudioManager.instance.Play("RevolverShot");
             bulletsInMagazine--;

@@ -6,6 +6,8 @@ public class RepeaterFire : WeaponFire
 {
     public bool isLeverForward;
     public bool isLeverBackward;
+    public ParticleSystem particleSystem;
+    public int fireParticleCount = 10;
     //public static bool isSuperShot = false;
 
     private GameObject reloadSliderInstance;
@@ -64,6 +66,7 @@ public class RepeaterFire : WeaponFire
         if (!player.GetDucked())
         {
             GameObject.Instantiate(bullet, transform.position, transform.rotation).SetActive(true);
+            particleSystem.Emit(fireParticleCount);
 
             AudioManager.instance.Play("RevolverShot");
             bulletsInMagazine--;
