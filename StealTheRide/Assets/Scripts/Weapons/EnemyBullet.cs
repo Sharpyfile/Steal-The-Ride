@@ -16,29 +16,29 @@ public class EnemyBullet : MonoBehaviour
 
     public Vector2 Direction { get => direction; set => direction = value; }
 
-    private void Start()
-    {
-        bullet = GetComponent<Rigidbody2D>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-    }
+    //private void Start()
+    //{
+    //    bullet = GetComponent<Rigidbody2D>();
+    //    player = GameObject.FindGameObjectWithTag("Player").transform;
+    //}
 
-    private void Awake()
-    {
-        player = GameObject.FindWithTag("Player").transform;
-        Vector2 playerPosition = new Vector2(player.position.x, player.position.y);
-        Vector2 bulletPosition = new Vector2(transform.position.x, transform.position.y);
-        direction = playerPosition - bulletPosition;
-        direction.Normalize();
-    }
+    //private void Awake()
+    //{
+    //    player = GameObject.FindWithTag("Player").transform;
+    //    Vector2 playerPosition = new Vector2(player.position.x, player.position.y);
+    //    Vector2 bulletPosition = new Vector2(transform.position.x, transform.position.y);
+    //    direction = playerPosition - bulletPosition;
+    //    direction.Normalize();
+    //}
 
-    private void Update()
-    {
-        Vector2 position = transform.position;
+    //private void Update()
+    //{
+    //    Vector2 position = transform.position;
 
-        position += direction * speed * Time.deltaTime;
+    //    position += direction * speed * Time.deltaTime;
 
-        transform.position = position;
-    }
+    //    transform.position = position;
+    //}
 
     //private void FixedUpdate()
     //{

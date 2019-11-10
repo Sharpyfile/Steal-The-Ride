@@ -7,6 +7,7 @@ public class EnemyWeaponFire : MonoBehaviour
     public ParticleSystem particleSystem;
     public int fireParticleCount = 10;
 
+    public float speed = 2f;
     private float range = 1.5f;
     private int magazineSize = 6;
     private int bulletsInMagazine = 6;
@@ -36,7 +37,13 @@ public class EnemyWeaponFire : MonoBehaviour
     {
         timestampFiring = Time.time + fireCooldown;
         particleSystem.Emit(fireParticleCount);
-        GameObject.Instantiate(bullet, transform.position, transform.rotation).SetActive(true);
+        //GameObject.Instantiate(bullet, transform.position, transform.rotation).SetActive(true);
+
+        GameObject newBullet = GameObject.Instantiate(bullet, transform.position, transform.rotation);
+        newBullet.SetActive(true);
+        Rigidbody2D rb = newBullet.GetComponent<Rigidbody2D>();
+        rb.AddForce(transform.right * speed, ForceMode2D.Impulse);
+
         bulletsInMagazine--;
     }
 

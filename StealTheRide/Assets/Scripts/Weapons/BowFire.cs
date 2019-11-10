@@ -43,7 +43,7 @@ public class BowFire : WeaponFire
     {
         if (!player.GetDucked())
         {
-            GameObject.Instantiate(bullet, transform.position, transform.rotation).SetActive(true);
+            Shoot();
 
             AudioManager.instance.Play("RevolverShot");
             bulletsInMagazine--;

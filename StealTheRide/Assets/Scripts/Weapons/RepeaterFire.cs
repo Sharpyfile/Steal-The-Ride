@@ -65,7 +65,8 @@ public class RepeaterFire : WeaponFire
     {
         if (!player.GetDucked())
         {
-            GameObject.Instantiate(bullet, transform.position, transform.rotation).SetActive(true);
+            Shoot();
+
             particleSystem.Emit(fireParticleCount);
 
             AudioManager.instance.Play("RevolverShot");

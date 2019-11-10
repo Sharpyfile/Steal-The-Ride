@@ -5,6 +5,8 @@ public class Bullet : MonoBehaviour
     public GameObject hitSolidPSPrefab;
     public GameObject hitEnemyPSPrefab;
     public Rigidbody2D bullet;
+    public Transform firePoint;
+
     public float speed;
     
     public float Speed
@@ -33,31 +35,34 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
-        bullet = GetComponent<Rigidbody2D>();
+        //bullet = GetComponent<Rigidbody2D>();
+        //bullet.velocity = new Vector2(speed, 0);
     }
 
     private void Awake()
     {
-        Vector2 target = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+        //WeaponFire weapon = GameObject.FindObjectOfType<WeaponFire>();
+        ////Vector2 target = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+        //Vector2 target = new Vector2(weapon.transform.position.x, weapon.transform.position.y);
 
-        if (RevolverFire.isSuperShot)
-        {
-            target.x += Random.Range(-spreadFactor, spreadFactor);
-            target.y += Random.Range(-spreadFactor, spreadFactor);
-        }
+        //if (RevolverFire.isSuperShot)
+        //{
+        //    target.x += Random.Range(-spreadFactor, spreadFactor);
+        //    target.y += Random.Range(-spreadFactor, spreadFactor);
+        //}
 
-        Vector2 bulletPosition = new Vector2(transform.position.x, transform.position.y);
-        direction = target - bulletPosition;
-        direction.Normalize();
+        //Vector2 bulletPosition = new Vector2(transform.position.x, transform.position.y);
+        //direction = target;// - bulletPosition;
+        //direction.Normalize();
     }
 
     private void Update()
     {
-        Vector2 position = transform.position;
+        //vector2 position = transform.position;
 
-        position += direction * speed * Time.deltaTime;
+        //position += direction * speed * time.deltatime;
 
-        transform.position = position;
+        //transform.position = position;
     }
 
     //private void FixedUpdate()

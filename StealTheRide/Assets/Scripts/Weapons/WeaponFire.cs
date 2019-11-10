@@ -9,6 +9,7 @@ public abstract class WeaponFire : MonoBehaviour
     public int bulletsInMagazine;
 
     public GameObject bullet;
+    public Transform firePoint;
     public GameObject reloadSlider;
     public PlayerStatistics player;
     public float reloadTime;
@@ -29,9 +30,15 @@ public abstract class WeaponFire : MonoBehaviour
     }
     public void SetBullet()
     {
-        bulletScript.Speed = speed;
         bulletScript.Damage = damage;
-        bulletScript.SpreadFactor = spreadFactor;
+    }
+
+    public virtual void Shoot()
+    {
+        GameObject newBullet = GameObject.Instantiate(bullet, firePoint.position, firePoint.rotation);
+        newBullet.SetActive(true);
+        Rigidbody2D rb = newBullet.GetComponent<Rigidbody2D>();
+        rb.AddForce(firePoint.right * speed, ForceMode2D.Impulse);
     }
 
     public void Reload()
