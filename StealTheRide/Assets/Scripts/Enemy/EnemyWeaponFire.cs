@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-
 public class EnemyWeaponFire : MonoBehaviour
 {
     public float fireCooldown = 2f;
@@ -13,6 +12,7 @@ public class EnemyWeaponFire : MonoBehaviour
     private int bulletsInMagazine = 6;
     private float timestampFiring;
     private Transform playerToFollow;
+    public EnemyRotation enemyRotationScript;
 
     void Start()
     {
@@ -22,12 +22,12 @@ public class EnemyWeaponFire : MonoBehaviour
 
     void Update()
     {
-        if (timestampFiring <= Time.time && Vector2.Distance(transform.position, playerToFollow.position) < range && bulletsInMagazine > 0)
+        if (timestampFiring <= Time.time && bulletsInMagazine > 0 && enemyRotationScript.EnemyTriggered == true)
         {
             Fire();
         }
 
-        if(bulletsInMagazine == 0)
+        if (bulletsInMagazine == 0)
         {
             Invoke("Reload", 6);
         }
