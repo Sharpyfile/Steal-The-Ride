@@ -15,8 +15,8 @@ public class Bullet : MonoBehaviour
         set { speed = value; }
     }
 
-    public int damage;
-    public int Damage
+    public float damage;
+    public float Damage
     {
         get { return damage; }
         set { damage = value; }

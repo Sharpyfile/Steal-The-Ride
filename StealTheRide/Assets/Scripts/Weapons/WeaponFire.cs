@@ -20,7 +20,7 @@ public abstract class WeaponFire : MonoBehaviour
     public bool isReloading = false;
 
     public float speed;
-    public int damage;
+    public float damage;
     public float spreadFactor;
     public Bullet bulletScript;
 

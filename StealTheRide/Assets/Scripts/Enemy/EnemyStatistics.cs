@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class EnemyStatistics : MonoBehaviour
 {
-    public int enemyHealth;
+    public float enemyHealth;
     public GameObject enemy;
     public GameObject bleedPSPrefab;
 
