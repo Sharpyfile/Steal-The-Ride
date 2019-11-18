@@ -8,6 +8,7 @@ public class BowFire : WeaponFire
     //private GameObject reloadSliderInstance;
     //public GameObject reloadSlider;
 
+    private bool isStopped;
     private bool isPeakReached;
     private float timeBow;
 
@@ -28,15 +29,25 @@ public class BowFire : WeaponFire
             {
                 if (Input.GetMouseButtonDown(0))
                 {
+                    speed = 1.0f;
+                    damage = 1.0f;
+                    isPeakReached = false;
                     timeBow = Time.time;
                 }
                 if (Input.GetMouseButton(0))
                 {
                     Load();
                 }
-                if (Input.GetMouseButtonUp(0))
+                if (Input.GetMouseButtonUp(0) )
                 {
-                    Fire();
+                    if (isStopped == false)
+                        Fire();
+                    else
+                        isStopped = false;
+                }
+                if (Input.GetMouseButtonDown(1))
+                {
+                    StopLoadingArrow();
                 }
             }
         }
@@ -46,10 +57,10 @@ public class BowFire : WeaponFire
             ReloadTick();
         }
 
-        if (Input.GetButtonDown("Reload"))
-        {
-            Reload();
-        }
+        //if (Input.GetButtonDown("Reload"))
+        //{
+        //    Reload();
+        //}
     }
 
     private void Load()
@@ -84,6 +95,11 @@ public class BowFire : WeaponFire
         //reloadSlider.SetActive(true);
     }
 
+    private void StopLoadingArrow()
+    {
+        isStopped = true;
+    }
+
     private void Fire()
     {
         if (!player.GetDucked())
@@ -93,19 +109,18 @@ public class BowFire : WeaponFire
 
             Shoot();
 
-            AudioManager.instance.Play("RevolverShot");
+            AudioManager.instance.Play("BowShot");
             bulletsInMagazine--;
             Debug.Log("Firing");
 
-            speed = 1.0f;
-            damage = 1.0f;
-            isPeakReached = false;
 
-            if (bulletsInMagazine == 0)
-            {
-                weaponInfo = "No bullets!";
-                Debug.Log("You have no bullets in magazine - reload");
-            }
+            Reload();
+
+            //if (bulletsInMagazine == 0)
+            //{
+            //    weaponInfo = "No bullets!";
+            //    Debug.Log("You have no bullets in magazine - reload");
+            //}
             timestampFiring = Time.time + fireCooldown;
         }
     }
