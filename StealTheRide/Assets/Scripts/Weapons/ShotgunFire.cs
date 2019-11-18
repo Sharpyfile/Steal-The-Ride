@@ -23,14 +23,19 @@ public class ShotgunFire : WeaponFire
         {
             if (bulletsInMagazine > 0)
             {
-                if (Input.GetMouseButtonDown(0) && timestampFiring <= Time.time)
+                if (Input.GetMouseButtonDown(0) && Input.GetMouseButtonDown(1) && bulletsInMagazine == 2 && timestampFiring <= Time.time)
+                {
+                    SuperFire();
+                }
+                else if (Input.GetMouseButtonDown(0) && timestampFiring <= Time.time)
                 {
                     Fire();
                 }
-                if (Input.GetMouseButtonDown(1) && timestampFiring <= Time.time)
+                else if (Input.GetMouseButtonDown(1) && timestampFiring <= Time.time)
                 {
                     Fire();
                 }
+     
             }
         }
            
@@ -54,6 +59,7 @@ public class ShotgunFire : WeaponFire
             particleSystem.Emit(fireParticleCount);
 
             AudioManager.instance.Play("RevolverShot");
+
             bulletsInMagazine--;
             Debug.Log("Firing");
 
@@ -63,7 +69,45 @@ public class ShotgunFire : WeaponFire
                 Debug.Log("You have no bullets in magazine - reload");
             }
             timestampFiring = Time.time + fireCooldown;
+
+            //AudioManager.instance.Play("RevolverCock");
+            StartCoroutine(playSoundWithDelay(0.05f));
         }
+    }
+
+    private void SuperFire()
+    {
+        if (!player.GetDucked())
+        {
+            Shoot();
+            Shoot();
+
+            particleSystem.Emit(fireParticleCount);
+            particleSystem.Emit(fireParticleCount);
+            particleSystem.Emit(fireParticleCount);
+
+
+            AudioManager.instance.Play("RevolverShot");
+            AudioManager.instance.Play("RevolverShot");
+            bulletsInMagazine--;
+            bulletsInMagazine--;
+            Debug.Log("Firing");
+
+            if (bulletsInMagazine == 0)
+            {
+                weaponInfo = "No bullets!";
+                Debug.Log("You have no bullets in magazine - reload");
+            }
+            timestampFiring = Time.time + fireCooldown;
+
+            StartCoroutine(playSoundWithDelay(0.05f));
+        }
+    }
+
+    IEnumerator playSoundWithDelay( float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        AudioManager.instance.Play("RevolverCock");
     }
 
 }
