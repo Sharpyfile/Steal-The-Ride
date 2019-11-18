@@ -5,7 +5,12 @@ using UnityEngine;
 public class BowFire : WeaponFire
 {
 
-    private GameObject reloadSliderInstance;
+    //private GameObject reloadSliderInstance;
+    //public GameObject reloadSlider;
+
+    private bool isPeakReached;
+    private float timeBow;
+
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +26,15 @@ public class BowFire : WeaponFire
         {
             if (bulletsInMagazine > 0)
             {
-                if (Input.GetMouseButtonDown(0) && timestampFiring <= Time.time)
+                if (Input.GetMouseButtonDown(0))
+                {
+                    timeBow = Time.time;
+                }
+                if (Input.GetMouseButton(0))
+                {
+                    Load();
+                }
+                if (Input.GetMouseButtonUp(0))
                 {
                     Fire();
                 }
@@ -39,15 +52,54 @@ public class BowFire : WeaponFire
         }
     }
 
+    private void Load()
+    {
+        if (speed >= 10)
+        {
+            isPeakReached = true;
+        }
+
+        if (isPeakReached == false)
+        {
+            speed += 0.05f;
+            damage += 0.05f;
+            //if (speed < 10)
+            //    speed += 0.05f;
+
+            //if (damage < 10)
+            //    damage += 0.05f;
+        }
+        else
+        {
+            speed -= 0.10f;
+            damage -= 0.10f;
+            if (speed <= 0.5f)
+                speed = 0.5f;
+
+            if (damage <= 0.5f)
+                damage = 0.5f;
+        }
+
+        //reloadSlider.GetComponent<ReloadSlider>().Set(timeBow, 3f);
+        //reloadSlider.SetActive(true);
+    }
+
     private void Fire()
     {
         if (!player.GetDucked())
         {
-            GameObject.Instantiate(bullet, transform.position, transform.rotation).SetActive(true);
+            //reloadSlider.SetActive(false);
+            SetBullet();
+
+            Shoot();
 
             AudioManager.instance.Play("RevolverShot");
             bulletsInMagazine--;
             Debug.Log("Firing");
+
+            speed = 1.0f;
+            damage = 1.0f;
+            isPeakReached = false;
 
             if (bulletsInMagazine == 0)
             {
@@ -57,4 +109,6 @@ public class BowFire : WeaponFire
             timestampFiring = Time.time + fireCooldown;
         }
     }
+
+
 }

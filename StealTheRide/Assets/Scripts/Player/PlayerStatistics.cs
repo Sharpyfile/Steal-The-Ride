@@ -7,6 +7,7 @@ public class PlayerStatistics : MonoBehaviour
     public Rigidbody2D player;
     public SpriteRenderer playerSprite;
     public GameObject bleedPSPrefab;
+    public GameObject firePoint;
     public float walkingSpeed = 2f;
     public float sprintingSpeed = 5f;
     public int playerHealth = 10;

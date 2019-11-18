@@ -7,6 +7,7 @@ public class RevolverFire : WeaponFire
     public ParticleSystem particleSystem;
     public int fireParticleCount = 6;
 
+
     private GameObject reloadSliderInstance;
 
     void Start()
@@ -69,7 +70,8 @@ public class RevolverFire : WeaponFire
     {
         if (!player.GetDucked())
         {
-            GameObject.Instantiate(bullet, transform.position, transform.rotation).SetActive(true);
+            Shoot();
+
             particleSystem.Emit(fireParticleCount);
             if (isSuperShot)
             {
@@ -95,6 +97,18 @@ public class RevolverFire : WeaponFire
                 Debug.Log("You have no bullets in magazine - reload");
             }
             timestampFiring = Time.time + fireCooldown;
+        }
+    }
+
+    public override void Shoot()
+    {
+        GameObject newBullet = GameObject.Instantiate(bullet, firePoint.position, firePoint.rotation);
+        newBullet.SetActive(true);
+        Rigidbody2D rb = newBullet.GetComponent<Rigidbody2D>();
+        rb.AddForce(firePoint.right * speed, ForceMode2D.Impulse);
+        if (isSuperShot)
+        {
+            rb.AddForce(firePoint.up * Random.Range(-spreadFactor, spreadFactor), ForceMode2D.Impulse);
         }
     }
 
