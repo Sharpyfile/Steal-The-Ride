@@ -12,6 +12,7 @@ public abstract class WeaponFire : MonoBehaviour
     public Transform firePoint;
     public GameObject reloadSlider;
     public PlayerStatistics player;
+    public Sprite icon;
     public float reloadTime;
     public float fireCooldown;
 

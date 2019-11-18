@@ -9,13 +9,12 @@ public class PlayerStatistics : MonoBehaviour
     public SpriteRenderer playerSprite;
     public GameObject bleedPSPrefab;
     public GameObject firePoint;
+    public UnityEvent playerDamaged;
     public float walkingSpeed = 2f;
     public float sprintingSpeed = 5f;
     public int maxHealth = 10;
     public int health = 10;
     public float duckRadius = 0.25f;
-
-    public UnityEvent playerDamaged;
 
     private Vector3 mousePosition;
     private Vector2 playerInput;
