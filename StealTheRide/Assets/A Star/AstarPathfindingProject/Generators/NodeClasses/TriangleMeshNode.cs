@@ -307,10 +307,8 @@ namespace Pathfinding {
 		public int SharedEdge (GraphNode other) {
 			var edge = -1;
 
-			if (connections != null) {
-				for (int i = 0; i < connections.Length; i++) {
-					if (connections[i].node == other) edge = connections[i].shapeEdge;
-				}
+			for (int i = 0; i < connections.Length; i++) {
+				if (connections[i].node == other) edge = connections[i].shapeEdge;
 			}
 			return edge;
 		}
@@ -340,15 +338,13 @@ namespace Pathfinding {
 			// Check if there is a node link that connects them
 			if (edge == -1) {
 				#if !ASTAR_NO_POINT_GRAPH
-				if (connections != null) {
-					for (int i = 0; i < connections.Length; i++) {
-						if (connections[i].node.GraphIndex != GraphIndex) {
-							var mid = connections[i].node as NodeLink3Node;
-							if (mid != null && mid.GetOther(this) == toTriNode) {
-								// We have found a node which is connected through a NodeLink3Node
-								mid.GetPortal(toTriNode, left, right, false);
-								return true;
-							}
+				for (int i = 0; i < connections.Length; i++) {
+					if (connections[i].node.GraphIndex != GraphIndex) {
+						var mid = connections[i].node as NodeLink3Node;
+						if (mid != null && mid.GetOther(this) == toTriNode) {
+							// We have found a node which is connected through a NodeLink3Node
+							mid.GetPortal(toTriNode, left, right, false);
+							return true;
 						}
 					}
 				}

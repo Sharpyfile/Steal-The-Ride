@@ -23,7 +23,6 @@ namespace Pathfinding {
 	/// [Open online documentation to see images]
 	/// </summary>
 	[JsonOptIn]
-	[Pathfinding.Util.Preserve]
 	public class NavMeshGraph : NavmeshBase, IUpdatableGraph {
 		/// <summary>Mesh to construct navmesh from</summary>
 		[JsonMember]

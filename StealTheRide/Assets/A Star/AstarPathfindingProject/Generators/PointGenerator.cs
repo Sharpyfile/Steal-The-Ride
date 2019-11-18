@@ -31,7 +31,6 @@ namespace Pathfinding {
 	/// [Open online documentation to see images]
 	/// </summary>
 	[JsonOptIn]
-	[Pathfinding.Util.Preserve]
 	public class PointGraph : NavGraph {
 		/// <summary>Childs of this transform are treated as nodes</summary>
 		[JsonMember]
