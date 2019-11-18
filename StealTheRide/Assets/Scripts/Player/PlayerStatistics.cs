@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class PlayerStatistics : MonoBehaviour
@@ -11,11 +10,8 @@ public class PlayerStatistics : MonoBehaviour
     public GameObject firePoint;
     public float walkingSpeed = 2f;
     public float sprintingSpeed = 5f;
-    public int maxHealth = 10;
-    public int health = 10;
+    public int playerHealth = 10;
     public float duckRadius = 0.25f;
-
-    public UnityEvent playerDamaged;
 
     private Vector3 mousePosition;
     private Vector2 playerInput;
@@ -90,10 +86,9 @@ public class PlayerStatistics : MonoBehaviour
         ParticleSystem ps = psObject.GetComponent<ParticleSystem>();
         Destroy(psObject, ps.main.duration);
 
-        health -= bullet.damage;
-        playerDamaged.Invoke();
+        playerHealth -= bullet.damage;
         Debug.Log("You have been hit");
-        if (health <= 0)
+        if (playerHealth <= 0)
         {
             AudioManager.instance.Play("Death");
             Debug.Log("You are dead");
