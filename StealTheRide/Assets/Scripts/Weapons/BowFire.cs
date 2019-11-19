@@ -38,9 +38,9 @@ public class BowFire : WeaponFire
                 {
                     Load();
                 }
-                if (Input.GetMouseButtonUp(0) )
+                if (Input.GetMouseButtonUp(0))
                 {
-                    if (isStopped == false)
+                    if (isStopped == false && timestampFiring <= Time.time)
                         Fire();
                     else
                         isStopped = false;
