@@ -1524,6 +1524,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 684621307598192034, guid: 36bc1a0c57716c544ac4164d3c003472,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 684621307598192029, guid: 36bc1a0c57716c544ac4164d3c003472,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2114,7 +2119,7 @@ PrefabInstance:
     - target: {fileID: 684621307598192034, guid: 36bc1a0c57716c544ac4164d3c003472,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 684621307598192029, guid: 36bc1a0c57716c544ac4164d3c003472,
         type: 3}
@@ -2348,6 +2353,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 684621307598192034, guid: 36bc1a0c57716c544ac4164d3c003472,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 684621307598192029, guid: 36bc1a0c57716c544ac4164d3c003472,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2566,6 +2576,7 @@ MonoBehaviour:
   sprintingSpeed: 2
   playerHealth: 10
   duckRadius: 0.25
+  animator: {fileID: 1681683486}
 --- !u!4 &1335733539
 Transform:
   m_ObjectHideFlags: 0
@@ -2619,8 +2630,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
+  m_UseAutoMass: 1
+  m_Mass: 0.0225
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -4540,6 +4551,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 684621307598192034, guid: 36bc1a0c57716c544ac4164d3c003472,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 684621307598192029, guid: 36bc1a0c57716c544ac4164d3c003472,
         type: 3}
