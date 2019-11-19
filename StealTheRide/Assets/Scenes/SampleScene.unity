@@ -1630,7 +1630,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -417, y: -223.2002}
+  m_AnchoredPosition: {x: -419, y: -232.8}
   m_SizeDelta: {x: -305.69998, y: -130.19998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &638976855
@@ -2508,7 +2508,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 543.7, y: -285.5}
+  m_AnchoredPosition: {x: 520.7, y: -285.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &933252680
@@ -4078,8 +4078,8 @@ MonoBehaviour:
   firePoint: {fileID: 1163423672}
   reloadSlider: {fileID: 2029552273}
   player: {fileID: 1335733538}
-  reloadTime: 0.05
-  fireCooldown: 0.2
+  reloadTime: 0.1
+  fireCooldown: 0.5
   timestampFiring: 0
   timestampReload: 0
   isReloading: 0
@@ -4544,7 +4544,7 @@ MonoBehaviour:
   reloadSlider: {fileID: 2029552273}
   player: {fileID: 1335733538}
   reloadTime: 0.5
-  fireCooldown: 0
+  fireCooldown: 0.4
   timestampFiring: 0
   timestampReload: 0
   isReloading: 0
@@ -5352,7 +5352,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 387.2, y: -244.8}
+  m_AnchoredPosition: {x: 370.2, y: -244.8}
   m_SizeDelta: {x: 134.7, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1671337351
