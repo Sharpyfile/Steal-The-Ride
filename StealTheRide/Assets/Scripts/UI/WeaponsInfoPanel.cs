@@ -9,20 +9,30 @@ public class WeaponsInfoPanel : MonoBehaviour
     public RectTransform weaponsScrollView;
     public Transform scrollViewContent;
     public GameObject weaponInfoPanelPrefab;
+    public float slideSpeed = 0.5f;
     
     private List<GameObject> panels;
+    private float middleWidth;
+    private Tween currentTween;
 
     void Start()
     {
         panels = new List<GameObject>();
-        //GetComponent<RectTransform>().DOMoveX(0.0f, 1.0f);
-        //DOTween.Play();
+        middleWidth = GetComponent<RectTransform>().rect.width / 2.0f;
         //Initialize();
     }
     
     void Update()
     {
         //animator.SetBool("opened", Input.GetKey(KeyCode.Tab));
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            Show();
+        }
+        if (Input.GetKeyUp(KeyCode.Tab))
+        {
+            Hide();
+        }
         
         for (int i = 0; i < panels.Count; i++)
         {
@@ -40,5 +50,21 @@ public class WeaponsInfoPanel : MonoBehaviour
             panel.GetComponent<RectTransform>().localPosition = new Vector2(0, 100 - i * weaponInfoPanelPrefab.GetComponent<RectTransform>().rect.height);
             panels.Add(panel);
         }
+    }
+
+    private void Show()
+    {
+        //LeanTween.cancel(gameObject);
+        //rt.localPosition = offScreenLeftPosition;
+        currentTween.Kill();
+        currentTween = GetComponent<RectTransform>().DOAnchorPosX(middleWidth, slideSpeed);//.SetEase(Ease.InOutExpo);
+        //LeanTween.move(rt, centerPosition, 0.3f).setEase(LeanTweenType.easeInOutExpo);
+    }
+
+    private void Hide()
+    {
+        //LeanTween.cancel(gameObject);
+        currentTween.Kill();
+        currentTween = GetComponent<RectTransform>().DOAnchorPosX(-middleWidth, slideSpeed);//.SetEase(Ease.InOutExpo);
     }
 }
