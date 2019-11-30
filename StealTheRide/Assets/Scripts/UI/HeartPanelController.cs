@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class HeartPanelController : MonoBehaviour
 {
@@ -29,13 +30,13 @@ public class HeartPanelController : MonoBehaviour
             int diff = curr - player.health;
             if (diff <= 0)
             {
-                hearts[i].GetComponentInChildren<SpriteRenderer>().sprite = sHeartFull;
+                hearts[i].GetComponent<Image>().sprite = sHeartFull;
             } else if (diff == 1)
             {
-                hearts[i].GetComponentInChildren<SpriteRenderer>().sprite = sHeartHalf;
+                hearts[i].GetComponent<Image>().sprite = sHeartHalf;
             } else
             {
-                hearts[i].GetComponentInChildren<SpriteRenderer>().sprite = sHeartEmpty;
+                hearts[i].GetComponent<Image>().sprite = sHeartEmpty;
             }
         }
     }
