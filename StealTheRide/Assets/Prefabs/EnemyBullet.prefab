@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7372180853994166096}
   - component: {fileID: 2296370839312128106}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6551167408510868543}
   - component: {fileID: 6551167408510868540}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 6551167408766518954}
   - component: {fileID: 6551167408766518956}
   - component: {fileID: 6551167408766518957}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: EnemyBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
