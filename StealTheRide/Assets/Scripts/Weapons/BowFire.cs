@@ -43,9 +43,12 @@ public class BowFire : WeaponFire
                     if (isStopped == false && timestampFiring <= Time.time)
                         Fire();
                     else
+                    {
                         isStopped = false;
+                        weaponInfo = "Ready to load";
+                    }
                 }
-                if (Input.GetMouseButtonDown(1))
+                if (Input.GetMouseButton(0) && Input.GetMouseButtonDown(1))
                 {
                     StopLoadingArrow();
                 }
@@ -65,6 +68,8 @@ public class BowFire : WeaponFire
 
     private void Load()
     {
+        if(isStopped == false)
+            weaponInfo = "Loading...";
         if (speed >= 10)
         {
             isPeakReached = true;
@@ -98,6 +103,7 @@ public class BowFire : WeaponFire
     private void StopLoadingArrow()
     {
         isStopped = true;
+        weaponInfo = "Load cancelled";
     }
 
     private void Fire()
@@ -122,6 +128,7 @@ public class BowFire : WeaponFire
             //    Debug.Log("You have no bullets in magazine - reload");
             //}
             timestampFiring = Time.time + fireCooldown;
+            weaponInfo = "Ready to load";
         }
     }
 

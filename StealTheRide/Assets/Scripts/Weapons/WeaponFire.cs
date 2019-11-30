@@ -24,6 +24,9 @@ public abstract class WeaponFire : MonoBehaviour
     public float spreadFactor;
     public Bullet bulletScript;
 
+    public bool isLeftChamberFull;
+    public bool isRightChamberFull;
+
     public string GetWeaponInfo()
     {
         return weaponInfo;

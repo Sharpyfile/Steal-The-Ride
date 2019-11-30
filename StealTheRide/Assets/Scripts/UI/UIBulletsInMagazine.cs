@@ -288,7 +288,7 @@ public class UIBulletsInMagazine : MonoBehaviour
 
     void CheckRemainingShotgunShots()
     {
-        if (weapon.bulletsInMagazine > 0)
+        if (weapon.isLeftChamberFull == true)
         {
             shotgun1.GetComponent<Image>().color = Color.white;
         }
@@ -297,7 +297,7 @@ public class UIBulletsInMagazine : MonoBehaviour
             shotgun1.GetComponent<Image>().color = Color.grey;
         }
 
-        if (weapon.bulletsInMagazine > 1)
+        if (weapon.isRightChamberFull == true)
         {
             shotgun2.GetComponent<Image>().color = Color.white;
         }

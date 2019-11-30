@@ -14,6 +14,8 @@ public class ShotgunFire : WeaponFire
     {
         timestampFiring = Time.time;
         timestampReload = Time.time;
+        isLeftChamberFull = true;
+        isRightChamberFull = true;
     }
 
     // Update is called once per frame
@@ -23,17 +25,17 @@ public class ShotgunFire : WeaponFire
         {
             if (bulletsInMagazine > 0)
             {
-                if (Input.GetMouseButtonDown(0) && Input.GetMouseButtonDown(1) && bulletsInMagazine == 2 && timestampFiring <= Time.time)
+                if (Input.GetMouseButtonDown(0) && Input.GetMouseButtonDown(1) && isLeftChamberFull == true && isRightChamberFull == true && timestampFiring <= Time.time)
                 {
                     SuperFire();
                 }
-                else if (Input.GetMouseButtonDown(0) && timestampFiring <= Time.time)
+                else if (Input.GetMouseButtonDown(0) && isLeftChamberFull == true && timestampFiring <= Time.time)
                 {
-                    Fire();
+                    LeftFire();
                 }
-                else if (Input.GetMouseButtonDown(1) && timestampFiring <= Time.time)
+                else if (Input.GetMouseButtonDown(1) && isRightChamberFull == true && timestampFiring <= Time.time)
                 {
-                    Fire();
+                    RightFire();
                 }
      
             }
@@ -50,7 +52,7 @@ public class ShotgunFire : WeaponFire
         }
     }
 
-    private void Fire()
+    private void LeftFire()
     {
         if (!player.GetDucked())
         {
@@ -61,6 +63,33 @@ public class ShotgunFire : WeaponFire
             AudioManager.instance.Play("RevolverShot");
 
             bulletsInMagazine--;
+            isLeftChamberFull = false;
+            Debug.Log("Firing");
+
+            if (bulletsInMagazine == 0)
+            {
+                weaponInfo = "No bullets!";
+                Debug.Log("You have no bullets in magazine - reload");
+            }
+            timestampFiring = Time.time + fireCooldown;
+
+            //AudioManager.instance.Play("RevolverCock");
+            StartCoroutine(playSoundWithDelay(0.05f));
+        }
+    }
+
+    private void RightFire()
+    {
+        if (!player.GetDucked())
+        {
+            Shoot();
+
+            particleSystem.Emit(fireParticleCount);
+
+            AudioManager.instance.Play("RevolverShot");
+
+            bulletsInMagazine--;
+            isRightChamberFull = false;
             Debug.Log("Firing");
 
             if (bulletsInMagazine == 0)
@@ -91,6 +120,8 @@ public class ShotgunFire : WeaponFire
             AudioManager.instance.Play("RevolverShot");
             bulletsInMagazine--;
             bulletsInMagazine--;
+            isLeftChamberFull = false;
+            isRightChamberFull = false;
             Debug.Log("Firing");
 
             if (bulletsInMagazine == 0)
@@ -110,4 +141,29 @@ public class ShotgunFire : WeaponFire
         AudioManager.instance.Play("RevolverCock");
     }
 
+    public void ReloadTick()
+    {
+        Debug.Log("Loading bullet...");
+        weaponInfo = "Reloading...";
+        bulletsInMagazine++;
+        AudioManager.instance.Play("RevolverReloadTick");
+        if(isLeftChamberFull == false)
+        {
+            isLeftChamberFull = true;
+        }
+        else
+        {
+            isRightChamberFull = true;
+        }
+
+        if (bulletsInMagazine == magazineSize)
+        {
+            StopReloading();
+            Debug.Log("Fully reloaded!");
+        }
+        else
+        {
+            timestampReload = Time.time + reloadTime;
+        }
+    }
 }
