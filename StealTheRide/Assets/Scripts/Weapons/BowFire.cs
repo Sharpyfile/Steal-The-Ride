@@ -108,28 +108,25 @@ public class BowFire : WeaponFire
 
     private void Fire()
     {
-        if (!player.GetDucked())
-        {
-            //reloadSlider.SetActive(false);
-            SetBullet();
+        //reloadSlider.SetActive(false);
+        SetBullet();
 
-            Shoot();
+        Shoot();
 
-            AudioManager.instance.Play("BowShot");
-            bulletsInMagazine--;
-            Debug.Log("Firing");
+        AudioManager.instance.Play("BowShot");
+        bulletsInMagazine--;
+        Debug.Log("Firing");
 
 
-            Reload();
+        Reload();
 
-            //if (bulletsInMagazine == 0)
-            //{
-            //    weaponInfo = "No bullets!";
-            //    Debug.Log("You have no bullets in magazine - reload");
-            //}
-            timestampFiring = Time.time + fireCooldown;
-            weaponInfo = "Ready to load";
-        }
+        //if (bulletsInMagazine == 0)
+        //{
+        //    weaponInfo = "No bullets!";
+        //    Debug.Log("You have no bullets in magazine - reload");
+        //}
+        timestampFiring = Time.time + fireCooldown;
+        weaponInfo = "Ready to load";
     }
 
 

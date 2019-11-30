@@ -63,26 +63,23 @@ public class RepeaterFire : WeaponFire
 
     private void Fire()
     {
-        if (!player.GetDucked())
+        Shoot();
+
+        particleSystem.Emit(fireParticleCount);
+
+        AudioManager.instance.Play("RevolverShot");
+        bulletsInMagazine--;
+        Debug.Log("Firing");
+        isLeverForward = false;
+        isLeverBackward = false;
+        weaponInfo = "Push forward!";
+
+        if (bulletsInMagazine == 0)       
         {
-            Shoot();
-
-            particleSystem.Emit(fireParticleCount);
-
-            AudioManager.instance.Play("RevolverShot");
-            bulletsInMagazine--;
-            Debug.Log("Firing");
-            isLeverForward = false;
-            isLeverBackward = false;
-            weaponInfo = "Push forward!";
-
-            if (bulletsInMagazine == 0)       
-            {
-                weaponInfo = "No bullets!";
-                Debug.Log("You have no bullets in magazine - reload");
-            }
-            timestampFiring = Time.time + fireCooldown;
+            weaponInfo = "No bullets!";
+            Debug.Log("You have no bullets in magazine - reload");
         }
+        timestampFiring = Time.time + fireCooldown;
     }
 
 
