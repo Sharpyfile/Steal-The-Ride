@@ -19,7 +19,7 @@ public class WeaponsInfoPanel : MonoBehaviour
     {
         panels = new List<GameObject>();
         middleWidth = GetComponent<RectTransform>().rect.width / 2.0f;
-        //Initialize();
+        Initialize();
     }
     
     void Update()
@@ -45,9 +45,16 @@ public class WeaponsInfoPanel : MonoBehaviour
         for (int i = 0; i < weapons.Count; i++)
         {
             GameObject panel = GameObject.Instantiate(weaponInfoPanelPrefab, weaponInfoPanelPrefab.transform.position, Quaternion.identity);
+            float sprHeightRatio = panel.GetComponentInChildren<Image>().rectTransform.rect.height / weapons[i].icon.bounds.size.y;//weapons[i].icon.rect.height;
+            Debug.Log(panel.GetComponentInChildren<Image>().rectTransform.rect.height);
+            Debug.Log(weapons[i].icon.rect.height);
+            Debug.Log(sprHeightRatio);
+            panel.GetComponentInChildren<Image>().sprite = weapons[i].icon;
+            panel.GetComponentInChildren<Image>().rectTransform.sizeDelta = new Vector2(weapons[i].icon.bounds.size.x * sprHeightRatio, panel.GetComponentInChildren<Image>().rectTransform.sizeDelta.y);
+            //panel.GetComponent<Image>().SetNativeSize();
             panel.transform.SetParent(scrollViewContent, false);
             //DO POPRAWY SZTYWNIAK
-            panel.GetComponent<RectTransform>().localPosition = new Vector2(0, 100 - i * weaponInfoPanelPrefab.GetComponent<RectTransform>().rect.height);
+            panel.GetComponent<RectTransform>().localPosition = new Vector2(0, 180 - i * weaponInfoPanelPrefab.GetComponent<RectTransform>().rect.height);
             panels.Add(panel);
         }
     }

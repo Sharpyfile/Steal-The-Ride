@@ -220,7 +220,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 21958158}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1040473008}
@@ -281,10 +281,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9002cf212fc2c441ba7cbf9931ec861, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons: []
-  weaponsScrollView: {fileID: 0}
-  scrollViewContent: {fileID: 0}
-  weaponInfoPanelPrefab: {fileID: 0}
+  weapons:
+  - {fileID: 1166919156}
+  - {fileID: 1875716420}
+  - {fileID: 1474737764}
+  - {fileID: 1344746846}
+  weaponsScrollView: {fileID: 1040473008}
+  scrollViewContent: {fileID: 323365124}
+  weaponInfoPanelPrefab: {fileID: 713779969324161475, guid: dbd52c3fd6fc0924489bd1236cd8d8b3,
+    type: 3}
   slideSpeed: 0.3
 --- !u!1 &45513011
 GameObject:
@@ -916,10 +921,10 @@ RectTransform:
   m_Father: {fileID: 1031929348}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 300}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &326859425
 GameObject:
@@ -3471,6 +3476,7 @@ MonoBehaviour:
   spreadFactor: 0.3
   bulletScript: {fileID: 4487301011828246176, guid: 1f19c677d75430242909372a67ec9fcc,
     type: 3}
+  icon: {fileID: 21300000, guid: 8182fc64f14e55b49a9c3d99cbcb4b1e, type: 3}
   isCocked: 1
   particleSystem: {fileID: 1125586621}
   fireParticleCount: 6
@@ -4524,6 +4530,7 @@ MonoBehaviour:
   spreadFactor: 1
   bulletScript: {fileID: 4487301011828246176, guid: 1f19c677d75430242909372a67ec9fcc,
     type: 3}
+  icon: {fileID: 21300000, guid: f47f10fd0f3a1244bb211d63ec7b437b, type: 3}
 --- !u!1 &1355881264
 GameObject:
   m_ObjectHideFlags: 0
@@ -4665,7 +4672,7 @@ Canvas:
   m_GameObject: {fileID: 1399212943}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 519420031}
   m_PlaneDistance: 10
   m_PixelPerfect: 1
@@ -5026,6 +5033,7 @@ MonoBehaviour:
   spreadFactor: 2
   bulletScript: {fileID: 4487301011828246176, guid: 1f19c677d75430242909372a67ec9fcc,
     type: 3}
+  icon: {fileID: 21300000, guid: 42f8b97f9bbfe64468ea96fcb2613ee7, type: 3}
   particleSystem: {fileID: 913377056}
   fireParticleCount: 8
 --- !u!1 &1487394655
@@ -5882,7 +5890,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1950720543}
   m_HandleRect: {fileID: 1950720542}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -6554,6 +6562,7 @@ MonoBehaviour:
   spreadFactor: 0.3
   bulletScript: {fileID: 4487301011828246176, guid: 1f19c677d75430242909372a67ec9fcc,
     type: 3}
+  icon: {fileID: 21300000, guid: 26dd049ce609eaa418871ad893c5e660, type: 3}
   isLeverForward: 1
   isLeverBackward: 1
   particleSystem: {fileID: 208459166}
@@ -7134,7 +7143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  heartPrefab: {fileID: 8025402846928810502, guid: 41feebe9a4cfb8a42b5d47f94cb2b4a5,
+  heartPrefab: {fileID: 5247625493506975194, guid: 2d440e9089689284090f6df20b6e940b,
     type: 3}
   sHeartFull: {fileID: 21300000, guid: 2d387b1e26b627c458fc67d79d6ce415, type: 3}
   sHeartHalf: {fileID: 21300000, guid: 8f49dc741b09ad54f8cad70190833ffd, type: 3}

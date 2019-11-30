@@ -23,6 +23,7 @@ public abstract class WeaponFire : MonoBehaviour
     public float damage;
     public float spreadFactor;
     public Bullet bulletScript;
+    public Sprite icon;
 
     public string GetWeaponInfo()
     {
