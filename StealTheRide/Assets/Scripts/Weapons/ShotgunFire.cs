@@ -54,85 +54,76 @@ public class ShotgunFire : WeaponFire
 
     private void LeftFire()
     {
-        if (!player.GetDucked())
+        Shoot();
+
+        particleSystem.Emit(fireParticleCount);
+
+        AudioManager.instance.Play("RevolverShot");
+
+        bulletsInMagazine--;
+        isLeftChamberFull = false;
+        Debug.Log("Firing");
+
+        if (bulletsInMagazine == 0)
         {
-            Shoot();
-
-            particleSystem.Emit(fireParticleCount);
-
-            AudioManager.instance.Play("RevolverShot");
-
-            bulletsInMagazine--;
-            isLeftChamberFull = false;
-            Debug.Log("Firing");
-
-            if (bulletsInMagazine == 0)
-            {
-                weaponInfo = "No bullets!";
-                Debug.Log("You have no bullets in magazine - reload");
-            }
-            timestampFiring = Time.time + fireCooldown;
-
-            //AudioManager.instance.Play("RevolverCock");
-            StartCoroutine(playSoundWithDelay(0.05f));
+            weaponInfo = "No bullets!";
+            Debug.Log("You have no bullets in magazine - reload");
         }
+        timestampFiring = Time.time + fireCooldown;
+
+        //AudioManager.instance.Play("RevolverCock");
+        StartCoroutine(playSoundWithDelay(0.05f));
     }
 
     private void RightFire()
     {
-        if (!player.GetDucked())
+        Shoot();
+
+        particleSystem.Emit(fireParticleCount);
+
+        AudioManager.instance.Play("RevolverShot");
+
+        bulletsInMagazine--;
+        isRightChamberFull = false;
+        Debug.Log("Firing");
+
+        if (bulletsInMagazine == 0)
         {
-            Shoot();
-
-            particleSystem.Emit(fireParticleCount);
-
-            AudioManager.instance.Play("RevolverShot");
-
-            bulletsInMagazine--;
-            isRightChamberFull = false;
-            Debug.Log("Firing");
-
-            if (bulletsInMagazine == 0)
-            {
-                weaponInfo = "No bullets!";
-                Debug.Log("You have no bullets in magazine - reload");
-            }
-            timestampFiring = Time.time + fireCooldown;
-
-            //AudioManager.instance.Play("RevolverCock");
-            StartCoroutine(playSoundWithDelay(0.05f));
+            weaponInfo = "No bullets!";
+            Debug.Log("You have no bullets in magazine - reload");
         }
+        timestampFiring = Time.time + fireCooldown;
+
+        //AudioManager.instance.Play("RevolverCock");
+        StartCoroutine(playSoundWithDelay(0.05f));
     }
 
     private void SuperFire()
     {
-        if (!player.GetDucked())
+        Shoot();
+        Shoot();
+
+        particleSystem.Emit(fireParticleCount);
+        particleSystem.Emit(fireParticleCount);
+        particleSystem.Emit(fireParticleCount);
+
+
+        AudioManager.instance.Play("RevolverShot");
+        AudioManager.instance.Play("RevolverShot");
+        bulletsInMagazine--;
+        bulletsInMagazine--;
+        isLeftChamberFull = false;
+        isRightChamberFull = false;
+        Debug.Log("Firing");
+
+        if (bulletsInMagazine == 0)
         {
-            Shoot();
-            Shoot();
-
-            particleSystem.Emit(fireParticleCount);
-            particleSystem.Emit(fireParticleCount);
-            particleSystem.Emit(fireParticleCount);
-
-
-            AudioManager.instance.Play("RevolverShot");
-            AudioManager.instance.Play("RevolverShot");
-            bulletsInMagazine--;
-            bulletsInMagazine--;
-            isLeftChamberFull = false;
-            isRightChamberFull = false;
-            Debug.Log("Firing");
-
-            if (bulletsInMagazine == 0)
-            {
-                weaponInfo = "No bullets!";
-                Debug.Log("You have no bullets in magazine - reload");
-            }
-            timestampFiring = Time.time + fireCooldown;
-
-            StartCoroutine(playSoundWithDelay(0.05f));
+            weaponInfo = "No bullets!";
+            Debug.Log("You have no bullets in magazine - reload");
         }
+        timestampFiring = Time.time + fireCooldown;
+
+        StartCoroutine(playSoundWithDelay(0.05f));
     }
 
     IEnumerator playSoundWithDelay( float delay)

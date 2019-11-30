@@ -13,55 +13,22 @@ public class PlayerStatistics : MonoBehaviour
     public float sprintingSpeed = 5f;
     public int maxHealth = 10;
     public int health = 10;
-    public float duckRadius = 0.25f;
 
     public UnityEvent playerDamaged;
 
     private Vector3 mousePosition;
     private Vector2 playerInput;
     private float speed;
-    private bool ducked = false;
-
-    private int defaultLayer;
-    private int obstaclesLayer;
-
-    public bool GetDucked()
-    {
-        return ducked;
-    }
 
     void Start()
     {
         player = GetComponent<Rigidbody2D>();
-        defaultLayer = gameObject.layer;
-        obstaclesLayer = LayerMask.NameToLayer("Obstacles");
     }
     
     void FixedUpdate()
     {
-        PlayerDuck(Input.GetKey(KeyCode.LeftControl));
         PlayerMove();
         PlayerRotate();
-    }
-
-    void PlayerDuck(bool on)
-    {
-        if (ducked && !on)
-        {
-            ducked = false;
-            playerSprite.color = new Color(255, 0, 0);
-            player.constraints = RigidbodyConstraints2D.None;
-            gameObject.layer = defaultLayer;
-        } else if (!ducked && on)
-        {
-            ducked = true;
-            playerSprite.color = new Color(0, 255, 0);
-            player.constraints = RigidbodyConstraints2D.FreezePosition;
-            if (GetClosestObstacle(GetObstacles()) <= duckRadius)
-            {
-                gameObject.layer = obstaclesLayer;
-            }
-        }
     }
 
     void PlayerMove()
@@ -102,34 +69,5 @@ public class PlayerStatistics : MonoBehaviour
         {
             AudioManager.instance.Play("Pain");
         }
-    }
-
-    private Transform[] GetObstacles()
-    {
-        GameObject[] objects = FindObjectsOfType(typeof(GameObject)) as GameObject[];
-        List<Transform> obstacleList = new List<Transform>();
-        for (int i = 0; i < objects.Length; i++)
-        {
-            if (objects[i].layer == obstaclesLayer)
-            {
-                obstacleList.Add(objects[i].transform);
-            }
-        }
-        return obstacleList.ToArray();
-    }
-
-    private float GetClosestObstacle(Transform[] obstacles)
-    {
-        float minDist = Mathf.Infinity;
-        Vector2 currentPos = transform.position;
-        foreach (Transform t in obstacles)
-        {
-            float dist = Vector2.Distance(t.position, currentPos);
-            if (dist < minDist)
-            {
-                minDist = dist;
-            }
-        }
-        return minDist;
     }
 }
