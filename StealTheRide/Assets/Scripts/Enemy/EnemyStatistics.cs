@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class EnemyStatistics : MonoBehaviour
+public class EnemyStatistics : ALootable
 {
     public float enemyHealth;
     public GameObject enemy;
@@ -35,6 +35,7 @@ public class EnemyStatistics : MonoBehaviour
         {
             AudioManager.instance.Play("Death");
             Debug.Log("You killed the enemy!");
+            Drop();
             Destroy(enemy);
             
             if (GameObject.FindGameObjectsWithTag("Enemy").Length <= 1)

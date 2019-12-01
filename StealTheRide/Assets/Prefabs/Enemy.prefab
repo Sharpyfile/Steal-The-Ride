@@ -295,6 +295,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eaa7cadb07412341b5e11aec552d83f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lootTable:
+  - dropChance: 50
+    item: {fileID: 6551167408766518959, guid: 54f1be1c419b0eb49b630ea0f58455f5, type: 3}
   enemyHealth: 10
   enemy: {fileID: 684621307598192034}
   bleedPSPrefab: {fileID: 4658403827353296317, guid: 25c4f96bfb5915f47b26b03fd39c4354,
