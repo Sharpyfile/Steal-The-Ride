@@ -1549,75 +1549,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &538388959
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3969964082967480675, guid: b0189af9263766c42a91e1d3b19e5d06,
-        type: 3}
-      propertyPath: m_Name
-      value: AmmoBox
-      objectReference: {fileID: 0}
-    - target: {fileID: 3969964082967480679, guid: b0189af9263766c42a91e1d3b19e5d06,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.08206344
-      objectReference: {fileID: 0}
-    - target: {fileID: 3969964082967480679, guid: b0189af9263766c42a91e1d3b19e5d06,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.4523553
-      objectReference: {fileID: 0}
-    - target: {fileID: 3969964082967480679, guid: b0189af9263766c42a91e1d3b19e5d06,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3969964082967480679, guid: b0189af9263766c42a91e1d3b19e5d06,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3969964082967480679, guid: b0189af9263766c42a91e1d3b19e5d06,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3969964082967480679, guid: b0189af9263766c42a91e1d3b19e5d06,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3969964082967480679, guid: b0189af9263766c42a91e1d3b19e5d06,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3969964082967480679, guid: b0189af9263766c42a91e1d3b19e5d06,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3969964082967480679, guid: b0189af9263766c42a91e1d3b19e5d06,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3969964082967480679, guid: b0189af9263766c42a91e1d3b19e5d06,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3969964082967480679, guid: b0189af9263766c42a91e1d3b19e5d06,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b0189af9263766c42a91e1d3b19e5d06, type: 3}
 --- !u!1 &553686820
 GameObject:
   m_ObjectHideFlags: 0
@@ -4333,7 +4264,7 @@ MonoBehaviour:
   sounds:
   - name: RevolverEmptyChamber
     clip: {fileID: 8300000, guid: 1eda34ba6f540aa4985c71003d8e36b8, type: 3}
-    volume: 1
+    volume: 0.7
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -4342,7 +4273,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: RevolverCock
     clip: {fileID: 8300000, guid: 4e0b9d86c865e89488e1b9c9bfef18d2, type: 3}
-    volume: 1
+    volume: 0.7
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -4351,7 +4282,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: RevolverReloadTick
     clip: {fileID: 8300000, guid: f9d388f704721fb4f8fad985ef083e62, type: 3}
-    volume: 1
+    volume: 0.7
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -4360,7 +4291,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: RevolverShot
     clip: {fileID: 8300000, guid: baa20ce60e013ac48b6dfde06204e83d, type: 3}
-    volume: 1
+    volume: 0.7
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -4369,7 +4300,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Death
     clip: {fileID: 8300000, guid: b3c307ea032c1b546893b83ef7bbb28f, type: 3}
-    volume: 1
+    volume: 0.7
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -4378,7 +4309,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Pain
     clip: {fileID: 8300000, guid: b0409b9f33711984da9d636c34be589b, type: 3}
-    volume: 1
+    volume: 0.7
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -4387,7 +4318,16 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: BowShot
     clip: {fileID: 8300000, guid: 55861ffdb3dc0a4469c3778a1fd300a3, type: 3}
-    volume: 1
+    volume: 0.7
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: PickupAmmo
+    clip: {fileID: 8300000, guid: 9d759bfec5a1de8449e284084d39ec39, type: 3}
+    volume: 0.7
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -7474,6 +7414,75 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   finishTime: 0
   timestampStart: 0
+--- !u!1001 &2039753869
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3969964082967480675, guid: b0189af9263766c42a91e1d3b19e5d06,
+        type: 3}
+      propertyPath: m_Name
+      value: AmmoBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 3969964082967480679, guid: b0189af9263766c42a91e1d3b19e5d06,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.31641075
+      objectReference: {fileID: 0}
+    - target: {fileID: 3969964082967480679, guid: b0189af9263766c42a91e1d3b19e5d06,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.2029387
+      objectReference: {fileID: 0}
+    - target: {fileID: 3969964082967480679, guid: b0189af9263766c42a91e1d3b19e5d06,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3969964082967480679, guid: b0189af9263766c42a91e1d3b19e5d06,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3969964082967480679, guid: b0189af9263766c42a91e1d3b19e5d06,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3969964082967480679, guid: b0189af9263766c42a91e1d3b19e5d06,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3969964082967480679, guid: b0189af9263766c42a91e1d3b19e5d06,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3969964082967480679, guid: b0189af9263766c42a91e1d3b19e5d06,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3969964082967480679, guid: b0189af9263766c42a91e1d3b19e5d06,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3969964082967480679, guid: b0189af9263766c42a91e1d3b19e5d06,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3969964082967480679, guid: b0189af9263766c42a91e1d3b19e5d06,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b0189af9263766c42a91e1d3b19e5d06, type: 3}
 --- !u!1 &2060199025
 GameObject:
   m_ObjectHideFlags: 0
