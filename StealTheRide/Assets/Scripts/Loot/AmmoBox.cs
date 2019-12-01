@@ -12,6 +12,7 @@ public class AmmoBox : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponentInChildren<WeaponSwitching>().weaponScript.bulletsInMagazine += Random.Range(minBullets, maxBullets);
+            AudioManager.instance.Play("PickupAmmo");
             Destroy(gameObject);
         }
     }
