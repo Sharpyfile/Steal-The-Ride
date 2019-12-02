@@ -73,9 +73,9 @@ MonoBehaviour:
     type: 3}
   bullet: {fileID: 6355065941028285011}
   speed: 0
-  damage: 4.0499973
+  damage: 1.2999997
   spreadFactor: 0
-  lifetime: 0.3
+  lifetime: 0.2
   destroyEffect: {fileID: 4658403827353296317, guid: 891b8c015ec4ddc4d8608657f05fa31b,
     type: 3}
 --- !u!61 &3154369082489886229

@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 6f375abd75cb0df408f812f091eba00d
+    path: Assets/Scenes/GuzekScene.unity
+    guid: 05ae07fb7f38eaa4a85ece9cf7c981c3
   m_configObjects: {}

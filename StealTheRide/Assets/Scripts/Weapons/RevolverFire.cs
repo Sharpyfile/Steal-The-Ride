@@ -23,6 +23,8 @@ public class RevolverFire : WeaponFire
 
     void Update()
     {
+        sumOfBullets = bulletsInMagazine + additionalBullets;
+
         if (!isReloading)
         {
             if (bulletsInMagazine > 0)

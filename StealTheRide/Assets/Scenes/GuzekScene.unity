@@ -1694,6 +1694,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 431199893365076020, guid: 09977a2464bf6004c8697f9a4bdb36d0,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4674540827383840144, guid: 09977a2464bf6004c8697f9a4bdb36d0,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1704,5 +1709,48 @@ PrefabInstance:
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1846500728609622509, guid: 09977a2464bf6004c8697f9a4bdb36d0,
+        type: 3}
+      propertyPath: bowSlider
+      value: 
+      objectReference: {fileID: 2044132298}
+    - target: {fileID: 1846500728609622509, guid: 09977a2464bf6004c8697f9a4bdb36d0,
+        type: 3}
+      propertyPath: bulletScript
+      value: 
+      objectReference: {fileID: 6945152864407766395, guid: 2c3b322e0c7393742b2101477fb39671,
+        type: 3}
+    - target: {fileID: 1846500728609622509, guid: 09977a2464bf6004c8697f9a4bdb36d0,
+        type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 799289538590282263, guid: 2c3b322e0c7393742b2101477fb39671,
+        type: 3}
+    - target: {fileID: 1846500728838568263, guid: 09977a2464bf6004c8697f9a4bdb36d0,
+        type: 3}
+      propertyPath: sumOfBullets
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 390417009022968593, guid: 09977a2464bf6004c8697f9a4bdb36d0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9083251756503976742, guid: 09977a2464bf6004c8697f9a4bdb36d0,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 951875839947347642, guid: 09977a2464bf6004c8697f9a4bdb36d0,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09977a2464bf6004c8697f9a4bdb36d0, type: 3}
+--- !u!1 &2044132298 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6913203237601546787, guid: 09977a2464bf6004c8697f9a4bdb36d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 2044132297}
+  m_PrefabAsset: {fileID: 0}
