@@ -55,6 +55,7 @@ public abstract class WeaponFire : MonoBehaviour
                 timestampReload = Time.time + reloadTime;
                 reloadSlider.GetComponent<ReloadSlider>().Set(Time.time, (magazineSize - bulletsInMagazine) * reloadTime);
                 reloadSlider.SetActive(true);
+                weaponInfo = "Reloading...";
             }
         }
         else
@@ -66,7 +67,6 @@ public abstract class WeaponFire : MonoBehaviour
     public void ReloadTick()
     {
         Debug.Log("Loading bullet...");
-        weaponInfo = "Reloading...";
         bulletsInMagazine++;
         AudioManager.instance.Play("RevolverReloadTick");
         if (bulletsInMagazine == magazineSize)
@@ -80,11 +80,11 @@ public abstract class WeaponFire : MonoBehaviour
         }
     }
 
-    public void StopReloading()
-    {
-        isReloading = false;
-        reloadSlider.SetActive(false);
-        weaponInfo = "";
-    }
+    public abstract void StopReloading();
+    //{
+    //    isReloading = false;
+    //    reloadSlider.SetActive(false);
+    //    weaponInfo = "";
+    //}
 
 }

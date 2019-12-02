@@ -20,6 +20,7 @@ public class BowFire : WeaponFire
     {
         timestampFiring = Time.time;
         timestampReload = Time.time;
+        weaponInfo = "Ready to load";
     }
 
     // Update is called once per frame
@@ -137,6 +138,33 @@ public class BowFire : WeaponFire
         weaponInfo = "Ready to load";
     }
 
-    
+    public void ReloadTick()
+    {
+        Debug.Log("Loading ...");
+        weaponInfo = "Imposing an arrow...";
+        bulletsInMagazine++;
+        //AudioManager.instance.Play("RevolverReloadTick");
+        if (bulletsInMagazine == magazineSize)
+        {
+            StopReloading();
+            Debug.Log("Fully reloaded!");
+        }
+        else
+        {
+            timestampReload = Time.time + reloadTime;
+        }
+    }
+
+    public override void StopReloading()
+    {
+        isReloading = false;
+        reloadSlider.SetActive(false);
+        //weaponInfo = "";
+
+        if (bulletsInMagazine == magazineSize)
+        {
+            weaponInfo = "Ready to load";
+        }
+    }
 
 }
