@@ -18,8 +18,7 @@ public class EnemyStatistics : ALootable
 
     void Update()
     {
-        float angle = Mathf.Atan2(player.position.y - transform.position.y, player.position.x - transform.position.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+
     }
 
     void ApplyDamageEnemy(Bullet bullet)
