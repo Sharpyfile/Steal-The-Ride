@@ -14,6 +14,7 @@ public class RevolverFire : WeaponFire
     {
         timestampFiring = Time.time;
         timestampReload = Time.time;
+        weaponInfo = "Ready to shoot";
     }
 
     void Awake()
@@ -33,7 +34,8 @@ public class RevolverFire : WeaponFire
                         isSuperShot = true;
                         Fire();
                         isSuperShot = false;
-                    } else if (Input.GetMouseButtonDown(0))
+                    } 
+                    else if (Input.GetMouseButtonDown(0))
                     {
                         if (isCocked)
                         {
@@ -51,6 +53,13 @@ public class RevolverFire : WeaponFire
                 {
                     Pull();
                 }
+
+
+                if(Input.GetMouseButtonUp(0))
+                {
+                    weaponInfo = "Load next bullet";
+                }
+
             }
         }
 
@@ -123,6 +132,28 @@ public class RevolverFire : WeaponFire
         {
             weaponInfo = "Ready to shoot";
             Debug.Log("There is already a bullet in the chamber!");
+        }
+    }
+
+    public override void StopReloading()
+    {
+        isReloading = false;
+        reloadSlider.SetActive(false);
+
+        if (bulletsInMagazine > 0)
+        {
+            if(isCocked)
+            {
+                weaponInfo = "Ready to shoot";
+            }
+            else
+            {
+                weaponInfo = "Load next bullet";
+            }
+        }
+        else
+        {
+            weaponInfo = "No bullets!";
         }
     }
 

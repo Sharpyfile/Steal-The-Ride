@@ -15,9 +15,9 @@ public class RepeaterFire : WeaponFire
 
     void Start()
     {
-
         timestampFiring = Time.time;
         timestampReload = Time.time;
+        weaponInfo = "Ready to shoot";
     }
 
     void Update()
@@ -109,5 +109,29 @@ public class RepeaterFire : WeaponFire
         }
     }
 
-    
+    public override void StopReloading()
+    {
+        isReloading = false;
+        reloadSlider.SetActive(false);
+
+        if (bulletsInMagazine > 0)
+        {
+            if (isLeverForward && isLeverBackward)
+            {
+                weaponInfo = "Ready to shoot";
+            }
+            else if(isLeverForward)
+            {
+                weaponInfo = "Pull back!";
+            }
+            else
+            {
+                weaponInfo = "Push forward!";
+            }
+        }
+        else
+        {
+            weaponInfo = "No bullets!";
+        }
+    }
 }

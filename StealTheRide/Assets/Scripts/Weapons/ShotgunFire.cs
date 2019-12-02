@@ -16,6 +16,7 @@ public class ShotgunFire : WeaponFire
         timestampReload = Time.time;
         isLeftChamberFull = true;
         isRightChamberFull = true;
+        weaponInfo = "Both chambers full";
     }
 
     // Update is called once per frame
@@ -37,10 +38,10 @@ public class ShotgunFire : WeaponFire
                 {
                     RightFire();
                 }
-     
+
             }
         }
-           
+
         if (isReloading && timestampReload <= Time.time)
         {
             ReloadTick();
@@ -69,6 +70,10 @@ public class ShotgunFire : WeaponFire
             weaponInfo = "No bullets!";
             Debug.Log("You have no bullets in magazine - reload");
         }
+        else
+        {
+            weaponInfo = "Right bullet ready";
+        }
         timestampFiring = Time.time + fireCooldown;
 
         //AudioManager.instance.Play("RevolverCock");
@@ -91,6 +96,10 @@ public class ShotgunFire : WeaponFire
         {
             weaponInfo = "No bullets!";
             Debug.Log("You have no bullets in magazine - reload");
+        }
+        else
+        {
+            weaponInfo = "Left bullet ready";
         }
         timestampFiring = Time.time + fireCooldown;
 
@@ -126,7 +135,7 @@ public class ShotgunFire : WeaponFire
         StartCoroutine(playSoundWithDelay(0.05f));
     }
 
-    IEnumerator playSoundWithDelay( float delay)
+    IEnumerator playSoundWithDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
         AudioManager.instance.Play("RevolverCock");
@@ -138,7 +147,7 @@ public class ShotgunFire : WeaponFire
         weaponInfo = "Reloading...";
         bulletsInMagazine++;
         AudioManager.instance.Play("RevolverReloadTick");
-        if(isLeftChamberFull == false)
+        if (isLeftChamberFull == false)
         {
             isLeftChamberFull = true;
         }
@@ -155,6 +164,25 @@ public class ShotgunFire : WeaponFire
         else
         {
             timestampReload = Time.time + reloadTime;
+        }
+    }
+
+    public override void StopReloading()
+    {
+        isReloading = false;
+        reloadSlider.SetActive(false);
+
+        if (bulletsInMagazine == magazineSize)
+        {
+            weaponInfo = "Both chambers full";
+        }
+        else if (bulletsInMagazine == 1)
+        {
+            weaponInfo = "Left bullet ready";
+        }
+        else
+        {
+            weaponInfo = "No bullets!";
         }
     }
 }
