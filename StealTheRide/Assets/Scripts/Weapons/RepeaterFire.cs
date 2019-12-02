@@ -32,9 +32,9 @@ public class RepeaterFire : WeaponFire
                     {
                         Fire();
                     }
-                    else
+                    else if(isLeverForward == false && isLeverBackward == false)
                     {
-                        PullForward();
+                        PushForward();
                     }
                 }
                 if (Input.GetMouseButtonDown(1) && timestampFiring <= Time.time)
@@ -63,43 +63,33 @@ public class RepeaterFire : WeaponFire
 
     private void Fire()
     {
-        if (!player.GetDucked())
+        Shoot();
+
+        particleSystem.Emit(fireParticleCount);
+
+        AudioManager.instance.Play("RevolverShot");
+        bulletsInMagazine--;
+        Debug.Log("Firing");
+        isLeverForward = false;
+        isLeverBackward = false;
+        weaponInfo = "Push forward!";
+
+        if (bulletsInMagazine == 0)       
         {
-            Shoot();
-
-            particleSystem.Emit(fireParticleCount);
-
-            AudioManager.instance.Play("RevolverShot");
-            bulletsInMagazine--;
-            Debug.Log("Firing");
-            isLeverForward = false;
-            isLeverBackward = false;
-            weaponInfo = "Pull forward!";
-            if (bulletsInMagazine == 0)       
-            {
-                weaponInfo = "No bullets!";
-                Debug.Log("You have no bullets in magazine - reload");
-            }
-            timestampFiring = Time.time + fireCooldown;
+            weaponInfo = "No bullets!";
+            Debug.Log("You have no bullets in magazine - reload");
         }
+        timestampFiring = Time.time + fireCooldown;
     }
 
 
-    private void PullForward()
+    private void PushForward()
     {
-        if (isLeverForward == false)
-        {
-            isLeverForward = true;
-            weaponInfo = "Pull back!";
-            AudioManager.instance.Play("RevolverCock");
-            //Debug.Log("The gun has been reloaded");
-            timestampFiring = Time.time + fireCooldown;
-        }
-        else if (bulletsInMagazine > 0)
-        {
-            weaponInfo = "Ready to shoot";
-            Debug.Log("There is already a bullet in the chamber!");
-        }
+        isLeverForward = true;
+        weaponInfo = "Pull back!";
+        AudioManager.instance.Play("RevolverCock");
+        //Debug.Log("The gun has been reloaded");
+        timestampFiring = Time.time + fireCooldown;
     }
 
     private void PullBack()

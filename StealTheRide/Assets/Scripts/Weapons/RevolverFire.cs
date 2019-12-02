@@ -68,36 +68,33 @@ public class RevolverFire : WeaponFire
 
     private void Fire()
     {
-        if (!player.GetDucked())
-        {
-            Shoot();
+        Shoot();
 
-            particleSystem.Emit(fireParticleCount);
-            if (isSuperShot)
-            {
-                AudioManager.instance.Play("RevolverCock");
-            }
-            AudioManager.instance.Play("RevolverShot");
-            bulletsInMagazine--;
-            isCocked = false;
-            Debug.Log("Firing");
-            if (bulletsInMagazine > 0)
-            {
-                if (!isSuperShot)
-                {
-                    weaponInfo = "Load next bullet";
-                }
-                else
-                {
-                    weaponInfo = "SUPER FIRE!";
-                }
-            } else
-            {
-                weaponInfo = "No bullets!";
-                Debug.Log("You have no bullets in magazine - reload");
-            }
-            timestampFiring = Time.time + fireCooldown;
+        particleSystem.Emit(fireParticleCount);
+        if (isSuperShot)
+        {
+            AudioManager.instance.Play("RevolverCock");
         }
+        AudioManager.instance.Play("RevolverShot");
+        bulletsInMagazine--;
+        isCocked = false;
+        Debug.Log("Firing");
+        if (bulletsInMagazine > 0)
+        {
+            if (!isSuperShot)
+            {
+                weaponInfo = "Load next bullet";
+            }
+            else
+            {
+                weaponInfo = "SUPER FIRE!";
+            }
+        } else
+        {
+            weaponInfo = "No bullets!";
+            Debug.Log("You have no bullets in magazine - reload");
+        }
+        timestampFiring = Time.time + fireCooldown;
     }
 
     public override void Shoot()
