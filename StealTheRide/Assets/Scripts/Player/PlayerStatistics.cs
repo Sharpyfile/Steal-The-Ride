@@ -16,6 +16,7 @@ public class PlayerStatistics : MonoBehaviour
 
     public UnityEvent playerDamaged;
 
+    public Animator animator;
     private Vector3 mousePosition;
     private Vector2 playerInput;
     private float speed;
@@ -25,10 +26,17 @@ public class PlayerStatistics : MonoBehaviour
         player = GetComponent<Rigidbody2D>();
     }
     
-    void FixedUpdate()
+    void Update()
     {
         PlayerMove();
-        PlayerRotate();
+        animator.SetInteger("Section", CalculateSection());
+        if (player.velocity != new Vector2(0.0f, 0.0f))
+            animator.SetBool("Moving", true);
+        else
+            animator.SetBool("Moving", false);
+
+
+
     }
 
     void PlayerMove()
@@ -38,17 +46,7 @@ public class PlayerStatistics : MonoBehaviour
         player.velocity = playerInput * speed;
     }
 
-    void PlayerRotate()
-    {
-        Vector3 mousePos = Input.mousePosition;
-
-        Vector3 objectPos = Camera.main.WorldToScreenPoint(transform.position);
-        mousePos.x = mousePos.x - objectPos.x;
-        mousePos.y = mousePos.y - objectPos.y;
-
-        float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-    }
+    
 
     void ApplyDamagePlayer(EnemyBullet bullet)
     {
@@ -70,4 +68,69 @@ public class PlayerStatistics : MonoBehaviour
             AudioManager.instance.Play("Pain");
         }
     }
+
+
+    private Transform[] GetObstacles()
+    {
+        GameObject[] objects = FindObjectsOfType(typeof(GameObject)) as GameObject[];
+        List<Transform> obstacleList = new List<Transform>();
+        for (int i = 0; i < objects.Length; i++)
+        {
+            if (objects[i].layer == obstaclesLayer)
+            {
+                obstacleList.Add(objects[i].transform);
+            }
+        }
+        return obstacleList.ToArray();
+    }
+
+    private float GetClosestObstacle(Transform[] obstacles)
+    {
+        float minDist = Mathf.Infinity;
+        Vector2 currentPos = transform.position;
+        foreach (Transform t in obstacles)
+        {
+            float dist = Vector2.Distance(t.position, currentPos);
+            if (dist < minDist)
+            {
+                minDist = dist;
+            }
+        }
+        return minDist;
+    }
+
+    private float GetRotationAngle()
+    {
+        Vector3 mousePos = Input.mousePosition;
+
+        Vector3 objectPos = Camera.main.WorldToScreenPoint(transform.position);
+        mousePos.x = mousePos.x - objectPos.x;
+        mousePos.y = mousePos.y - objectPos.y;
+
+        return Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
+    }
+
+    private int CalculateSection()
+    {
+        float angle = GetRotationAngle();
+        angle = GetRotationAngle();
+        if (angle < 0)
+            angle = 360 + angle;
+        int section = 0; ;
+        if (angle >= 330 || angle < 30)
+            section = 0;
+        else if (angle >= 30 && angle < 90)
+            section = 1;
+        else if (angle >= 90 && angle < 150)
+            section = 2;
+        else if (angle >= 150 && angle < 210)
+            section = 3;
+        else if (angle >= 210 && angle < 270)
+            section = 4;
+        else if (angle >= 270 && angle < 330)
+            section = 5;
+
+        return section;
+    }
+
 }
