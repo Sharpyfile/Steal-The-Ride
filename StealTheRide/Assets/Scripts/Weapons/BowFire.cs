@@ -8,6 +8,7 @@ public class BowFire : WeaponFire
     //private GameObject reloadSliderInstance;
     //public GameObject reloadSlider;
 
+
     private bool isStopped;
     private bool isPeakReached;
     private float timeBow;
@@ -129,5 +130,6 @@ public class BowFire : WeaponFire
         weaponInfo = "Ready to load";
     }
 
+    
 
 }

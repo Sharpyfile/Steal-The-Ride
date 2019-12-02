@@ -5,7 +5,7 @@ public class Bullet : MonoBehaviour
     public GameObject hitSolidPSPrefab;
     public GameObject hitEnemyPSPrefab;
     public Rigidbody2D bullet;
-    public Transform firePoint;
+    //public Transform firePoint;
 
     public float speed;
     

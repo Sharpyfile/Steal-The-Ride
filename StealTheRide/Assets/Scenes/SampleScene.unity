@@ -4526,7 +4526,7 @@ MonoBehaviour:
   weaponInfo: 
   magazineSize: 1
   bulletsInMagazine: 1
-  bullet: {fileID: 4487301011828246178, guid: 1f19c677d75430242909372a67ec9fcc, type: 3}
+  bullet: {fileID: 799289538590282263, guid: 2c3b322e0c7393742b2101477fb39671, type: 3}
   firePoint: {fileID: 1163423672}
   reloadSlider: {fileID: 2029552273}
   player: {fileID: 1335733538}
@@ -4538,7 +4538,7 @@ MonoBehaviour:
   speed: 1
   damage: 1
   spreadFactor: 1
-  bulletScript: {fileID: 4487301011828246176, guid: 1f19c677d75430242909372a67ec9fcc,
+  bulletScript: {fileID: 6945152864407766395, guid: 2c3b322e0c7393742b2101477fb39671,
     type: 3}
   icon: {fileID: 21300000, guid: f47f10fd0f3a1244bb211d63ec7b437b, type: 3}
   isLeftChamberFull: 0
@@ -4797,7 +4797,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1418787633}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.295, y: -0.376, z: 0}
   m_LocalScale: {x: 62.5, y: 62.5, z: 1}
   m_Children: []
   m_Father: {fileID: 972683543}
@@ -5321,7 +5321,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1790127469}
   m_HandleRect: {fileID: 1790127468}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -5905,7 +5905,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1950720542}
   m_Direction: 2
   m_Value: 1
-  m_Size: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
