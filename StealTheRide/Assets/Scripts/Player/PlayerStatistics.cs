@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class PlayerStatistics : MonoBehaviour
@@ -11,23 +10,33 @@ public class PlayerStatistics : MonoBehaviour
     public GameObject firePoint;
     public float walkingSpeed = 2f;
     public float sprintingSpeed = 5f;
-    public int maxHealth = 10;
-    public int health = 10;
-
-    public UnityEvent playerDamaged;
+    public int playerHealth = 10;
+    public float duckRadius = 0.25f;
 
     public Animator animator;
     private Vector3 mousePosition;
     private Vector2 playerInput;
     private float speed;
+    private bool ducked = false;
+
+    private int defaultLayer;
+    private int obstaclesLayer;
+
+    public bool GetDucked()
+    {
+        return ducked;
+    }
 
     void Start()
     {
         player = GetComponent<Rigidbody2D>();
+        defaultLayer = gameObject.layer;
+        obstaclesLayer = LayerMask.NameToLayer("Obstacles");
     }
     
     void Update()
     {
+        PlayerDuck(Input.GetKey(KeyCode.LeftControl));
         PlayerMove();
         animator.SetInteger("Section", CalculateSection());
         if (player.velocity != new Vector2(0.0f, 0.0f))
@@ -37,6 +46,26 @@ public class PlayerStatistics : MonoBehaviour
 
 
 
+    }
+
+    void PlayerDuck(bool on)
+    {
+        if (ducked && !on)
+        {
+            ducked = false;
+            playerSprite.color = new Color(255, 255, 255);
+            player.constraints = RigidbodyConstraints2D.FreezeRotation;
+            gameObject.layer = defaultLayer;
+        } else if (!ducked && on)
+        {
+            ducked = true;
+            playerSprite.color = new Color(0, 255, 0);
+            player.constraints = RigidbodyConstraints2D.FreezePosition;
+            if (GetClosestObstacle(GetObstacles()) <= duckRadius)
+            {
+                gameObject.layer = obstaclesLayer;
+            }
+        }
     }
 
     void PlayerMove()
@@ -55,10 +84,9 @@ public class PlayerStatistics : MonoBehaviour
         ParticleSystem ps = psObject.GetComponent<ParticleSystem>();
         Destroy(psObject, ps.main.duration);
 
-        health -= bullet.damage;
-        playerDamaged.Invoke();
+        playerHealth -= bullet.damage;
         Debug.Log("You have been hit");
-        if (health <= 0)
+        if (playerHealth <= 0)
         {
             AudioManager.instance.Play("Death");
             Debug.Log("You are dead");
@@ -68,7 +96,6 @@ public class PlayerStatistics : MonoBehaviour
             AudioManager.instance.Play("Pain");
         }
     }
-
 
     private Transform[] GetObstacles()
     {
@@ -132,5 +159,4 @@ public class PlayerStatistics : MonoBehaviour
 
         return section;
     }
-
 }

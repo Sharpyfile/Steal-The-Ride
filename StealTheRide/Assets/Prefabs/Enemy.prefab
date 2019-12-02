@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 684621306845739032}
   - component: {fileID: 684621306845739033}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: EnemySprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 684621306950409132}
   - component: {fileID: 684621306950409133}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: EnemyWeaponSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 684621307590992560}
   - component: {fileID: 684621307590992561}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: EnemyWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,6 @@ MonoBehaviour:
   bullet: {fileID: 6551167408766518959, guid: 54f1be1c419b0eb49b630ea0f58455f5, type: 3}
   particleSystem: {fileID: 1736386675401957926}
   fireParticleCount: 10
-  speed: 2
 --- !u!1 &684621307598192034
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +222,7 @@ GameObject:
   - component: {fileID: 684621307598192035}
   - component: {fileID: 684621307598192031}
   - component: {fileID: 684621307598192030}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -295,9 +294,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eaa7cadb07412341b5e11aec552d83f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootTable:
-  - dropChance: 50
-    item: {fileID: 3969964082967480675, guid: b0189af9263766c42a91e1d3b19e5d06, type: 3}
   enemyHealth: 10
   enemy: {fileID: 684621307598192034}
   bleedPSPrefab: {fileID: 4658403827353296317, guid: 25c4f96bfb5915f47b26b03fd39c4354,
@@ -339,11 +335,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RevolerSparks
-      objectReference: {fileID: 0}
-    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1267940354642793682, guid: 08b9677c5dca4544aad4daab9d5e0705,
         type: 3}

@@ -8,7 +8,6 @@ public class BowFire : WeaponFire
     //private GameObject reloadSliderInstance;
     //public GameObject reloadSlider;
 
-    private bool isStopped;
     private bool isPeakReached;
     private float timeBow;
 
@@ -29,9 +28,6 @@ public class BowFire : WeaponFire
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    speed = 1.0f;
-                    damage = 1.0f;
-                    isPeakReached = false;
                     timeBow = Time.time;
                 }
                 if (Input.GetMouseButton(0))
@@ -40,17 +36,7 @@ public class BowFire : WeaponFire
                 }
                 if (Input.GetMouseButtonUp(0))
                 {
-                    if (isStopped == false && timestampFiring <= Time.time)
-                        Fire();
-                    else
-                    {
-                        isStopped = false;
-                        weaponInfo = "Ready to load";
-                    }
-                }
-                if (Input.GetMouseButton(0) && Input.GetMouseButtonDown(1))
-                {
-                    StopLoadingArrow();
+                    Fire();
                 }
             }
         }
@@ -60,16 +46,14 @@ public class BowFire : WeaponFire
             ReloadTick();
         }
 
-        //if (Input.GetButtonDown("Reload"))
-        //{
-        //    Reload();
-        //}
+        if (Input.GetButtonDown("Reload"))
+        {
+            Reload();
+        }
     }
 
     private void Load()
     {
-        if(isStopped == false)
-            weaponInfo = "Loading...";
         if (speed >= 10)
         {
             isPeakReached = true;
@@ -100,33 +84,30 @@ public class BowFire : WeaponFire
         //reloadSlider.SetActive(true);
     }
 
-    private void StopLoadingArrow()
-    {
-        isStopped = true;
-        weaponInfo = "Load cancelled";
-    }
-
     private void Fire()
     {
-        //reloadSlider.SetActive(false);
-        SetBullet();
+        if (!player.GetDucked())
+        {
+            //reloadSlider.SetActive(false);
+            SetBullet();
 
-        Shoot();
+            Shoot();
 
-        AudioManager.instance.Play("BowShot");
-        bulletsInMagazine--;
-        Debug.Log("Firing");
+            AudioManager.instance.Play("RevolverShot");
+            bulletsInMagazine--;
+            Debug.Log("Firing");
 
+            speed = 1.0f;
+            damage = 1.0f;
+            isPeakReached = false;
 
-        Reload();
-
-        //if (bulletsInMagazine == 0)
-        //{
-        //    weaponInfo = "No bullets!";
-        //    Debug.Log("You have no bullets in magazine - reload");
-        //}
-        timestampFiring = Time.time + fireCooldown;
-        weaponInfo = "Ready to load";
+            if (bulletsInMagazine == 0)
+            {
+                weaponInfo = "No bullets!";
+                Debug.Log("You have no bullets in magazine - reload");
+            }
+            timestampFiring = Time.time + fireCooldown;
+        }
     }
 
 
