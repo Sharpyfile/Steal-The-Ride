@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BowFire : WeaponFire
 {
 
     //private GameObject reloadSliderInstance;
-    //public GameObject reloadSlider;
+    public GameObject bowSlider;
 
 
     private bool isStopped;
@@ -54,6 +55,8 @@ public class BowFire : WeaponFire
                     StopLoadingArrow();
                 }
             }
+           
+
         }
 
         if (isReloading && timestampReload <= Time.time)
@@ -70,7 +73,10 @@ public class BowFire : WeaponFire
     private void Load()
     {
         if(isStopped == false)
+        {
             weaponInfo = "Loading...";
+            bowSlider.GetComponent<BowSlider>().Set(speed);
+        }
         if (speed >= 10)
         {
             isPeakReached = true;
@@ -97,14 +103,14 @@ public class BowFire : WeaponFire
                 damage = 0.5f;
         }
 
-        //reloadSlider.GetComponent<ReloadSlider>().Set(timeBow, 3f);
-        //reloadSlider.SetActive(true);
+
     }
 
     private void StopLoadingArrow()
     {
         isStopped = true;
         weaponInfo = "Load cancelled";
+        bowSlider.GetComponent<BowSlider>().Set(0);
     }
 
     private void Fire()
@@ -118,6 +124,7 @@ public class BowFire : WeaponFire
         bulletsInMagazine--;
         Debug.Log("Firing");
 
+        bowSlider.GetComponent<BowSlider>().Set(0);
 
         Reload();
 
