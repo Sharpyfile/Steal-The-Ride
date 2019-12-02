@@ -7,6 +7,8 @@ public abstract class WeaponFire : MonoBehaviour
     public string weaponInfo;
     public int magazineSize;
     public int bulletsInMagazine;
+    public int additionalBullets;
+    public int sumOfBullets;
 
     public GameObject bullet;
     public Transform firePoint;

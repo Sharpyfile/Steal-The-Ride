@@ -36,7 +36,8 @@ public class WeaponsInfoPanel : MonoBehaviour
         
         for (int i = 0; i < panels.Count; i++)
         {
-            panels[i].GetComponentInChildren<Text>().text = weapons[i].bulletsInMagazine + "/" + weapons[i].magazineSize;
+            int sumOfBullets = weapons[i].bulletsInMagazine + weapons[i].additionalBullets;
+            panels[i].GetComponentInChildren<Text>().text = weapons[i].bulletsInMagazine + "/" + sumOfBullets; ;
         }
     }
 
