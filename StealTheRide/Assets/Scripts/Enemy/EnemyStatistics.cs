@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class EnemyStatistics : MonoBehaviour
+public class EnemyStatistics : ALootable
 {
-    public int enemyHealth;
+    public float enemyHealth;
     public GameObject enemy;
     public GameObject bleedPSPrefab;
 
@@ -18,8 +18,7 @@ public class EnemyStatistics : MonoBehaviour
 
     void Update()
     {
-        float angle = Mathf.Atan2(player.position.y - transform.position.y, player.position.x - transform.position.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+
     }
 
     void ApplyDamageEnemy(Bullet bullet)
@@ -35,6 +34,7 @@ public class EnemyStatistics : MonoBehaviour
         {
             AudioManager.instance.Play("Death");
             Debug.Log("You killed the enemy!");
+            Drop();
             Destroy(enemy);
             
             if (GameObject.FindGameObjectsWithTag("Enemy").Length <= 1)

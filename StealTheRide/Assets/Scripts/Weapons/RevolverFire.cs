@@ -7,12 +7,14 @@ public class RevolverFire : WeaponFire
     public ParticleSystem particleSystem;
     public int fireParticleCount = 6;
 
+
     private GameObject reloadSliderInstance;
 
     void Start()
     {
         timestampFiring = Time.time;
         timestampReload = Time.time;
+        weaponInfo = "Ready to shoot";
     }
 
     void Awake()
@@ -21,6 +23,8 @@ public class RevolverFire : WeaponFire
 
     void Update()
     {
+        sumOfBullets = bulletsInMagazine + additionalBullets;
+
         if (!isReloading)
         {
             if (bulletsInMagazine > 0)
@@ -32,7 +36,8 @@ public class RevolverFire : WeaponFire
                         isSuperShot = true;
                         Fire();
                         isSuperShot = false;
-                    } else if (Input.GetMouseButtonDown(0))
+                    } 
+                    else if (Input.GetMouseButtonDown(0))
                     {
                         if (isCocked)
                         {
@@ -50,6 +55,13 @@ public class RevolverFire : WeaponFire
                 {
                     Pull();
                 }
+
+
+                if(Input.GetMouseButtonUp(0))
+                {
+                    weaponInfo = "Load next bullet";
+                }
+
             }
         }
 
@@ -67,34 +79,44 @@ public class RevolverFire : WeaponFire
 
     private void Fire()
     {
-        if (!player.GetDucked())
+        Shoot();
+
+        particleSystem.Emit(fireParticleCount);
+        if (isSuperShot)
         {
-            GameObject.Instantiate(bullet, transform.position, transform.rotation).SetActive(true);
-            particleSystem.Emit(fireParticleCount);
-            if (isSuperShot)
+            AudioManager.instance.Play("RevolverCock");
+        }
+        AudioManager.instance.Play("RevolverShot");
+        bulletsInMagazine--;
+        isCocked = false;
+        Debug.Log("Firing");
+        if (bulletsInMagazine > 0)
+        {
+            if (!isSuperShot)
             {
-                AudioManager.instance.Play("RevolverCock");
+                weaponInfo = "Load next bullet";
             }
-            AudioManager.instance.Play("RevolverShot");
-            bulletsInMagazine--;
-            isCocked = false;
-            Debug.Log("Firing");
-            if (bulletsInMagazine > 0)
+            else
             {
-                if (!isSuperShot)
-                {
-                    weaponInfo = "Load next bullet";
-                }
-                else
-                {
-                    weaponInfo = "SUPER FIRE!";
-                }
-            } else
-            {
-                weaponInfo = "No bullets!";
-                Debug.Log("You have no bullets in magazine - reload");
+                weaponInfo = "SUPER FIRE!";
             }
-            timestampFiring = Time.time + fireCooldown;
+        } else
+        {
+            weaponInfo = "No bullets!";
+            Debug.Log("You have no bullets in magazine - reload");
+        }
+        timestampFiring = Time.time + fireCooldown;
+    }
+
+    public override void Shoot()
+    {
+        GameObject newBullet = GameObject.Instantiate(bullet, firePoint.position, firePoint.rotation);
+        newBullet.SetActive(true);
+        Rigidbody2D rb = newBullet.GetComponent<Rigidbody2D>();
+        rb.AddForce(firePoint.right * speed, ForceMode2D.Impulse);
+        if (isSuperShot)
+        {
+            rb.AddForce(firePoint.up * Random.Range(-spreadFactor, spreadFactor), ForceMode2D.Impulse);
         }
     }
 
@@ -112,6 +134,28 @@ public class RevolverFire : WeaponFire
         {
             weaponInfo = "Ready to shoot";
             Debug.Log("There is already a bullet in the chamber!");
+        }
+    }
+
+    public override void StopReloading()
+    {
+        isReloading = false;
+        reloadSlider.SetActive(false);
+
+        if (bulletsInMagazine > 0)
+        {
+            if(isCocked)
+            {
+                weaponInfo = "Ready to shoot";
+            }
+            else
+            {
+                weaponInfo = "Load next bullet";
+            }
+        }
+        else
+        {
+            weaponInfo = "No bullets!";
         }
     }
 
