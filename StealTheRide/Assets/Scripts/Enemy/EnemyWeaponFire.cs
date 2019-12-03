@@ -6,11 +6,11 @@ public class EnemyWeaponFire : MonoBehaviour
     public GameObject bullet;
     public ParticleSystem particleSystem;
     public int fireParticleCount = 10;
-
     public float speed = 2f;
+    public int magazineSize = 6;
+    public int bulletsInMagazine = 6;
+
     private float range = 1.5f;
-    private int magazineSize = 6;
-    private int bulletsInMagazine = 6;
     private float timestampFiring;
     private Transform playerToFollow;
 
@@ -29,7 +29,7 @@ public class EnemyWeaponFire : MonoBehaviour
 
         if(bulletsInMagazine == 0)
         {
-            Invoke("Reload", 6);
+            Invoke("Reload", magazineSize);
         }
     }
 
@@ -49,6 +49,6 @@ public class EnemyWeaponFire : MonoBehaviour
 
     void Reload()
     {
-        bulletsInMagazine = 6;
+        bulletsInMagazine = magazineSize;
     }
 }
