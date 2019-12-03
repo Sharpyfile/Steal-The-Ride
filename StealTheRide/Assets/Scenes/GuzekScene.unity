@@ -1703,6 +1703,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 799289538590282263, guid: 2c3b322e0c7393742b2101477fb39671,
         type: 3}
+    - target: {fileID: 1846500728609622509, guid: 09977a2464bf6004c8697f9a4bdb36d0,
+        type: 3}
+      propertyPath: loadIncrease
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 1846500728838568263, guid: 09977a2464bf6004c8697f9a4bdb36d0,
         type: 3}
       propertyPath: sumOfBullets

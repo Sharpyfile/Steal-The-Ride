@@ -9,6 +9,7 @@ public class BowFire : WeaponFire
     //private GameObject reloadSliderInstance;
     public GameObject bowSlider;
 
+    public float loadIncrease;
 
     private bool isStopped;
     private bool isPeakReached;
@@ -87,8 +88,8 @@ public class BowFire : WeaponFire
 
         if (isPeakReached == false)
         {
-            speed += 0.25f;
-            damage += 0.25f;
+            speed += loadIncrease;
+            damage += loadIncrease;
             //if (speed < 10)
             //    speed += 0.05f;
 
@@ -97,8 +98,8 @@ public class BowFire : WeaponFire
         }
         else
         {
-            speed -= 0.5f;
-            damage -= 0.5f;
+            speed -= loadIncrease*2;
+            damage -= loadIncrease*2;
             if (speed <= 0.5f)
                 speed = 0.5f;
 
