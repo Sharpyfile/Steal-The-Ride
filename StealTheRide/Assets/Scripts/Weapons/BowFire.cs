@@ -87,8 +87,8 @@ public class BowFire : WeaponFire
 
         if (isPeakReached == false)
         {
-            speed += 0.05f;
-            damage += 0.05f;
+            speed += 0.25f;
+            damage += 0.25f;
             //if (speed < 10)
             //    speed += 0.05f;
 
@@ -97,8 +97,8 @@ public class BowFire : WeaponFire
         }
         else
         {
-            speed -= 0.10f;
-            damage -= 0.10f;
+            speed -= 0.5f;
+            damage -= 0.5f;
             if (speed <= 0.5f)
                 speed = 0.5f;
 
