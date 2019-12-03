@@ -1638,6 +1638,33 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1846500728609622509, guid: 09977a2464bf6004c8697f9a4bdb36d0,
+        type: 3}
+      propertyPath: bowSlider
+      value: 
+      objectReference: {fileID: 2044132298}
+    - target: {fileID: 1846500728609622509, guid: 09977a2464bf6004c8697f9a4bdb36d0,
+        type: 3}
+      propertyPath: bulletScript
+      value: 
+      objectReference: {fileID: 6945152864407766395, guid: 2c3b322e0c7393742b2101477fb39671,
+        type: 3}
+    - target: {fileID: 1846500728609622509, guid: 09977a2464bf6004c8697f9a4bdb36d0,
+        type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 799289538590282263, guid: 2c3b322e0c7393742b2101477fb39671,
+        type: 3}
+    - target: {fileID: 1846500728609622509, guid: 09977a2464bf6004c8697f9a4bdb36d0,
+        type: 3}
+      propertyPath: loadIncrease
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1846500728838568263, guid: 09977a2464bf6004c8697f9a4bdb36d0,
+        type: 3}
+      propertyPath: sumOfBullets
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7744605827612448490, guid: 09977a2464bf6004c8697f9a4bdb36d0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1783,33 +1810,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1846500728609622509, guid: 09977a2464bf6004c8697f9a4bdb36d0,
-        type: 3}
-      propertyPath: bowSlider
-      value: 
-      objectReference: {fileID: 2044132298}
-    - target: {fileID: 1846500728609622509, guid: 09977a2464bf6004c8697f9a4bdb36d0,
-        type: 3}
-      propertyPath: bulletScript
-      value: 
-      objectReference: {fileID: 6945152864407766395, guid: 2c3b322e0c7393742b2101477fb39671,
-        type: 3}
-    - target: {fileID: 1846500728609622509, guid: 09977a2464bf6004c8697f9a4bdb36d0,
-        type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 799289538590282263, guid: 2c3b322e0c7393742b2101477fb39671,
-        type: 3}
-    - target: {fileID: 1846500728609622509, guid: 09977a2464bf6004c8697f9a4bdb36d0,
-        type: 3}
-      propertyPath: loadIncrease
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1846500728838568263, guid: 09977a2464bf6004c8697f9a4bdb36d0,
-        type: 3}
-      propertyPath: sumOfBullets
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 390417009022968593, guid: 09977a2464bf6004c8697f9a4bdb36d0,
         type: 3}
       propertyPath: m_RootOrder
@@ -1829,7 +1829,7 @@ PrefabInstance:
         type: 3}
       propertyPath: revolverCocked
       value: 
-      objectReference: {fileID: 21300000, guid: 8e6fdc8b9f3c4eb4c9290ad18423c98c,
+      objectReference: {fileID: 21300000, guid: 1608800eb09ff91458aa4f9d2ca37b2f,
         type: 3}
     - target: {fileID: 431199894325202694, guid: 09977a2464bf6004c8697f9a4bdb36d0,
         type: 3}
