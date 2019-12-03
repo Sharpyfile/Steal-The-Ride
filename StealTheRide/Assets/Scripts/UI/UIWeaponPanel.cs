@@ -18,11 +18,11 @@ public class UIWeaponPanel : MonoBehaviour
     public Sprite shotgunReloading;
     public Sprite bow;
 
-    private WeaponSwitching weaponSwitching;
-    private RevolverFire revolverFire;
-    private RepeaterFire repeaterFire;
-    private ShotgunFire shotgunFire;
-    private BowFire bowFire;
+    public WeaponSwitching weaponSwitching;
+    public RevolverFire revolverFire;
+    public RepeaterFire repeaterFire;
+    public ShotgunFire shotgunFire;
+    public BowFire bowFire;
     private int selectedWeapon;
     private bool isCocked;
     private int revolverBulletsInMagazine;
@@ -37,10 +37,10 @@ public class UIWeaponPanel : MonoBehaviour
     void Start()
     {
         weaponSwitching = GameObject.FindObjectOfType<WeaponSwitching>();
-        revolverFire = GameObject.FindObjectOfType<RevolverFire>();
-        repeaterFire = GameObject.FindObjectOfType<RepeaterFire>();
-        shotgunFire = GameObject.FindObjectOfType<ShotgunFire>();
-        bowFire = GameObject.FindObjectOfType<BowFire>();
+        //revolverFire = GameObject.FindObjectOfType<RevolverFire>();
+        //repeaterFire = GameObject.FindObjectOfType<RepeaterFire>();
+        //shotgunFire = GameObject.FindObjectOfType<ShotgunFire>();
+        //bowFire = GameObject.FindObjectOfType<BowFire>();
     }
 
     void Update()
