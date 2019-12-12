@@ -70,7 +70,7 @@ public class RevolverFire : WeaponFire
             ReloadTick();
         }
 
-        if (Input.GetButtonDown("Reload"))
+        if (Input.GetButtonDown("Reload") && additionalBullets>0)
         {
             Reload();
         }

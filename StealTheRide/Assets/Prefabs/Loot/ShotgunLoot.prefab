@@ -92,7 +92,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -121,4 +121,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponIndex: 2
-  pickupText: {fileID: 0}
+  canvas: {fileID: 6699155513754898970, guid: ae01faf31e5121d4eb1305fb1918f734, type: 3}

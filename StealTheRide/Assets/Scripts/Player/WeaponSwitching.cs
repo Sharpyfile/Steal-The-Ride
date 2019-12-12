@@ -2,16 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public struct LootWeapon
+{
+    public GameObject weapon;
+}
+
 public class WeaponSwitching : MonoBehaviour
 {
+    public LootWeapon[] lootTable;
+
+
     public int selectedWeapon = 0;
     public WeaponFire weaponScript;
 
     //public WeaponFire firstWeapon;
     //public WeaponFire secondWeapon;
     public int firstWeapon = 1;
-
     public int secondWeapon = 0;
+
+
 
     public WeaponLoot weaponObjectToPickUp;
     public int weaponToPickUp = -1;
@@ -20,6 +30,21 @@ public class WeaponSwitching : MonoBehaviour
         get { return weaponToPickUp; }
         set { weaponToPickUp = value; }
     }
+
+    public int bulletsToPickUp;
+    public int BulletsToPickUp
+    {
+        get { return bulletsToPickUp; }
+        set { bulletsToPickUp = value; }
+    }
+    public int additionalBulletsToPickUp;
+    public int AdditionalBulletsToPickUp
+    {
+        get { return additionalBulletsToPickUp; }
+        set { additionalBulletsToPickUp = value; }
+    }
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -54,12 +79,7 @@ public class WeaponSwitching : MonoBehaviour
 
         if (weaponToPickUp != -1 && Input.GetKeyDown(KeyCode.E))
         {
-            if (selectedWeapon == firstWeapon)
-            {
-                selectedWeapon = weaponToPickUp;
-            }
-            firstWeapon = weaponToPickUp;
-            weaponObjectToPickUp.Destroy();
+            ChangeWeapon();
         }
 
 
@@ -88,5 +108,28 @@ public class WeaponSwitching : MonoBehaviour
 
         weaponScript = GameObject.FindObjectOfType<WeaponFire>();
         weaponScript.SetBullet();
+    }
+
+    private void ChangeWeapon()
+    {
+        if (selectedWeapon == firstWeapon)
+        {
+            selectedWeapon = weaponToPickUp;
+        }
+        DropWeapon(firstWeapon);
+        firstWeapon = weaponToPickUp;
+        weaponObjectToPickUp.Destroy();
+
+        //transform.GetChild(firstWeapon).gameObject.GameObject.FindObjectOfType<WeaponFire>().BulletsInMagazine = bulletsToPickUp;
+        //transform.GetChild(firstWeapon).AdditionalBullets = additionalBulletsToPickUp;
+    }
+
+    private void DropWeapon(int lootWeapon)
+    {
+        //GameObject newWeaponDrop = lootTable[lootWeapon].weapon;
+        //newWeaponDrop.FindObjectOfType<WeaponFire>().Bullets = 1;
+        //newWeaponDrop.AdditionalBullets = 1;
+
+        Instantiate(lootTable[lootWeapon].weapon, transform.position, Quaternion.identity);
     }
 }
