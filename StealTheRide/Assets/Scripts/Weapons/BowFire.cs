@@ -130,15 +130,20 @@ public class BowFire : WeaponFire
 
         bowSlider.GetComponent<BowSlider>().Set(0);
 
-        Reload();
+        if(additionalBullets > 0)
+        {
+            Reload();
+
+            timestampFiring = Time.time + fireCooldown;
+            weaponInfo = "Ready to load";
+        }
+
 
         //if (bulletsInMagazine == 0)
         //{
         //    weaponInfo = "No bullets!";
         //    Debug.Log("You have no bullets in magazine - reload");
         //}
-        timestampFiring = Time.time + fireCooldown;
-        weaponInfo = "Ready to load";
     }
 
     public void ReloadTick()
@@ -146,8 +151,9 @@ public class BowFire : WeaponFire
         Debug.Log("Loading ...");
         weaponInfo = "Imposing an arrow...";
         bulletsInMagazine++;
+        additionalBullets--;
         //AudioManager.instance.Play("RevolverReloadTick");
-        if (bulletsInMagazine == magazineSize)
+        if (bulletsInMagazine == magazineSize || additionalBullets == 0)
         {
             StopReloading();
             Debug.Log("Fully reloaded!");

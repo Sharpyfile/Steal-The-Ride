@@ -49,7 +49,7 @@ public class ShotgunFire : WeaponFire
             ReloadTick();
         }
 
-        if (Input.GetButtonDown("Reload"))
+        if (Input.GetButtonDown("Reload") && additionalBullets > 0)
         {
             Reload();
         }
@@ -148,6 +148,7 @@ public class ShotgunFire : WeaponFire
         Debug.Log("Loading bullet...");
         weaponInfo = "Reloading...";
         bulletsInMagazine++;
+        additionalBullets--;
         AudioManager.instance.Play("RevolverReloadTick");
         if (isLeftChamberFull == false)
         {
@@ -158,7 +159,7 @@ public class ShotgunFire : WeaponFire
             isRightChamberFull = true;
         }
 
-        if (bulletsInMagazine == magazineSize)
+        if (bulletsInMagazine == magazineSize || additionalBullets == 0)
         {
             StopReloading();
             Debug.Log("Fully reloaded!");
