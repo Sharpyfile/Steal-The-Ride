@@ -11,9 +11,11 @@ public class BowFire : WeaponFire
 
     public float loadIncrease;
 
-    private bool isStopped;
+    private bool isLoading;
     private bool isPeakReached;
     private float timeBow;
+
+    public float timestampLoad;
 
 
     // Start is called before the first frame update
@@ -21,6 +23,8 @@ public class BowFire : WeaponFire
     {
         timestampFiring = Time.time;
         timestampReload = Time.time;
+        timestampLoad = Time.time;
+
         weaponInfo = "Ready to load";
     }
 
@@ -40,17 +44,16 @@ public class BowFire : WeaponFire
                     isPeakReached = false;
                     timeBow = Time.time;
                 }
-                if (Input.GetMouseButton(0))
+                if (Input.GetMouseButtonDown(0))
                 {
-                    Load();
+                    isLoading = true;
                 }
                 if (Input.GetMouseButtonUp(0))
                 {
-                    if (isStopped == false && timestampFiring <= Time.time)
+                    if (isLoading == true && timestampFiring <= Time.time)
                         Fire();
                     else
                     {
-                        isStopped = false;
                         weaponInfo = "Ready to load";
                     }
                 }
@@ -60,12 +63,28 @@ public class BowFire : WeaponFire
                 }
             }
            
+            if(bulletsInMagazine == 0 && additionalBullets > 0)
+            {
+                Reload();
+
+                timestampFiring = Time.time + fireCooldown;
+                weaponInfo = "Ready to load";
+            }
+            else if (bulletsInMagazine == 0 && additionalBullets == 0)
+            {
+                weaponInfo = "No arrows!";
+            }
 
         }
 
         if (isReloading && timestampReload <= Time.time)
         {
             ReloadTick();
+        }
+
+        if (isLoading && timestampLoad <= Time.time)
+        {
+            Load();
         }
 
         //if (Input.GetButtonDown("Reload"))
@@ -76,11 +95,9 @@ public class BowFire : WeaponFire
 
     private void Load()
     {
-        if(isStopped == false)
-        {
-            weaponInfo = "Loading...";
-            bowSlider.GetComponent<BowSlider>().Set(speed);
-        }
+        weaponInfo = "Loading...";
+        bowSlider.GetComponent<BowSlider>().Set(speed);
+
         if (speed >= 10)
         {
             isPeakReached = true;
@@ -107,12 +124,12 @@ public class BowFire : WeaponFire
                 damage = 0.5f;
         }
 
-
+        timestampLoad = Time.time + 0.01f;
     }
 
     private void StopLoadingArrow()
     {
-        isStopped = true;
+        isLoading = false;
         weaponInfo = "Load cancelled";
         bowSlider.GetComponent<BowSlider>().Set(0);
     }
@@ -121,7 +138,7 @@ public class BowFire : WeaponFire
     {
         //reloadSlider.SetActive(false);
         SetBullet();
-
+        isLoading = false;
         Shoot();
 
         AudioManager.instance.Play("BowShot");
@@ -130,20 +147,6 @@ public class BowFire : WeaponFire
 
         bowSlider.GetComponent<BowSlider>().Set(0);
 
-        if(additionalBullets > 0)
-        {
-            Reload();
-
-            timestampFiring = Time.time + fireCooldown;
-            weaponInfo = "Ready to load";
-        }
-
-
-        //if (bulletsInMagazine == 0)
-        //{
-        //    weaponInfo = "No bullets!";
-        //    Debug.Log("You have no bullets in magazine - reload");
-        //}
     }
 
     public void ReloadTick()

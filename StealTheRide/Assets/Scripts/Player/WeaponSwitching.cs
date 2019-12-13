@@ -91,7 +91,14 @@ public class WeaponSwitching : MonoBehaviour
             selectedWeapon = secondWeapon;
 
         if (previousSelectedWeapon != selectedWeapon)
+        {
+            if (weaponScript.isReloading == true)
+            {
+                weaponScript.StopReloading();
+            }
             SelectWeapon();
+        }
+        
     }
 
     void SelectWeapon ()
@@ -126,7 +133,7 @@ public class WeaponSwitching : MonoBehaviour
     {
         GameObject newWeaponDrop = lootTable[lootWeapon].weapon;
         newWeaponDrop.GetComponent<WeaponLoot>().Bullets = transform.GetChild(lootWeapon).gameObject.GetComponent<WeaponFire>().BulletsInMagazine;
-        newWeaponDrop.GetComponent<WeaponLoot>().AdditionalBullets = transform.GetChild(lootWeapon).gameObject.GetComponent<WeaponFire>().AdditionalBullets;
+        newWeaponDrop.GetComponent<WeaponLoot>().AdditionalBullets = 0;
 
         Instantiate(newWeaponDrop, transform.position, Quaternion.identity);
     }
@@ -134,6 +141,6 @@ public class WeaponSwitching : MonoBehaviour
     private void SetNewWeapon(int newWeapon)
     {
         transform.GetChild(newWeapon).gameObject.GetComponent<WeaponFire>().BulletsInMagazine = bulletsToPickUp;
-        transform.GetChild(newWeapon).gameObject.GetComponent<WeaponFire>().AdditionalBullets = additionalBulletsToPickUp;
+        transform.GetChild(newWeapon).gameObject.GetComponent<WeaponFire>().AdditionalBullets += additionalBulletsToPickUp;
     }
 }
