@@ -53,6 +53,11 @@ public class ShotgunFire : WeaponFire
         {
             Reload();
         }
+
+        if (isReloading && Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            StopReloading();
+        }
     }
 
     private void LeftFire()

@@ -61,6 +61,11 @@ public class RepeaterFire : WeaponFire
             Reload();
         }
 
+        if (isReloading && Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            StopReloading();
+        }
+
     }
 
     private void Fire()

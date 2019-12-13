@@ -75,6 +75,10 @@ public class RevolverFire : WeaponFire
             Reload();
         }
 
+        if (isReloading && Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            StopReloading();
+        }
     }
 
     private void Fire()
