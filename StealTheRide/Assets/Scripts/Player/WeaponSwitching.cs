@@ -118,18 +118,22 @@ public class WeaponSwitching : MonoBehaviour
         }
         DropWeapon(firstWeapon);
         firstWeapon = weaponToPickUp;
+        SetNewWeapon(firstWeapon);
         weaponObjectToPickUp.Destroy();
-
-        //transform.GetChild(firstWeapon).gameObject.GameObject.FindObjectOfType<WeaponFire>().BulletsInMagazine = bulletsToPickUp;
-        //transform.GetChild(firstWeapon).AdditionalBullets = additionalBulletsToPickUp;
     }
 
     private void DropWeapon(int lootWeapon)
     {
-        //GameObject newWeaponDrop = lootTable[lootWeapon].weapon;
-        //newWeaponDrop.FindObjectOfType<WeaponFire>().Bullets = 1;
-        //newWeaponDrop.AdditionalBullets = 1;
+        GameObject newWeaponDrop = lootTable[lootWeapon].weapon;
+        newWeaponDrop.GetComponent<WeaponLoot>().Bullets = transform.GetChild(lootWeapon).gameObject.GetComponent<WeaponFire>().BulletsInMagazine;
+        newWeaponDrop.GetComponent<WeaponLoot>().AdditionalBullets = transform.GetChild(lootWeapon).gameObject.GetComponent<WeaponFire>().AdditionalBullets;
 
-        Instantiate(lootTable[lootWeapon].weapon, transform.position, Quaternion.identity);
+        Instantiate(newWeaponDrop, transform.position, Quaternion.identity);
+    }
+
+    private void SetNewWeapon(int newWeapon)
+    {
+        transform.GetChild(newWeapon).gameObject.GetComponent<WeaponFire>().BulletsInMagazine = bulletsToPickUp;
+        transform.GetChild(newWeapon).gameObject.GetComponent<WeaponFire>().AdditionalBullets = additionalBulletsToPickUp;
     }
 }

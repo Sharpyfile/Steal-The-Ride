@@ -187,6 +187,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 58438611888168638, guid: cfc7fd4760f8d5043b7b8038cde244fd,
+        type: 3}
+      propertyPath: additionalBullets
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 58438611888168638, guid: cfc7fd4760f8d5043b7b8038cde244fd,
+        type: 3}
+      propertyPath: bullets
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfc7fd4760f8d5043b7b8038cde244fd, type: 3}
 --- !u!1 &241460390
@@ -355,11 +365,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BowLoot
       objectReference: {fileID: 0}
-    - target: {fileID: -7403051240142493209, guid: f8cf5dad32aa90840abca5734b021b1e,
-        type: 3}
-      propertyPath: canvas
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3417486419455003707, guid: f8cf5dad32aa90840abca5734b021b1e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -414,6 +419,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7403051240142493209, guid: f8cf5dad32aa90840abca5734b021b1e,
+        type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -7403051240142493209, guid: f8cf5dad32aa90840abca5734b021b1e,
+        type: 3}
+      propertyPath: bullets
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8cf5dad32aa90840abca5734b021b1e, type: 3}
@@ -1557,16 +1572,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShotgunLoot
       objectReference: {fileID: 0}
-    - target: {fileID: 119306470227324907, guid: 452f9c652a8d65e43a88623784e6c273,
-        type: 3}
-      propertyPath: bullets
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 119306470227324907, guid: 452f9c652a8d65e43a88623784e6c273,
-        type: 3}
-      propertyPath: additionalBullets
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 4320861393584986124, guid: 452f9c652a8d65e43a88623784e6c273,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1621,6 +1626,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 119306470227324907, guid: 452f9c652a8d65e43a88623784e6c273,
+        type: 3}
+      propertyPath: bullets
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 119306470227324907, guid: 452f9c652a8d65e43a88623784e6c273,
+        type: 3}
+      propertyPath: additionalBullets
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 452f9c652a8d65e43a88623784e6c273, type: 3}

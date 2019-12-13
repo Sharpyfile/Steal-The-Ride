@@ -49,8 +49,8 @@ public class WeaponLoot : MonoBehaviour
 
             collider.gameObject.GetComponentInChildren<WeaponSwitching>().WeaponToPickUp = weaponIndex;
             collider.gameObject.GetComponentInChildren<WeaponSwitching>().weaponObjectToPickUp = this;
-            //collider.gameObject.GetComponentInChildren<WeaponSwitching>().BulletsToPickUp = bullets;
-            //collider.gameObject.GetComponentInChildren<WeaponSwitching>().AdditionalBulletsToPickUp = additionalBullets;
+            collider.gameObject.GetComponentInChildren<WeaponSwitching>().BulletsToPickUp = bullets;
+            collider.gameObject.GetComponentInChildren<WeaponSwitching>().AdditionalBulletsToPickUp = additionalBullets;
         }
     }
 
@@ -61,8 +61,8 @@ public class WeaponLoot : MonoBehaviour
             pickupText.SetActive(false);
             collider.gameObject.GetComponentInChildren<WeaponSwitching>().WeaponToPickUp = -1;
             collider.gameObject.GetComponentInChildren<WeaponSwitching>().weaponObjectToPickUp = null;
-            //collider.gameObject.GetComponentInChildren<WeaponSwitching>().BulletsToPickUp = 0;
-            //collider.gameObject.GetComponentInChildren<WeaponSwitching>().AdditionalBulletsToPickUp = 0;
+            collider.gameObject.GetComponentInChildren<WeaponSwitching>().BulletsToPickUp = 0;
+            collider.gameObject.GetComponentInChildren<WeaponSwitching>().AdditionalBulletsToPickUp = 0;
         }
     }
 
