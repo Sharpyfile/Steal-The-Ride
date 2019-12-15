@@ -20,6 +20,8 @@ public class EnemyRotation : MonoBehaviour
 
     void Update()
     {
+        if (PauseMenu.IsPaused)
+            return;
         if (Vector2.Distance(transform.position, playerToFollow.position) < range)
 		{
 			if (Vector2.Distance(transform.position, playerToFollow.position) > stoppingDistance)

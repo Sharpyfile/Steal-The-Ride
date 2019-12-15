@@ -22,6 +22,8 @@ public class RepeaterFire : WeaponFire
 
     void Update()
     {
+        if (PauseMenu.IsPaused)
+            return;
         sumOfBullets = bulletsInMagazine + additionalBullets;
 
         if (!isReloading)

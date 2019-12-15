@@ -28,6 +28,8 @@ public class PlayerStatistics : MonoBehaviour
     
     void Update()
     {
+        if (PauseMenu.IsPaused)
+            return;
         PlayerMove();
         animator.SetInteger("Section", CalculateSection());
         if (player.velocity != new Vector2(0.0f, 0.0f))
