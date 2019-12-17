@@ -31,6 +31,8 @@ public class BowFire : WeaponFire
     // Update is called once per frame
     void Update()
     {
+        if (PauseMenu.IsPaused)
+            return;
         sumOfBullets = bulletsInMagazine + additionalBullets;
 
         if (!isReloading)

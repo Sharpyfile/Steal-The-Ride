@@ -75,6 +75,8 @@ public class WeaponSwitching : MonoBehaviour
 
     void Update()
     {
+        if (PauseMenu.IsPaused)
+            return;
         int previousSelectedWeapon = selectedWeapon;
 
         if (weaponToPickUp != -1 && Input.GetKeyDown(KeyCode.E))
@@ -119,7 +121,7 @@ public class WeaponSwitching : MonoBehaviour
 
     private void ChangeWeapon()
     {
-        if (selectedWeapon == firstWeapon)
+        if (true)//selectedWeapon == firstWeapon)
         {
             selectedWeapon = weaponToPickUp;
         }

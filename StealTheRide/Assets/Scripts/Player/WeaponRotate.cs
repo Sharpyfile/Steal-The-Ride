@@ -7,6 +7,8 @@ public class WeaponRotate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseMenu.IsPaused)
+            return;
         Rotate();
     }
 
