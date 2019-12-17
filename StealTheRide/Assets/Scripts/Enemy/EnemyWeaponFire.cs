@@ -13,16 +13,21 @@ public class EnemyWeaponFire : MonoBehaviour
     private float range = 1.5f;
     private float timestampFiring;
     private Transform playerToFollow;
+    private GameObject player;
+    private bool isEnemyTriggered = false;
 
     void Start()
     {
         timestampFiring = Time.time;
-        playerToFollow = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerToFollow = player.transform;
     }
 
     void Update()
     {
-        if (timestampFiring <= Time.time && Vector2.Distance(transform.position, playerToFollow.position) < range && bulletsInMagazine > 0)
+        isTriggered();
+        
+        if (timestampFiring <= Time.time && Vector2.Distance(transform.position, playerToFollow.position) < range && bulletsInMagazine > 0 && isEnemyTriggered == true)
         {
             Fire();
         }
@@ -30,6 +35,21 @@ public class EnemyWeaponFire : MonoBehaviour
         if(bulletsInMagazine == 0)
         {
             Invoke("Reload", magazineSize);
+        }
+    }
+
+    void isTriggered()
+    {
+        var heading = playerToFollow.position - transform.position;
+        var distance = heading.magnitude;
+        var direction = heading / distance;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction);
+        //Debug.Log(hit.collider.gameObject);
+        //Debug.DrawRay(transform.position, direction);
+
+        if (hit.collider != null && hit.collider.gameObject == player)
+        {
+            isEnemyTriggered = true;
         }
     }
 
