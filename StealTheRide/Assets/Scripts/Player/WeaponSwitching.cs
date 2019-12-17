@@ -121,7 +121,7 @@ public class WeaponSwitching : MonoBehaviour
 
     private void ChangeWeapon()
     {
-        if (selectedWeapon == firstWeapon)
+        if (true)//selectedWeapon == firstWeapon)
         {
             selectedWeapon = weaponToPickUp;
         }

@@ -4796,6 +4796,11 @@ PrefabInstance:
       propertyPath: additionalBullets
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1846500728838568263, guid: 09977a2464bf6004c8697f9a4bdb36d0,
+        type: 3}
+      propertyPath: timestampFiring
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1846500728398206455, guid: 09977a2464bf6004c8697f9a4bdb36d0,
         type: 3}
       propertyPath: additionalBullets

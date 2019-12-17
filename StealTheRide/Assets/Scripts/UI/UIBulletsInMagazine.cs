@@ -76,7 +76,7 @@ public class UIBulletsInMagazine : MonoBehaviour
         if (selectedWeapon == 3)
             text.text = "Arrows: \n" + sumOfBullets;  
         else
-            text.text = "Bullets in the magazine: \n" + weapon.bulletsInMagazine + "/" + sumOfBullets;
+            text.text = "Bullets in the magazine: \n" + weapon.bulletsInMagazine + "/" + weapon.additionalBullets;
     }
 
     void SelectWeapon()
