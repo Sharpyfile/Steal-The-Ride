@@ -16,11 +16,12 @@ public class EnemyBullet : MonoBehaviour
 
     public Vector2 Direction { get => direction; set => direction = value; }
 
-    //private void Start()
-    //{
-    //    bullet = GetComponent<Rigidbody2D>();
-    //    player = GameObject.FindGameObjectWithTag("Player").transform;
-    //}
+    private void Start()
+    {
+        transform.Rotate(0, 180, 0);
+        //    bullet = GetComponent<Rigidbody2D>();
+        //    player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
 
     //private void Awake()
     //{
