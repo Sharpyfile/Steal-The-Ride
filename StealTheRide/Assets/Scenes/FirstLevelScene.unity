@@ -4970,49 +4970,49 @@ PrefabInstance:
         type: 3}
       propertyPath: revolverCocked
       value: 
-      objectReference: {fileID: 21300000, guid: 1608800eb09ff91458aa4f9d2ca37b2f,
+      objectReference: {fileID: 21300000, guid: 1b457761ada95b840b4ea4b062414857,
         type: 3}
     - target: {fileID: 431199894325202694, guid: 09977a2464bf6004c8697f9a4bdb36d0,
         type: 3}
       propertyPath: revolverReloading
       value: 
-      objectReference: {fileID: 21300000, guid: 8182fc64f14e55b49a9c3d99cbcb4b1e,
+      objectReference: {fileID: 21300000, guid: d0c7805519aa2a741be3b4ae0269ae7b,
         type: 3}
     - target: {fileID: 431199894325202694, guid: 09977a2464bf6004c8697f9a4bdb36d0,
         type: 3}
       propertyPath: repeaterPush
       value: 
-      objectReference: {fileID: 21300000, guid: 26dd049ce609eaa418871ad893c5e660,
+      objectReference: {fileID: 21300000, guid: 91503ab3f81c3264c88d4ab470fd9c77,
         type: 3}
     - target: {fileID: 431199894325202694, guid: 09977a2464bf6004c8697f9a4bdb36d0,
         type: 3}
       propertyPath: repeaterPull
       value: 
-      objectReference: {fileID: 21300000, guid: 26dd049ce609eaa418871ad893c5e660,
+      objectReference: {fileID: 21300000, guid: 21c8b8ff7221a3d4b96667d9c832f2ac,
         type: 3}
     - target: {fileID: 431199894325202694, guid: 09977a2464bf6004c8697f9a4bdb36d0,
         type: 3}
       propertyPath: repeaterReloading
       value: 
-      objectReference: {fileID: 21300000, guid: 26dd049ce609eaa418871ad893c5e660,
+      objectReference: {fileID: 21300000, guid: 81b6746173914884b95c90c223ac1326,
         type: 3}
     - target: {fileID: 431199894325202694, guid: 09977a2464bf6004c8697f9a4bdb36d0,
         type: 3}
       propertyPath: shotgunLeft
       value: 
-      objectReference: {fileID: 21300000, guid: 42f8b97f9bbfe64468ea96fcb2613ee7,
+      objectReference: {fileID: 21300000, guid: c2fe6f140c3e24e4aa60091c2d85819b,
         type: 3}
     - target: {fileID: 431199894325202694, guid: 09977a2464bf6004c8697f9a4bdb36d0,
         type: 3}
       propertyPath: shotgunRight
       value: 
-      objectReference: {fileID: 21300000, guid: 42f8b97f9bbfe64468ea96fcb2613ee7,
+      objectReference: {fileID: 21300000, guid: 4e8c5ded07342b8458a49772021546ef,
         type: 3}
     - target: {fileID: 431199894325202694, guid: 09977a2464bf6004c8697f9a4bdb36d0,
         type: 3}
       propertyPath: shotgunReloading
       value: 
-      objectReference: {fileID: 21300000, guid: 42f8b97f9bbfe64468ea96fcb2613ee7,
+      objectReference: {fileID: 21300000, guid: f3f497f95b7ee084db11e676e939e4a1,
         type: 3}
     - target: {fileID: 431199894325202694, guid: 09977a2464bf6004c8697f9a4bdb36d0,
         type: 3}
@@ -5034,6 +5034,30 @@ PrefabInstance:
       propertyPath: bowFire
       value: 
       objectReference: {fileID: 721084900}
+    - target: {fileID: 431199894325202694, guid: 09977a2464bf6004c8697f9a4bdb36d0,
+        type: 3}
+      propertyPath: bow
+      value: 
+      objectReference: {fileID: 21300000, guid: ce0a6ce1ae6634841b2a6c2d0aefa781,
+        type: 3}
+    - target: {fileID: 431199894325202694, guid: 09977a2464bf6004c8697f9a4bdb36d0,
+        type: 3}
+      propertyPath: shotgun
+      value: 
+      objectReference: {fileID: 21300000, guid: 110dac6fae2f0314183c205726ea2c58,
+        type: 3}
+    - target: {fileID: 431199894325202694, guid: 09977a2464bf6004c8697f9a4bdb36d0,
+        type: 3}
+      propertyPath: repeater
+      value: 
+      objectReference: {fileID: 21300000, guid: c694981dffa16c04390aa80c7e28f6e4,
+        type: 3}
+    - target: {fileID: 431199894325202694, guid: 09977a2464bf6004c8697f9a4bdb36d0,
+        type: 3}
+      propertyPath: revolver
+      value: 
+      objectReference: {fileID: 21300000, guid: 01a11b9a2f6b50f4aad74195d4b43c51,
+        type: 3}
     - target: {fileID: 115840835189712753, guid: 09977a2464bf6004c8697f9a4bdb36d0,
         type: 3}
       propertyPath: m_RootOrder
@@ -5105,7 +5129,7 @@ PrefabInstance:
     - target: {fileID: 431199893784476462, guid: 09977a2464bf6004c8697f9a4bdb36d0,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000010721205
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 431199892886198842, guid: 09977a2464bf6004c8697f9a4bdb36d0,
         type: 3}
@@ -5137,6 +5161,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 431199894325202691, guid: 09977a2464bf6004c8697f9a4bdb36d0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -42
+      objectReference: {fileID: 0}
+    - target: {fileID: 431199894325202688, guid: 09977a2464bf6004c8697f9a4bdb36d0,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 01a11b9a2f6b50f4aad74195d4b43c51,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09977a2464bf6004c8697f9a4bdb36d0, type: 3}
 --- !u!1 &2044132298 stripped
