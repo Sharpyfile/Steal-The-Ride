@@ -183,7 +183,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6d67c5c39b0fddf489d602ce9f445145, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -202,11 +202,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2180865081049934862}
     m_Modifications:
-    - target: {fileID: 2977735116056089456, guid: f06a8d9478076984a8df67f5c771d3f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Crosshair
-      objectReference: {fileID: 0}
     - target: {fileID: 2977735116056089462, guid: f06a8d9478076984a8df67f5c771d3f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -260,6 +255,26 @@ PrefabInstance:
     - target: {fileID: 2977735116056089462, guid: f06a8d9478076984a8df67f5c771d3f3,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2977735116056089456, guid: f06a8d9478076984a8df67f5c771d3f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Crosshair
+      objectReference: {fileID: 0}
+    - target: {fileID: 2977735116056089457, guid: f06a8d9478076984a8df67f5c771d3f3,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2977735116056089457, guid: f06a8d9478076984a8df67f5c771d3f3,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2977735116056089457, guid: f06a8d9478076984a8df67f5c771d3f3,
+        type: 3}
+      propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
