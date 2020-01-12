@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -49,6 +49,8 @@ public class UIWeaponPanel : MonoBehaviour
         isCocked = revolverFire.isCocked;
         isLeverForward = repeaterFire.isLeverForward;
         isLeverBackward = repeaterFire.isLeverBackward;
+	isLeftChamberFull = shotgunFire.isLeftChamberFull;
+	isRightChamberFull = shotgunFire.isRightChamberFull;
         revolverBulletsInMagazine = revolverFire.bulletsInMagazine;
         repeaterBulletsInMagazine = repeaterFire.bulletsInMagazine;
         shotgunBulletsInMagazine = shotgunFire.bulletsInMagazine;
@@ -92,7 +94,7 @@ public class UIWeaponPanel : MonoBehaviour
             }
             if (repeaterBulletsInMagazine == 0)
             {
-                GetComponent<Image>().rectTransform.sizeDelta = new Vector2(520.0f, 200.0f);
+                GetComponent<Image>().rectTransform.sizeDelta = new Vector2(500.0f, 350.0f);
                 GetComponent<Image>().sprite = repeaterReloading;
             }
         }
@@ -103,12 +105,12 @@ public class UIWeaponPanel : MonoBehaviour
             GetComponent<Image>().sprite = shotgun;
             if (isLeftChamberFull == false && isRightChamberFull == true)
             {
-                GetComponent<Image>().rectTransform.sizeDelta = new Vector2(520.0f, 200.0f);
+                GetComponent<Image>().rectTransform.sizeDelta = new Vector2(500.0f, 350.0f);
                 GetComponent<Image>().sprite = shotgunLeft;
             }
             if (isLeftChamberFull == true && isRightChamberFull == false)
             {
-                GetComponent<Image>().rectTransform.sizeDelta = new Vector2(520.0f, 200.0f);
+                GetComponent<Image>().rectTransform.sizeDelta = new Vector2(500.0f, 350.0f);
                 GetComponent<Image>().sprite = shotgunRight;
             }
             if (isLeftChamberFull == true && isRightChamberFull == true)
@@ -118,7 +120,7 @@ public class UIWeaponPanel : MonoBehaviour
             }
             if (shotgunBulletsInMagazine == 0)
             {
-                GetComponent<Image>().rectTransform.sizeDelta = new Vector2(520.0f, 200.0f);
+                GetComponent<Image>().rectTransform.sizeDelta = new Vector2(500.0f, 350.0f);
                 GetComponent<Image>().sprite = shotgunReloading;
             }
         }

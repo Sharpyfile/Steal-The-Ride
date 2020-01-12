@@ -22,6 +22,8 @@ public class ShotgunFire : WeaponFire
     // Update is called once per frame
     void Update()
     {
+        if (PauseMenu.IsPaused)
+            return;
         sumOfBullets = bulletsInMagazine + additionalBullets;
 
         if (!isReloading)
@@ -49,9 +51,14 @@ public class ShotgunFire : WeaponFire
             ReloadTick();
         }
 
-        if (Input.GetButtonDown("Reload"))
+        if (Input.GetButtonDown("Reload") && additionalBullets > 0)
         {
             Reload();
+        }
+
+        if (isReloading && Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            StopReloading();
         }
     }
 
@@ -148,6 +155,7 @@ public class ShotgunFire : WeaponFire
         Debug.Log("Loading bullet...");
         weaponInfo = "Reloading...";
         bulletsInMagazine++;
+        additionalBullets--;
         AudioManager.instance.Play("RevolverReloadTick");
         if (isLeftChamberFull == false)
         {
@@ -158,7 +166,7 @@ public class ShotgunFire : WeaponFire
             isRightChamberFull = true;
         }
 
-        if (bulletsInMagazine == magazineSize)
+        if (bulletsInMagazine == magazineSize || additionalBullets == 0)
         {
             StopReloading();
             Debug.Log("Fully reloaded!");

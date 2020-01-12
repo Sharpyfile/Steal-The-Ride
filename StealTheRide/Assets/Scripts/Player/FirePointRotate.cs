@@ -7,6 +7,8 @@ public class FirePointRotate : MonoBehaviour
 
     void Update()
     {
+        if (PauseMenu.IsPaused)
+            return;
         Rotate();
     }
     void Rotate()

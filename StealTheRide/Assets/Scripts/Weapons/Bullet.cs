@@ -35,6 +35,7 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
+        transform.Rotate(0, 180, 0);
         //bullet = GetComponent<Rigidbody2D>();
         //bullet.velocity = new Vector2(speed, 0);
     }

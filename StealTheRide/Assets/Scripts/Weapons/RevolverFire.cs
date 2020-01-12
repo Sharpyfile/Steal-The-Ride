@@ -23,6 +23,8 @@ public class RevolverFire : WeaponFire
 
     void Update()
     {
+        if (PauseMenu.IsPaused)
+            return;
         sumOfBullets = bulletsInMagazine + additionalBullets;
 
         if (!isReloading)
@@ -70,11 +72,15 @@ public class RevolverFire : WeaponFire
             ReloadTick();
         }
 
-        if (Input.GetButtonDown("Reload"))
+        if (Input.GetButtonDown("Reload") && additionalBullets>0)
         {
             Reload();
         }
 
+        if (isReloading && Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            StopReloading();
+        }
     }
 
     private void Fire()

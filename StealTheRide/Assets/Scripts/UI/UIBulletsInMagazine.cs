@@ -74,9 +74,9 @@ public class UIBulletsInMagazine : MonoBehaviour
         int sumOfBullets = weapon.bulletsInMagazine + weapon.additionalBullets;
 
         if (selectedWeapon == 3)
-            text.text = ""; // "Arrows: \n" + weapon.bulletsInMagazine;
+            text.text = "" + sumOfBullets; //"Arrows: \n" + sumOfBullets;  
         else
-            text.text = "Bullets in the magazine: \n" + weapon.bulletsInMagazine + "/" + sumOfBullets;
+            text.text = weapon.bulletsInMagazine + "/" + weapon.additionalBullets; //"Bullets in the magazine: \n" + weapon.bulletsInMagazine + "/" + weapon.additionalBullets;
     }
 
     void SelectWeapon()
@@ -290,7 +290,7 @@ public class UIBulletsInMagazine : MonoBehaviour
 
     void CheckRemainingShotgunShots()
     {
-        if (weapon.isLeftChamberFull == true)
+        if (weapon.isLeftChamberFull == true && weapon.bulletsInMagazine > 0)
         {
             shotgun1.GetComponent<Image>().color = Color.white;
         }
@@ -299,7 +299,7 @@ public class UIBulletsInMagazine : MonoBehaviour
             shotgun1.GetComponent<Image>().color = Color.grey;
         }
 
-        if (weapon.isRightChamberFull == true)
+        if (weapon.isRightChamberFull == true && weapon.bulletsInMagazine > 0)
         {
             shotgun2.GetComponent<Image>().color = Color.white;
         }

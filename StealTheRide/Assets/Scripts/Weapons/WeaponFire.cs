@@ -6,8 +6,20 @@ public abstract class WeaponFire : MonoBehaviour
 {
     public string weaponInfo;
     public int magazineSize;
+
     public int bulletsInMagazine;
+    public int BulletsInMagazine
+    {
+        get { return bulletsInMagazine; }
+        set { bulletsInMagazine = value; }
+    }
+
     public int additionalBullets;
+    public int AdditionalBullets
+    {
+        get { return additionalBullets; }
+        set { additionalBullets = value; }
+    }
     public int sumOfBullets;
 
     public GameObject bullet;
@@ -70,8 +82,9 @@ public abstract class WeaponFire : MonoBehaviour
     {
         Debug.Log("Loading bullet...");
         bulletsInMagazine++;
+        additionalBullets--;
         AudioManager.instance.Play("RevolverReloadTick");
-        if (bulletsInMagazine == magazineSize)
+        if (bulletsInMagazine == magazineSize || additionalBullets == 0)
         {
             StopReloading();
             Debug.Log("Fully reloaded!");

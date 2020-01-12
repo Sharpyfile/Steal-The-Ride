@@ -22,6 +22,8 @@ public class RepeaterFire : WeaponFire
 
     void Update()
     {
+        if (PauseMenu.IsPaused)
+            return;
         sumOfBullets = bulletsInMagazine + additionalBullets;
 
         if (!isReloading)
@@ -56,9 +58,14 @@ public class RepeaterFire : WeaponFire
             ReloadTick();
         }
 
-        if (Input.GetButtonDown("Reload"))
+        if (Input.GetButtonDown("Reload") && additionalBullets > 0)
         {
             Reload();
+        }
+
+        if (isReloading && Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            StopReloading();
         }
 
     }
