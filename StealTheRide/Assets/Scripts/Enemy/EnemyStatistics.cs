@@ -32,8 +32,11 @@ public class EnemyStatistics : ALootable
         Debug.Log("You hit the enemy!");
         if (enemyHealth <= 0)
         {
-            AudioManager.instance.Play("Death");
-            Debug.Log("You killed the enemy!");
+            if (gameObject.tag == "Enemy")
+            {
+                AudioManager.instance.Play("Death");
+                Debug.Log("You killed the enemy!");
+            }
             Drop();
             Destroy(enemy);
             
@@ -41,7 +44,10 @@ public class EnemyStatistics : ALootable
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         } else
         {
-            AudioManager.instance.Play("Pain");
+            if (gameObject.tag == "Enemy")
+            {
+                AudioManager.instance.Play("Pain");
+            }
         }
             
     }
