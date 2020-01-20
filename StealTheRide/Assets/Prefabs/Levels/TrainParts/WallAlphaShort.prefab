@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9123938549279702553}
   - component: {fileID: 9123938549279702550}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: WallAlphaShort
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9123938550746233847}
   - component: {fileID: 9123938550746233846}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
