@@ -10,7 +10,6 @@ public class PlayerStatistics : MonoBehaviour
     public GameObject bleedPSPrefab;
     public GameObject firePoint;
     public float walkingSpeed = 2f;
-    public float sprintingSpeed = 5f;
     public int maxHealth = 10;
     public int health = 10;
 
@@ -36,13 +35,18 @@ public class PlayerStatistics : MonoBehaviour
             animator.SetBool("Moving", true);
         else
             animator.SetBool("Moving", false);
+
+
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
     }
 
     void PlayerMove()
     {
         playerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        speed = Input.GetKey(KeyCode.LeftShift) ? sprintingSpeed : walkingSpeed;
-        player.velocity = playerInput * speed;
+        player.velocity = playerInput * walkingSpeed;
     }
 
     void PlayerRotate()
