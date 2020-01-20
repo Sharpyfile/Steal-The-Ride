@@ -210,6 +210,8 @@ MonoBehaviour:
   particleSystem: {fileID: 1736386675401957926}
   fireParticleCount: 10
   speed: 2
+  magazineSize: 6
+  bulletsInMagazine: 6
 --- !u!1 &684621307598192034
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,9 +282,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 2.5
-  enemySpeed: 0.01
+  enemySpeed: 500
   stoppingDistance: 1
   retreatDistance: 0.5
+  enemyTriggered: 0
+  nextWaypointDistance: 0.3
+  animator: {fileID: 0}
 --- !u!114 &684621307598192031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,16 +340,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 684621307590992560}
     m_Modifications:
-    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
-        type: 3}
-      propertyPath: m_Name
-      value: RevolerSparks
-      objectReference: {fileID: 0}
-    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 1267940354642793682, guid: 08b9677c5dca4544aad4daab9d5e0705,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -399,6 +394,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
+        type: 3}
+      propertyPath: m_Name
+      value: RevolerSparks
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08b9677c5dca4544aad4daab9d5e0705, type: 3}

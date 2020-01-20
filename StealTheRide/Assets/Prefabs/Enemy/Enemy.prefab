@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 2.5
-  enemySpeed: 0.01
+  enemySpeed: 500
   stoppingDistance: 1
   retreatDistance: 0.5
   enemyTriggered: 0
@@ -466,16 +466,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 655024946598840607}
     m_Modifications:
-    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
-        type: 3}
-      propertyPath: m_Name
-      value: RevolerSparks
-      objectReference: {fileID: 0}
-    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 1267940354642793682, guid: 08b9677c5dca4544aad4daab9d5e0705,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -530,6 +520,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
+        type: 3}
+      propertyPath: m_Name
+      value: RevolerSparks
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1267940354642793684, guid: 08b9677c5dca4544aad4daab9d5e0705,
         type: 3}

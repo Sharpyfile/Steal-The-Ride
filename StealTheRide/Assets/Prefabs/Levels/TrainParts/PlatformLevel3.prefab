@@ -357,9 +357,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 2.5
-  enemySpeed: 0.01
-  stoppingDistance: 1
-  retreatDistance: 0.5
+  enemySpeed: 500
+  stoppingDistance: 1.7
+  retreatDistance: 1.2
   enemyTriggered: 0
   nextWaypointDistance: 0.3
   animator: {fileID: 3998376217317305419}
@@ -715,9 +715,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 2.5
-  enemySpeed: 0.01
-  stoppingDistance: 1
-  retreatDistance: 0.5
+  enemySpeed: 500
+  stoppingDistance: 1.7
+  retreatDistance: 1.2
   enemyTriggered: 0
   nextWaypointDistance: 0.3
   animator: {fileID: 3998376216485233088}
@@ -1232,9 +1232,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 2.5
-  enemySpeed: 0.01
-  stoppingDistance: 1
-  retreatDistance: 0.5
+  enemySpeed: 500
+  stoppingDistance: 1.7
+  retreatDistance: 1.2
   enemyTriggered: 0
   nextWaypointDistance: 0.3
   animator: {fileID: 3998376218276778657}
@@ -1590,9 +1590,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 2.5
-  enemySpeed: 0.01
-  stoppingDistance: 1
-  retreatDistance: 0.5
+  enemySpeed: 500
+  stoppingDistance: 1.7
+  retreatDistance: 1.2
   enemyTriggered: 0
   nextWaypointDistance: 0.3
   animator: {fileID: 3998376217541067478}
@@ -1869,9 +1869,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 2.5
-  enemySpeed: 0.01
-  stoppingDistance: 1
-  retreatDistance: 0.5
+  enemySpeed: 500
+  stoppingDistance: 1.7
+  retreatDistance: 1.2
   enemyTriggered: 0
   nextWaypointDistance: 0.3
   animator: {fileID: 3998376217493334516}
@@ -23032,16 +23032,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6816327041999998262}
     m_Modifications:
-    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
-        type: 3}
-      propertyPath: m_Name
-      value: RevolerSparks
-      objectReference: {fileID: 0}
-    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 1267940354642793682, guid: 08b9677c5dca4544aad4daab9d5e0705,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -23097,6 +23087,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
+        type: 3}
+      propertyPath: m_Name
+      value: RevolerSparks
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 1267940354642793684, guid: 08b9677c5dca4544aad4daab9d5e0705,
         type: 3}
       propertyPath: m_VertexStreams.Array.size
@@ -23138,16 +23138,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6816327042769150141}
     m_Modifications:
-    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
-        type: 3}
-      propertyPath: m_Name
-      value: RevolerSparks
-      objectReference: {fileID: 0}
-    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 1267940354642793682, guid: 08b9677c5dca4544aad4daab9d5e0705,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -23203,6 +23193,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
+        type: 3}
+      propertyPath: m_Name
+      value: RevolerSparks
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 1267940354642793684, guid: 08b9677c5dca4544aad4daab9d5e0705,
         type: 3}
       propertyPath: m_VertexStreams.Array.size
@@ -23238,16 +23238,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6816327043087348700}
     m_Modifications:
-    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
-        type: 3}
-      propertyPath: m_Name
-      value: RevolerSparks
-      objectReference: {fileID: 0}
-    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 1267940354642793682, guid: 08b9677c5dca4544aad4daab9d5e0705,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -23302,6 +23292,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
+        type: 3}
+      propertyPath: m_Name
+      value: RevolerSparks
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1267940354642793684, guid: 08b9677c5dca4544aad4daab9d5e0705,
         type: 3}
@@ -23344,16 +23344,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6816327043827508139}
     m_Modifications:
-    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
-        type: 3}
-      propertyPath: m_Name
-      value: RevolerSparks
-      objectReference: {fileID: 0}
-    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 1267940354642793682, guid: 08b9677c5dca4544aad4daab9d5e0705,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -23408,6 +23398,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
+        type: 3}
+      propertyPath: m_Name
+      value: RevolerSparks
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1267940354642793684, guid: 08b9677c5dca4544aad4daab9d5e0705,
         type: 3}
@@ -23450,16 +23450,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6816327043938158729}
     m_Modifications:
-    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
-        type: 3}
-      propertyPath: m_Name
-      value: RevolerSparks
-      objectReference: {fileID: 0}
-    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 1267940354642793682, guid: 08b9677c5dca4544aad4daab9d5e0705,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -23514,6 +23504,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
+        type: 3}
+      propertyPath: m_Name
+      value: RevolerSparks
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1267940354642793684, guid: 08b9677c5dca4544aad4daab9d5e0705,
         type: 3}
@@ -23700,16 +23700,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 121180308765752322}
     m_Modifications:
-    - target: {fileID: 4495033317892222977, guid: b47629dab942c6c4f96baf6c189e837a,
-        type: 3}
-      propertyPath: m_Name
-      value: A_
-      objectReference: {fileID: 0}
-    - target: {fileID: 4495033317892222977, guid: b47629dab942c6c4f96baf6c189e837a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5445689119939482862, guid: b47629dab942c6c4f96baf6c189e837a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -23779,6 +23769,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.1484011
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495033317892222977, guid: b47629dab942c6c4f96baf6c189e837a,
+        type: 3}
+      propertyPath: m_Name
+      value: A_
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495033317892222977, guid: b47629dab942c6c4f96baf6c189e837a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5805612974182327540, guid: b47629dab942c6c4f96baf6c189e837a,
         type: 3}

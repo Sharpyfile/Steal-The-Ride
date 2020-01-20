@@ -10,7 +10,7 @@ public class EnemyRotation : MonoBehaviour
     public float stoppingDistance;
     public float retreatDistance;
     public bool enemyTriggered;
-    public float nextWaypointDistance = 0.3f;
+    public float nextWaypointDistance = 0.1f;
 
     public Animator animator;
     private GameObject player;
@@ -28,7 +28,9 @@ public class EnemyRotation : MonoBehaviour
     private Seeker seeker;
     private Rigidbody2D rb;
     private Vector2 force;
+    private Vector2 forceZero;
     private bool enemyInRange;
+    private bool gridCalculated;
 
     void Start()
     {
@@ -38,28 +40,29 @@ public class EnemyRotation : MonoBehaviour
 
         enemyInRange = false;
         enemyTriggered = false;
+        gridCalculated = false;
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-
+        seeker.StartPath(rb.position, playerToFollow.position, OnPathComplete);
+        InvokeRepeating("UpdatePath", 0f, 0.5f);
         force = new Vector2(0.0f, 0.0f);
+        forceZero = new Vector2(0.0f, 0.0f);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (PauseMenu.IsPaused)
             return;
 
+        if (gridCalculated == false)
+        {
+            AstarPath.active.Scan();
+            gridCalculated = true;
+        }
+
         CheckIfEnemySeePlayer();
 
         if (enemyInRange == true)
-        {
-            InvokeRepeating("UpdatePath", 0f, 0.5f);
-            seeker.StartPath(rb.position, playerToFollow.position, OnPathComplete);
-        }
-
-        AstarPath.active.Scan();
-
-        if (enemyTriggered == true)
         {
             if (path == null)
             {
@@ -78,36 +81,46 @@ public class EnemyRotation : MonoBehaviour
 
             Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
 
+            float distanceToWaypoint = Vector3.Distance(transform.position, path.vectorPath[currentWaypoint]);
+            //float speedFactor = 1.0f;
+            var speedFactor = reachedEndOfPath ? Mathf.Sqrt(distanceToWaypoint / nextWaypointDistance) : 1f;
+
             if (Vector2.Distance(transform.position, playerToFollow.position) < range)
             {
                 if (Vector2.Distance(transform.position, playerToFollow.position) > stoppingDistance)
                 {
                     //transform.position = Vector2.MoveTowards(transform.position, playerToFollow.position, enemySpeed);
                     animator.SetBool("Movement", true);
-                    force = direction * enemySpeed;
+                    force = direction * enemySpeed * speedFactor;
                 }
                 else if (Vector2.Distance(transform.position, playerToFollow.position) < stoppingDistance && Vector2.Distance(transform.position, playerToFollow.position) > retreatDistance)
                 {
                     //transform.position = this.transform.position;
                     animator.SetBool("Movement", false);
-                    force = direction * 0;
+                    force = direction * 0 * speedFactor;
+                    rb.velocity = force;
                 }
                 else if (Vector2.Distance(transform.position, playerToFollow.position) < retreatDistance)
                 {
                     //transform.position = Vector2.MoveTowards(transform.position, playerToFollow.position, -enemySpeed);
                     animator.SetBool("Movement", true);
-                    force = direction * enemySpeed;
+                    force = direction * -enemySpeed * speedFactor;
                 }
             }
             else if (Vector2.Distance(transform.position, playerToFollow.position) >= range)
             {
                 //transform.position = this.transform.position;
                 animator.SetBool("Movement", false);
-                force = direction * 0;
+                force = direction * 0 * speedFactor;
+                rb.velocity = force;
             }
             animator.SetInteger("Section", CalculateSection());
-
+            //if (force - force == forceZero)
+            //{
+            //    rb.velocity = forceZero;
+            //}
             rb.AddForce(force);
+            //rb.velocity = force;
 
             float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 
@@ -188,7 +201,6 @@ public class EnemyRotation : MonoBehaviour
         Vector2 currentPosition = new Vector2(transform.position.x, transform.position.y);
         currentPosition.x = playerToFollow.position.x - currentPosition.x;
         currentPosition.y = playerToFollow.position.y - currentPosition.y;
-
 
         return Mathf.Atan2(currentPosition.y, currentPosition.x) * Mathf.Rad2Deg;
     }
