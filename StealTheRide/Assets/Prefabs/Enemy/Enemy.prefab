@@ -158,6 +158,8 @@ MonoBehaviour:
   enemyTriggered: 0
   nextWaypointDistance: 0.3
   animator: {fileID: 6985783545609775202}
+  startWaitTime: 3
+  moveSpots: []
 --- !u!114 &655024946591389232
 MonoBehaviour:
   m_ObjectHideFlags: 0

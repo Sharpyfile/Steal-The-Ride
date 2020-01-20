@@ -28,7 +28,7 @@ public class EnemyWeaponFire : MonoBehaviour
     {
         CheckBeforeShoot();
 
-        if (timestampFiring <= Time.time && Vector2.Distance(transform.position, playerToFollow.position) < range && bulletsInMagazine > 0 && enemyShoot == true)
+        if (timestampFiring <= Time.time && Vector2.Distance(transform.position, playerToFollow.position) < 1.5f*range && bulletsInMagazine > 0 && enemyShoot == true)
         {
             Fire();
         }

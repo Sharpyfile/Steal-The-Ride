@@ -32,6 +32,16 @@ public class EnemyRotation : MonoBehaviour
     private bool enemyInRange;
     private bool gridCalculated;
 
+    private float waitTime;
+    public float startWaitTime;
+    public Transform[] moveSpots;
+    private int startSpot;
+
+    private float startWaitTimeDuringCombat;
+    private float waitTimeDuringCombat;
+
+    public EnemyWeaponFire enemyWeaponFire;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -47,6 +57,12 @@ public class EnemyRotation : MonoBehaviour
         InvokeRepeating("UpdatePath", 0f, 0.5f);
         force = new Vector2(0.0f, 0.0f);
         forceZero = new Vector2(0.0f, 0.0f);
+
+        waitTime = startWaitTime;
+
+        startWaitTimeDuringCombat = 0.5f;
+        waitTimeDuringCombat = startWaitTimeDuringCombat;
+        startSpot = 0;
     }
 
     void FixedUpdate()
@@ -99,6 +115,10 @@ public class EnemyRotation : MonoBehaviour
                     animator.SetBool("Movement", false);
                     force = direction * 0 * speedFactor;
                     rb.velocity = force;
+                    if (enemyWeaponFire.bulletsInMagazine <= 1)
+                    {
+                        DodgeOnReloading();
+                    }
                 }
                 else if (Vector2.Distance(transform.position, playerToFollow.position) < retreatDistance)
                 {
@@ -113,14 +133,14 @@ public class EnemyRotation : MonoBehaviour
                 animator.SetBool("Movement", false);
                 force = direction * 0 * speedFactor;
                 rb.velocity = force;
+                if (enemyWeaponFire.bulletsInMagazine <= 1)
+                {
+                    DodgeOnReloading();
+                }
             }
             animator.SetInteger("Section", CalculateSection());
-            //if (force - force == forceZero)
-            //{
-            //    rb.velocity = forceZero;
-            //}
+
             rb.AddForce(force);
-            //rb.velocity = force;
 
             float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 
@@ -128,6 +148,10 @@ public class EnemyRotation : MonoBehaviour
             {
                 currentWaypoint++;
             }
+        }
+        else
+        {
+            Patrol();
         }
     }
 
@@ -194,6 +218,39 @@ public class EnemyRotation : MonoBehaviour
                 enemyTriggered = true;
             }
         }
+    }
+
+    void Patrol()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, moveSpots[startSpot].position, enemySpeed/50000.0f);
+
+        if (Vector2.Distance(transform.position, moveSpots[startSpot].position) < 0.2f)
+        {
+            if (waitTime <= 0.0f)
+            {
+                startSpot += 1;
+                waitTime = startWaitTime;
+
+                if (startSpot > 1)
+                {
+                    startSpot = 0;
+                }
+            } 
+            else
+            {
+                waitTime -= Time.deltaTime;
+            }
+        }  
+    }
+
+    void DodgeOnReloading()
+    {
+        Vector2 actualPosition = transform.position;
+        float randomX = Random.Range(-0.03f, 0.03f);
+        float randomY = Random.Range(-0.03f, 0.03f);
+        actualPosition.x += randomX;
+        actualPosition.y += randomY;
+        transform.position = Vector2.MoveTowards(transform.position, actualPosition, enemySpeed / 50000.0f);
     }
 
     private float GetRotationAngle()
