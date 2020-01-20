@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2010242911347388685}
   - component: {fileID: 2010242911347388686}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: BenchSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2010242911453202870}
   - component: {fileID: 2010242911453202871}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Bench
   m_TagString: Wall
   m_Icon: {fileID: 0}

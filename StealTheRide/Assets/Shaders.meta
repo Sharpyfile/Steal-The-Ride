@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:StealTheRide/Assets/AstarPathfindingProject/Editor/EditorAssets/DarkSkin.meta
+guid: d9ac849065432a1428fb4f22b126b889
+=======
 guid: b5b7ae00092a0f5428f20f46b08f6915
+>>>>>>> origin/develop:StealTheRide/Assets/Shaders.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:StealTheRide/Assets/AstarPathfindingProject/Editor/EditorAssets/LightSkin.meta
+guid: f3ea61f80ea92584dbcf1e000b5a6779
+folderAsset: yes
+DefaultImporter:
+=======
 guid: 0923e1b2db1e4ef478f8387e9cece36a
 NativeFormatImporter:
+>>>>>>> origin/develop:StealTheRide/Assets/Shaders/New Material.mat.meta
   externalObjects: {}
   mainObjectFileID: 2100000
   userData: 
