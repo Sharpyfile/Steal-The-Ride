@@ -36,6 +36,12 @@ public class PlayerStatistics : MonoBehaviour
             animator.SetBool("Moving", true);
         else
             animator.SetBool("Moving", false);
+
+
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
     }
 
     void PlayerMove()

@@ -54,6 +54,12 @@ public class EnemyBullet : MonoBehaviour
             collision.gameObject.SendMessage("ApplyDamagePlayer", this);
             Destroy(gameObject);
         }
+        if (collision.gameObject.tag == "Barrel")
+        {
+            LaunchPS(hitSolidPSPrefab);
+            collision.gameObject.SendMessage("ApplyDamageEnemy", this);
+            Destroy(gameObject);
+        }
         if (collision.gameObject.tag == "Wall")
         {
             LaunchPS(hitSolidPSPrefab);

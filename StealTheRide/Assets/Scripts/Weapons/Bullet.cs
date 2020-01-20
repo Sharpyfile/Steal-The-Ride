@@ -78,7 +78,12 @@ public class Bullet : MonoBehaviour
             LaunchPS(hitEnemyPSPrefab);
             collision.gameObject.SendMessage("ApplyDamageEnemy", this);
             Destroy(gameObject);
-
+        }
+        if (collision.gameObject.tag == "Barrel")
+        {
+            LaunchPS(hitSolidPSPrefab);
+            collision.gameObject.SendMessage("ApplyDamageEnemy", this);
+            Destroy(gameObject);
         }
         if (collision.gameObject.tag == "Wall")
         {
