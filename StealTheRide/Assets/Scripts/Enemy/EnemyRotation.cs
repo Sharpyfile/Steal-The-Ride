@@ -117,7 +117,8 @@ public class EnemyRotation : MonoBehaviour
                     rb.velocity = force;
                     if (enemyWeaponFire.bulletsInMagazine <= 1)
                     {
-                        DodgeOnReloading();
+                        //DodgeOnReloading();
+                        RunAway();
                     }
                 }
                 else if (Vector2.Distance(transform.position, playerToFollow.position) < retreatDistance)
@@ -135,7 +136,8 @@ public class EnemyRotation : MonoBehaviour
                 rb.velocity = force;
                 if (enemyWeaponFire.bulletsInMagazine <= 1)
                 {
-                    DodgeOnReloading();
+                    //DodgeOnReloading();
+                    RunAway();
                 }
             }
             animator.SetInteger("Section", CalculateSection());
@@ -251,6 +253,18 @@ public class EnemyRotation : MonoBehaviour
         actualPosition.x += randomX;
         actualPosition.y += randomY;
         transform.position = Vector2.MoveTowards(transform.position, actualPosition, enemySpeed / 50000.0f);
+    }
+
+    void RunAway()
+    {
+        if (Vector2.Distance(transform.position, moveSpots[0].position) > Vector2.Distance(transform.position, moveSpots[1].position))
+        {
+            transform.position = Vector2.MoveTowards(transform.position, moveSpots[1].position, enemySpeed / 50000.0f);
+        }
+        else
+        {
+            transform.position = Vector2.MoveTowards(transform.position, moveSpots[0].position, enemySpeed / 50000.0f);
+        }
     }
 
     private float GetRotationAngle()
