@@ -17,9 +17,6 @@ public class RevolverFire : WeaponFire
         weaponInfo = "Ready to shoot";
     }
 
-    void Awake()
-    {
-    }
 
     void Update()
     {
@@ -65,6 +62,15 @@ public class RevolverFire : WeaponFire
                 }
 
             }
+        }
+
+        if (bulletsInMagazine == 0 && isR == false)
+        {
+            Vector3 newPosition = firePoint.position + new Vector3(0.0f, 0.5f, 0.0f);
+            GameObject newR = GameObject.Instantiate(r, newPosition, Quaternion.identity);
+            isR = true;
+            StartCoroutine(MyDestroy(0.3f, newR));
+            //Destroy(newR);
         }
 
         if (isReloading && timestampReload <= Time.time)

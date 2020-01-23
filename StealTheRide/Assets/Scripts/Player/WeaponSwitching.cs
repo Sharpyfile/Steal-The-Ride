@@ -102,7 +102,7 @@ public class WeaponSwitching : MonoBehaviour
         }
         
     }
-
+    public GameObject r;
     void SelectWeapon ()
     {
         int i = 0;
@@ -117,6 +117,10 @@ public class WeaponSwitching : MonoBehaviour
 
         weaponScript = GameObject.FindObjectOfType<WeaponFire>();
         weaponScript.SetBullet();
+        weaponScript.isR = false;
+        r = GameObject.Find("R(Clone)");
+        if(r != null)
+            Destroy(r);
     }
 
     private void ChangeWeapon()
