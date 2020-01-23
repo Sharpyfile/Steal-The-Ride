@@ -23,6 +23,7 @@ public abstract class WeaponFire : MonoBehaviour
     public int sumOfBullets;
 
     public GameObject bullet;
+    public GameObject r;
     public Transform firePoint;
     public GameObject reloadSlider;
     public PlayerStatistics player;
@@ -42,6 +43,8 @@ public abstract class WeaponFire : MonoBehaviour
     public bool isLeftChamberFull;
     public bool isRightChamberFull;
 
+    public bool isR = false;
+
     public string GetWeaponInfo()
     {
         return weaponInfo;
@@ -50,6 +53,20 @@ public abstract class WeaponFire : MonoBehaviour
     {
         bulletScript.Damage = damage;
     }
+
+    public IEnumerator MyFalse(float waitTime, GameObject newR)
+    {
+        yield return new WaitForSeconds(waitTime);
+        isR = false;
+    }
+
+    public IEnumerator MyDestroy(float waitTime, GameObject newR)
+    {
+        yield return new WaitForSeconds(waitTime);
+        StartCoroutine(MyFalse(0.1f, newR));
+        Destroy(newR);
+    }
+
 
     public virtual void Shoot()
     {
