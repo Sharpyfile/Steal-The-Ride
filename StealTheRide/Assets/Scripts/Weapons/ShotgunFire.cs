@@ -45,6 +45,13 @@ public class ShotgunFire : WeaponFire
                 }
 
             }
+            else
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    AudioManager.instance.Play("RevolverEmptyChamber");
+                }
+            }
         }
 
         if (bulletsInMagazine == 0 && isR == false)
