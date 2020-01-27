@@ -64,8 +64,15 @@ public class BowFire : WeaponFire
                     StopLoadingArrow();
                 }
             }
-           
-            if(bulletsInMagazine == 0 && additionalBullets > 0)
+            else
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    AudioManager.instance.Play("RevolverEmptyChamber");
+                }
+            }
+
+            if (bulletsInMagazine == 0 && additionalBullets > 0)
             {
                 Reload();
 

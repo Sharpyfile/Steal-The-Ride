@@ -40,6 +40,9 @@ public class RepeaterFire : WeaponFire
                     else if(isLeverForward == false && isLeverBackward == false)
                     {
                         PushForward();
+                    } else
+                    {
+                        AudioManager.instance.Play("RevolverEmptyChamber");
                     }
                 }
                 if (Input.GetMouseButtonDown(1) && timestampFiring <= Time.time)
@@ -51,6 +54,13 @@ public class RepeaterFire : WeaponFire
                 }
 
 
+            }
+            else
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    AudioManager.instance.Play("RevolverEmptyChamber");
+                }
             }
         }
 

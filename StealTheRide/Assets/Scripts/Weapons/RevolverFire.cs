@@ -61,6 +61,12 @@ public class RevolverFire : WeaponFire
                     weaponInfo = "Load next bullet";
                 }
 
+            } else
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    AudioManager.instance.Play("RevolverEmptyChamber");
+                }
             }
         }
 
