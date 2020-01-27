@@ -7,7 +7,8 @@ public class CameraFollowPlayer : MonoBehaviour
     
     void Update()
     {
-        offset = player.position;
+        offset.x = player.position.x;
+        offset.y = this.transform.position.y;
         offset.z = -10;
         this.transform.position = offset;
     }
