@@ -72,5 +72,9 @@ public class EnemyWeaponFire : MonoBehaviour
         {
             enemyShoot = true;
         }
+        else
+        {
+            enemyShoot = false;
+        }
     }
 }
