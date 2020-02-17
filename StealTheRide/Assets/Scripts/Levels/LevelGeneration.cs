@@ -23,10 +23,8 @@ public class LevelGeneration : MonoBehaviour
         Instantiate(baseLevel, firstPosition, rotation);
         for (int i = 1; i < levelsCount; i++)
         {
-            Debug.Log("wykonuję się");
             Instantiate(levelsToChoose[Random.Range(0, levelsToChoose.Count)], newPosition, rotation);
-            newPosition += new Vector3(8, 0, 0);
-            
+            newPosition += new Vector3(8, 0, 0);            
         }
     }
 }
