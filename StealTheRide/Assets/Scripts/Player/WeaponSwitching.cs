@@ -103,6 +103,7 @@ public class WeaponSwitching : MonoBehaviour
         
     }
     public GameObject r;
+
     void SelectWeapon ()
     {
         int i = 0;

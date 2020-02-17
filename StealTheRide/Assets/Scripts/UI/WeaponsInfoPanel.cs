@@ -47,9 +47,12 @@ public class WeaponsInfoPanel : MonoBehaviour
         {
             GameObject panel = GameObject.Instantiate(weaponInfoPanelPrefab, weaponInfoPanelPrefab.transform.position, Quaternion.identity);
             float sprHeightRatio = panel.GetComponentInChildren<Image>().rectTransform.rect.height / weapons[i].icon.bounds.size.y;//weapons[i].icon.rect.height;
-            Debug.Log(panel.GetComponentInChildren<Image>().rectTransform.rect.height);
-            Debug.Log(weapons[i].icon.rect.height);
-            Debug.Log(sprHeightRatio);
+
+            //Skomentowane do zwiększenia FPSów
+            //Debug.Log(panel.GetComponentInChildren<Image>().rectTransform.rect.height);
+            //Debug.Log(weapons[i].icon.rect.height);
+            //Debug.Log(sprHeightRatio);
+
             panel.GetComponentInChildren<Image>().sprite = weapons[i].icon;
             panel.GetComponentInChildren<Image>().rectTransform.sizeDelta = new Vector2(weapons[i].icon.bounds.size.x * sprHeightRatio, panel.GetComponentInChildren<Image>().rectTransform.sizeDelta.y);
             //panel.GetComponent<Image>().SetNativeSize();
