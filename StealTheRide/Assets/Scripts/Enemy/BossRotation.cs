@@ -44,6 +44,11 @@ public class BossRotation : MonoBehaviour
 
     public int firstPhaseMoveUpAndDownCounter;
 
+    private bool check;
+
+    private float timestampMoving;
+    private float moveCooldown;
+
 
     // Start is called before the first frame update
     void Start()
@@ -66,8 +71,12 @@ public class BossRotation : MonoBehaviour
         firstPhase = true;
         secondPhase = false;
 
-        startHealth = enemyStatistics.enemyHealth;
-        currentHealth = startHealth;
+        //startHealth = enemyStatistics.enemyHealth;
+        //currentHealth = startHealth;
+
+        check = true;
+        timestampMoving = Time.time;
+        moveCooldown = 2.0f;
 
 }
 
@@ -77,15 +86,15 @@ void Update()
         if (PauseMenu.IsPaused)
             return;
 
-        currentHealth = enemyStatistics.enemyHealth;
+        //currentHealth = enemyStatistics.enemyHealth;
 
-        if (currentHealth/startHealth >= 0.5)
+        if(true) //if (currentHealth/startHealth >= 0.5)
         {
             firstPhase = true;
             secondPhase = false;
         }
 
-        if (currentHealth / startHealth < 0.5)
+        if(false) //if (currentHealth / startHealth < 0.5)
         {
             firstPhase = false;
             secondPhase = true;
@@ -94,11 +103,33 @@ void Update()
         //pierwsza faza -> szczelanie i dynamit
         if (firstPhase == true && secondPhase == false)
         {
-            for(int i = 0; i < firstPhaseMoveUpAndDownCounter; i++)
+            for (int i = 0; i < firstPhaseMoveUpAndDownCounter; i++)
+            {
+                if (timestampMoving <= Time.time)
+                {
+                    MoveUpAndDownFirstPhase();
+
+                    if (i == firstPhaseMoveUpAndDownCounter)
+                    {
+                        Debug.Log("no siema");
+                        MoveTowardsTNTFirstPhase();
+                    }
+                }
+
+            }
+            
+            /*
+            for (int i = 0; i < firstPhaseMoveUpAndDownCounter; i++)
             {
                 MoveUpAndDownFirstPhase();
+                if (i == firstPhaseMoveUpAndDownCounter)
+                {
+                    check = false;
+                }
             }
-            MoveTowardsTNTFirstPhase();
+            
+            Debug.Log("no siema");
+            MoveTowardsTNTFirstPhase();*/
         }
 
         //druga faza -> karabin i dynamit
@@ -106,13 +137,13 @@ void Update()
         {
 
         }
-
-
     }
 
     void MoveUpAndDownFirstPhase()
     {
-        transform.position = Vector2.MoveTowards(transform.position, moveSpotsFirstPhase[startSpotFirstPhase].position, enemySpeed / 50000.0f);
+        timestampMoving = Time.time + moveCooldown;
+
+        transform.position = Vector2.MoveTowards(transform.position, moveSpotsFirstPhase[startSpotFirstPhase].position, enemySpeed / 5000.0f);
 
         if (Vector2.Distance(transform.position, moveSpotsFirstPhase[startSpotFirstPhase].position) < 0.2f)
         {
@@ -135,7 +166,9 @@ void Update()
 
     void MoveTowardsTNTFirstPhase()
     {
-        transform.position = Vector2.MoveTowards(transform.position, TNTSpot.position, enemySpeed / 50000.0f);
+        timestampMoving = Time.time + moveCooldown;
+
+        transform.position = Vector2.MoveTowards(transform.position, TNTSpot.position, enemySpeed / 5000.0f);
     }
 
     void ThrowTNT()
