@@ -2030,9 +2030,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e65500163142784db23447508b877b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  t: 0
-  target: {x: 7.725, y: 0.15, z: 0}
-  timeToReachTarget: 1
+  startPosition: {x: 0, y: 0, z: 0}
+  destination: {x: 0, y: 0, z: 0}
+  yCoordinate: 0
+  speed: 0
+  enemies: {fileID: 0}
 --- !u!1 &2207911586459514920
 GameObject:
   m_ObjectHideFlags: 0
@@ -28319,6 +28321,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6070935958164296189}
     m_Modifications:
+    - target: {fileID: 4495033317892222977, guid: b47629dab942c6c4f96baf6c189e837a,
+        type: 3}
+      propertyPath: m_Name
+      value: A_
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495033317892222977, guid: b47629dab942c6c4f96baf6c189e837a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5445689119939482862, guid: b47629dab942c6c4f96baf6c189e837a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -28388,16 +28400,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.1484011
-      objectReference: {fileID: 0}
-    - target: {fileID: 4495033317892222977, guid: b47629dab942c6c4f96baf6c189e837a,
-        type: 3}
-      propertyPath: m_Name
-      value: A_
-      objectReference: {fileID: 0}
-    - target: {fileID: 4495033317892222977, guid: b47629dab942c6c4f96baf6c189e837a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5805612974182327540, guid: b47629dab942c6c4f96baf6c189e837a,
         type: 3}
