@@ -66,9 +66,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1261150393
+  m_SortingLayer: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0, g: 0.9528302, b: 0.11872553, a: 1}
   m_FlipX: 0
@@ -131,6 +131,7 @@ MonoBehaviour:
   additionalBullets: 0
   sumOfBullets: 0
   bullet: {fileID: 4487301011828246178, guid: 1f19c677d75430242909372a67ec9fcc, type: 3}
+  r: {fileID: 0}
   firePoint: {fileID: 0}
   reloadSlider: {fileID: 0}
   player: {fileID: 0}
@@ -147,6 +148,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 26dd049ce609eaa418871ad893c5e660, type: 3}
   isLeftChamberFull: 0
   isRightChamberFull: 0
+  isR: 0
   isLeverForward: 1
   isLeverBackward: 1
   particleSystem: {fileID: 2308761180804463979}
@@ -217,9 +219,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1261150393
+  m_SortingLayer: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0, g: 0.9528302, b: 0.11872553, a: 1}
   m_FlipX: 0
@@ -282,6 +284,7 @@ MonoBehaviour:
   additionalBullets: 0
   sumOfBullets: 0
   bullet: {fileID: 4487301011828246178, guid: 1f19c677d75430242909372a67ec9fcc, type: 3}
+  r: {fileID: 0}
   firePoint: {fileID: 0}
   reloadSlider: {fileID: 0}
   player: {fileID: 0}
@@ -298,6 +301,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 42f8b97f9bbfe64468ea96fcb2613ee7, type: 3}
   isLeftChamberFull: 0
   isRightChamberFull: 0
+  isR: 0
   particleSystem: {fileID: 2308761181681073126}
   fireParticleCount: 8
 --- !u!1 &3572197860759808094
@@ -350,6 +354,7 @@ MonoBehaviour:
   additionalBullets: 0
   sumOfBullets: 0
   bullet: {fileID: 4487301011828246178, guid: 1f19c677d75430242909372a67ec9fcc, type: 3}
+  r: {fileID: 0}
   firePoint: {fileID: 0}
   reloadSlider: {fileID: 0}
   player: {fileID: 0}
@@ -366,8 +371,10 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: f47f10fd0f3a1244bb211d63ec7b437b, type: 3}
   isLeftChamberFull: 0
   isRightChamberFull: 0
+  isR: 0
   bowSlider: {fileID: 0}
   loadIncrease: 0
+  timestampLoad: 0
 --- !u!1 &3572197860798496619
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,9 +441,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1261150393
+  m_SortingLayer: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0, g: 0.9528302, b: 0.11872553, a: 1}
   m_FlipX: 0
@@ -510,6 +517,9 @@ MonoBehaviour:
   secondWeapon: 0
   weaponObjectToPickUp: {fileID: 0}
   weaponToPickUp: -1
+  bulletsToPickUp: 0
+  additionalBulletsToPickUp: 0
+  r: {fileID: 0}
 --- !u!1 &3572197860933196016
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,6 +571,7 @@ MonoBehaviour:
   additionalBullets: 0
   sumOfBullets: 0
   bullet: {fileID: 4487301011828246178, guid: 1f19c677d75430242909372a67ec9fcc, type: 3}
+  r: {fileID: 0}
   firePoint: {fileID: 0}
   reloadSlider: {fileID: 0}
   player: {fileID: 0}
@@ -577,6 +588,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 8182fc64f14e55b49a9c3d99cbcb4b1e, type: 3}
   isLeftChamberFull: 0
   isRightChamberFull: 0
+  isR: 0
   isCocked: 1
   particleSystem: {fileID: 2308761181492982455}
   fireParticleCount: 6
@@ -646,9 +658,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1261150393
+  m_SortingLayer: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0, g: 0.9528302, b: 0.11872553, a: 1}
   m_FlipX: 0
@@ -667,11 +679,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3572197860933196017}
     m_Modifications:
-    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
-        type: 3}
-      propertyPath: m_Name
-      value: ShootSparks
-      objectReference: {fileID: 0}
     - target: {fileID: 1267940354642793682, guid: 08b9677c5dca4544aad4daab9d5e0705,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -727,6 +734,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
+        type: 3}
+      propertyPath: m_Name
+      value: ShootSparks
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08b9677c5dca4544aad4daab9d5e0705, type: 3}
 --- !u!4 &2308761181492982450 stripped
@@ -748,11 +760,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3572197860696796001}
     m_Modifications:
-    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
-        type: 3}
-      propertyPath: m_Name
-      value: ShootSparks
-      objectReference: {fileID: 0}
     - target: {fileID: 1267940354642793682, guid: 08b9677c5dca4544aad4daab9d5e0705,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -808,6 +815,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
+        type: 3}
+      propertyPath: m_Name
+      value: ShootSparks
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08b9677c5dca4544aad4daab9d5e0705, type: 3}
 --- !u!4 &2308761181681073123 stripped
@@ -829,11 +841,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3572197860291490881}
     m_Modifications:
-    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
-        type: 3}
-      propertyPath: m_Name
-      value: ShootSparks
-      objectReference: {fileID: 0}
     - target: {fileID: 1267940354642793682, guid: 08b9677c5dca4544aad4daab9d5e0705,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -888,6 +895,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
+        type: 3}
+      propertyPath: m_Name
+      value: ShootSparks
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08b9677c5dca4544aad4daab9d5e0705, type: 3}

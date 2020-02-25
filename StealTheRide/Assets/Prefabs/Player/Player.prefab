@@ -184,8 +184,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1261150393
+  m_SortingLayer: 1
   m_SortingOrder: 2
   m_Sprite: {fileID: -846483464437279180, guid: a4d2f1bf8d449d64fa1a565324a6b055,
     type: 3}
@@ -336,9 +336,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1261150393
+  m_SortingLayer: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -383,16 +383,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7744605827612448490}
     m_Modifications:
-    - target: {fileID: 4291346615489148966, guid: 7dc87b491b3f4474b8c391960c7d81a9,
-        type: 3}
-      propertyPath: m_Name
-      value: R
-      objectReference: {fileID: 0}
-    - target: {fileID: 4291346615489148966, guid: 7dc87b491b3f4474b8c391960c7d81a9,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 48456147148241932, guid: 7dc87b491b3f4474b8c391960c7d81a9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -446,6 +436,16 @@ PrefabInstance:
     - target: {fileID: 48456147148241932, guid: 7dc87b491b3f4474b8c391960c7d81a9,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291346615489148966, guid: 7dc87b491b3f4474b8c391960c7d81a9,
+        type: 3}
+      propertyPath: m_Name
+      value: R
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291346615489148966, guid: 7dc87b491b3f4474b8c391960c7d81a9,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1183,7 +1183,7 @@ PrefabInstance:
     - target: {fileID: 6699155512992888531, guid: ae01faf31e5121d4eb1305fb1918f734,
         type: 3}
       propertyPath: m_Value
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6699155512992888531, guid: ae01faf31e5121d4eb1305fb1918f734,
         type: 3}
