@@ -12,6 +12,7 @@ public class LevelGeneration : MonoBehaviour
     public float levelsCount = 3;
     private bool levelHasEnded = false;
     private float timeDelay;
+    public float endLevelTime = 3.0f;
 
     void Start()
     {
@@ -24,7 +25,7 @@ public class LevelGeneration : MonoBehaviour
         {
             Debug.Log("Level has ended");
             levelHasEnded = true;
-            timeDelay = Time.time + 3.0f;
+            timeDelay = Time.time + endLevelTime;
             Debug.Log(timeDelay);
             
         }
