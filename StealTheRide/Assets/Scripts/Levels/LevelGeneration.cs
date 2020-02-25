@@ -7,6 +7,8 @@ public class LevelGeneration : MonoBehaviour
     // Start is called before the first frame update
     public List<GameObject> levelsToChoose;
     public GameObject baseLevel;
+    public GameObject BossLevelPartOne;
+    public GameObject BossLevelPartTwo;
     public float levelsCount = 3;
     private bool levelHasEnded = false;
     private float timeDelay;
@@ -47,6 +49,10 @@ public class LevelGeneration : MonoBehaviour
             Instantiate(levelsToChoose[Random.Range(0, levelsToChoose.Count)], newPosition, rotation);
             newPosition += new Vector3(8, 0, 0);            
         }
+        Instantiate(BossLevelPartOne, newPosition, rotation);
+        newPosition += new Vector3(8, 0, 0);
+        Instantiate(BossLevelPartTwo, newPosition, rotation);
+        newPosition += new Vector3(8, 0, 0);
     }
 
 
