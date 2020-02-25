@@ -160,6 +160,7 @@ MonoBehaviour:
   animator: {fileID: 6985783545609775202}
   startWaitTime: 3
   moveSpots: []
+  enemyWeaponFire: {fileID: 0}
 --- !u!114 &655024946591389232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,9 +241,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1261150393
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -427,9 +428,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -277220865
-  m_SortingLayer: -1
-  m_SortingOrder: 0
+  m_SortingLayerID: -1261150393
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_Sprite: {fileID: -846483464437279180, guid: 9f12258192dcf464cbcfaa21344a8063,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
