@@ -7,7 +7,7 @@ public class BossWeaponFire : MonoBehaviour
     public float fireCooldown = 2f;
     public GameObject bullet;
     public GameObject dynamite;
-    public ParticleSystem particleSystem;
+    //public ParticleSystem particleSystem;
     public int fireParticleCount = 10;
     public float speed = 2f;
     public int revolverMagazineSize = 6;
@@ -35,7 +35,7 @@ public class BossWeaponFire : MonoBehaviour
     void Update()
     {
         SetPhaseFlag();
-
+        
         if (stageFlag == 1)
         {
             if (bossRotation.firstPhaseMove == true && bossRotation.firstPhaseTNT == false)
@@ -52,7 +52,7 @@ public class BossWeaponFire : MonoBehaviour
             }
             else if (bossRotation.firstPhaseMove == false && bossRotation.firstPhaseTNT == true)
             {
-                ThrowTNT();
+                //ThrowTNT();
             }
             
             
@@ -73,7 +73,7 @@ public class BossWeaponFire : MonoBehaviour
     void Fire()
     {
         timestampFiring = Time.time + fireCooldown;
-        particleSystem.Emit(fireParticleCount);
+        //particleSystem.Emit(fireParticleCount);
 
         GameObject newBullet = GameObject.Instantiate(bullet, transform.position, transform.rotation);
         newBullet.SetActive(true);
@@ -90,24 +90,25 @@ public class BossWeaponFire : MonoBehaviour
 
     void ThrowTNT()
     {
-        timestampFiring = Time.time + fireCooldown / 5;
+        timestampFiring = Time.time + fireCooldown * 2;
 
         GameObject newDynamite = GameObject.Instantiate(dynamite, transform.position, transform.rotation);
         newDynamite.SetActive(true);
         Rigidbody2D rb = newDynamite.GetComponent<Rigidbody2D>();
-        rb.AddForce(transform.right * speed, ForceMode2D.Impulse);
+        rb.AddForce(transform.right * speed/2.0f, ForceMode2D.Impulse);
+        rb.AddTorque(transform.right.x, ForceMode2D.Impulse);
     }
 
     void ShootMachineGun()
     {
-        timestampFiring = Time.time + fireCooldown/5;
-        particleSystem.Emit(fireParticleCount);
+        timestampFiring = Time.time + fireCooldown/6;
+        //particleSystem.Emit(fireParticleCount);
 
         GameObject newBullet = GameObject.Instantiate(bullet, transform.position, transform.rotation);
         newBullet.SetActive(true);
         Rigidbody2D rb = newBullet.GetComponent<Rigidbody2D>();
         rb.AddForce(transform.right * speed, ForceMode2D.Impulse);
-        rb.AddForce(transform.up * Random.Range(-0.7f, 0.7f), ForceMode2D.Impulse);
+        rb.AddForce(transform.up * Random.Range(-0.2f, 0.2f), ForceMode2D.Impulse);
     }
 
     void SetPhaseFlag()

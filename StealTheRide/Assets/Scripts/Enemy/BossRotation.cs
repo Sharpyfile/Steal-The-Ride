@@ -111,7 +111,12 @@ void Update()
         //pierwsza faza -> szczelanie i dynamit
         if (firstPhase == true && secondPhase == false)
         {
-            MoveUpAndDownFirstPhase();
+            for (int i = 0; i < firstPhaseMoveUpAndDownCounter; i++)
+            {
+                MoveUpAndDownFirstPhase();
+                StartCoroutine(Wait(10.0f));
+            }
+            
             MoveTowardsTNT();
         }
 
@@ -157,6 +162,11 @@ void Update()
     void MoveTowardsMachineGun()
     {
         transform.position = Vector2.MoveTowards(transform.position, MachineGunSpot.position, enemySpeed / 5000.0f);
+    }
+
+    public IEnumerator Wait(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
     }
 
 }
