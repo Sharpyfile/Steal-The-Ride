@@ -203,7 +203,7 @@ void Update()
 
     void Escape()
     {
-        transform.position = Vector2.MoveTowards(transform.position, EscapeSpot.position, enemySpeed / 4000.0f);
+        transform.position = Vector2.MoveTowards(transform.position, EscapeSpot.position, enemySpeed / 3000.0f);
 
         timestampNow = Time.time;
         if (timestampAfterFirstStage == 0.0f)
