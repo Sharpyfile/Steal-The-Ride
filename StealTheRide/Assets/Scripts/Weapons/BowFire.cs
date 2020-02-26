@@ -68,7 +68,7 @@ public class BowFire : WeaponFire
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    AudioManager.instance.Play("RevolverEmptyChamber");
+                    AudioManager.instance.Play("EmptyBow");
                 }
             }
 

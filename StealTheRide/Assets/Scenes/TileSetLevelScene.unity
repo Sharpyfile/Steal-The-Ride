@@ -14320,6 +14320,15 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: EmptyBow
+    clip: {fileID: 8300000, guid: 9204fe77bed4ecb4885830176f1d7745, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
 --- !u!4 &1333758786
 Transform:
   m_ObjectHideFlags: 0
@@ -23595,7 +23604,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &1998164719
 AudioSource:
   m_ObjectHideFlags: 0

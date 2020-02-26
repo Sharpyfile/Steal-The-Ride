@@ -34,7 +34,7 @@ public class PauseMenu : MonoBehaviour
     {
         Cursor.visible = true;
         SceneManager.LoadScene("MenuScene");
-        SceneManager.UnloadSceneAsync("FirstLevelScene");
+        //SceneManager.UnloadSceneAsync("FirstLevelScene");
         Resume();
     }
 
