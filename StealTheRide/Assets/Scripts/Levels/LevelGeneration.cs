@@ -48,7 +48,7 @@ public class LevelGeneration : MonoBehaviour
         for (int i = 1; i < levelsCount; i++)
         {
             Instantiate(levelsToChoose[Random.Range(0, levelsToChoose.Count)], newPosition, rotation);
-            newPosition += new Vector3(8, 0, 0);            
+            newPosition += new Vector3(8, 0, 0);  
         }
         Instantiate(BossLevelPartOne, newPosition, rotation);
         newPosition += new Vector3(8, 0, 0);
