@@ -294,6 +294,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b92012f98fd20145ad099d8ec340f00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  range: 0
+  enemySpeed: 0
+  enemyTriggered: 0
+  nextWaypointDistance: 0.1
+  animator: {fileID: 0}
+  startWaitTime: 0
+  moveSpotsFirstPhase: []
+  TNTSpot: {fileID: 0}
+  MachineGunSpot: {fileID: 0}
+  enemyWeaponFire: {fileID: 0}
+  enemyStatistics: {fileID: 0}
+  firstPhase: 0
+  firstPhaseMove: 0
+  firstPhaseTNT: 0
+  secondPhase: 0
+  secondPhaseTNT: 0
+  secondPhaseMachineGun: 0
+  firstPhaseMoveUpAndDownCounter: 0
 --- !u!1 &655024946598840600
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,6 +403,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dd654ca792edef419cc26dabedc8944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireCooldown: 2
+  bullet: {fileID: 0}
+  dynamite: {fileID: 0}
+  fireParticleCount: 10
+  speed: 2
+  revolverMagazineSize: 6
+  bulletsInRevolverMagazine: 6
+  bossRotation: {fileID: 0}
 --- !u!1 &2909587067389925533
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,6 +519,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 655024946598840607}
     m_Modifications:
+    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
+        type: 3}
+      propertyPath: m_Name
+      value: RevolerSparks
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1267940354642793682, guid: 08b9677c5dca4544aad4daab9d5e0705,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -547,21 +588,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
-        type: 3}
-      propertyPath: m_Name
-      value: RevolerSparks
-      objectReference: {fileID: 0}
-    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1267940354642793683, guid: 08b9677c5dca4544aad4daab9d5e0705,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1267940354642793684, guid: 08b9677c5dca4544aad4daab9d5e0705,
         type: 3}

@@ -52,20 +52,28 @@ public class BossWeaponFire : MonoBehaviour
             }
             else if (bossRotation.firstPhaseMove == false && bossRotation.firstPhaseTNT == true)
             {
-                //ThrowTNT();
+                if (timestampFiring <= Time.time && Vector2.Distance(transform.position, playerToFollow.position) < 1.5f * range && Vector2.Distance(transform.position, bossRotation.TNTSpot.position) < 0.1f)
+                {
+                    ThrowTNT();
+                }
             }
-            
-            
         }
+
         else if (stageFlag == 2)
         {
             if (bossRotation.secondPhaseTNT == false && bossRotation.secondPhaseMachineGun == true)
             {
-                ShootMachineGun();
+                if (timestampFiring <= Time.time && Vector2.Distance(transform.position, playerToFollow.position) < 1.5f * range && Vector2.Distance(transform.position, bossRotation.MachineGunSpot.position) < 0.1f)
+                {
+                    ShootMachineGun();
+                } 
             }
             else if (bossRotation.secondPhaseTNT == true && bossRotation.secondPhaseMachineGun == false)
             {
-                ThrowTNT();
+                if (timestampFiring <= Time.time && Vector2.Distance(transform.position, playerToFollow.position) < 1.5f * range && Vector2.Distance(transform.position, bossRotation.TNTSpot.position) < 0.1f)
+                {
+                    ThrowTNT();
+                }
             }
         }  
     }
@@ -90,7 +98,7 @@ public class BossWeaponFire : MonoBehaviour
 
     void ThrowTNT()
     {
-        timestampFiring = Time.time + fireCooldown * 2;
+        timestampFiring = Time.time + fireCooldown * 1.5f;
 
         GameObject newDynamite = GameObject.Instantiate(dynamite, transform.position, transform.rotation);
         newDynamite.SetActive(true);
