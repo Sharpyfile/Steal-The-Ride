@@ -8,24 +8,23 @@ public class EnemyStatistics : ALootable
     public GameObject enemy;
     public GameObject bleedPSPrefab;
 
-    private Transform player;
+    public Transform player;
 
-    private HealthBar healthBar;
+    public GameObject healthBarGO;
+    public HealthBar healthBar;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        healthBar = GetComponent<HealthBar>();
 
         if (gameObject.tag == "Boss")
         {
+            healthBarGO = GameObject.Find("HealthBar");
+            healthBar = GameObject.Find("HealthBar").GetComponent<HealthBar>();
             healthBar.SetMaxHealth(enemyHealth);
-            healthBar.gameObject.SetActive(true);
+            healthBar.gameObject.transform.localScale = new Vector3(0, 0, 0);
         }
-        else if (gameObject.tag == "Enemy")
-        {
-            healthBar.gameObject.SetActive(false);
-        }
+
     }
 
     void Update()
@@ -44,6 +43,7 @@ public class EnemyStatistics : ALootable
 
         if (gameObject.tag == "Boss")
         {
+            healthBar.gameObject.transform.localScale = new Vector3(1, 1, 1);
             healthBar.setHealth(enemyHealth);
         }
         Debug.Log("You hit the enemy!");
@@ -56,6 +56,10 @@ public class EnemyStatistics : ALootable
             }
             Drop();
             Destroy(enemy);
+            if (gameObject.tag == "Boss")
+            {
+                healthBar.gameObject.SetActive(false);
+            }
         }
         else
         {
