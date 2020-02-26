@@ -90,7 +90,6 @@ GameObject:
   m_Component:
   - component: {fileID: 655024946591389234}
   - component: {fileID: 655024946591389235}
-  - component: {fileID: 655024946591389196}
   - component: {fileID: 655024946591389232}
   - component: {fileID: 655024946591389233}
   - component: {fileID: 3151155640286302669}
@@ -140,28 +139,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &655024946591389196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 655024946591389197}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecb24440576ea3843ba116e574d2be5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  range: 2.5
-  enemySpeed: 500
-  stoppingDistance: 1
-  retreatDistance: 0.5
-  enemyTriggered: 0
-  nextWaypointDistance: 0.3
-  animator: {fileID: 6985783545609775202}
-  startWaitTime: 3
-  moveSpots: []
-  enemyWeaponFire: {fileID: 0}
 --- !u!114 &655024946591389232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,7 +146,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 655024946591389197}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3eaa7cadb07412341b5e11aec552d83f, type: 3}
   m_Name: 
@@ -295,16 +272,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 0
-  enemySpeed: 0
+  enemySpeed: 100
   enemyTriggered: 0
   nextWaypointDistance: 0.1
   animator: {fileID: 0}
   startWaitTime: 0
-  moveSpotsFirstPhase: []
+  moveSpotsFirstPhase:
+  - {fileID: 0}
+  - {fileID: 0}
   TNTSpot: {fileID: 0}
   MachineGunSpot: {fileID: 0}
-  enemyWeaponFire: {fileID: 0}
-  enemyStatistics: {fileID: 0}
+  enemyWeaponFire: {fileID: 655024946598840606}
+  enemyStatistics: {fileID: 655024946591389232}
   firstPhase: 0
   firstPhaseMove: 0
   firstPhaseTNT: 0
@@ -404,13 +383,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireCooldown: 2
-  bullet: {fileID: 0}
-  dynamite: {fileID: 0}
+  bullet: {fileID: 6551167408766518959, guid: 54f1be1c419b0eb49b630ea0f58455f5, type: 3}
+  dynamite: {fileID: 6551167408766518959, guid: 54f1be1c419b0eb49b630ea0f58455f5,
+    type: 3}
   fireParticleCount: 10
   speed: 2
   revolverMagazineSize: 6
   bulletsInRevolverMagazine: 6
-  bossRotation: {fileID: 0}
+  bossRotation: {fileID: 5618026760404847954}
 --- !u!1 &2909587067389925533
 GameObject:
   m_ObjectHideFlags: 0

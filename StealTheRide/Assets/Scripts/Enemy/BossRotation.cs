@@ -4,35 +4,21 @@ using UnityEngine;
 
 public class BossRotation : MonoBehaviour
 {
-    public float range;
     public float enemySpeed;
-    public bool enemyTriggered;
     public float nextWaypointDistance = 0.1f;
 
     public Animator animator;
     private GameObject player;
     private Transform playerToFollow;
 
-    public bool EnemyTriggered
-    {
-        get { return enemyTriggered; }
-        set { enemyTriggered = value; }
-    }
-
     private Rigidbody2D rb;
-    private Vector2 force;
-    private Vector2 forceZero;
-    private bool enemyInRange;
 
     private float waitTime;
-    public float startWaitTime;
+    private float startWaitTime;
     public Transform[] moveSpotsFirstPhase;
     public Transform TNTSpot;
     public Transform MachineGunSpot;
     private int startSpotFirstPhase;
-
-    private float startWaitTimeDuringCombat;
-    private float waitTimeDuringCombat;
 
     public EnemyWeaponFire enemyWeaponFire;
     public EnemyStatistics enemyStatistics;
@@ -48,16 +34,9 @@ public class BossRotation : MonoBehaviour
     private float startHealth;
     private float currentHealth;
 
-    public int firstPhaseMoveUpAndDownCounter;
-
-    private float timestampMoving;
-    private float moveCooldown;
-
     private float timestampNow;
     private float timestampAfter;
     private float phaseCooldown;
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -66,16 +45,10 @@ public class BossRotation : MonoBehaviour
         playerToFollow = player.transform;
         animator = GetComponentInChildren<Animator>();
 
-        enemyInRange = false;
-        enemyTriggered = false;
         rb = GetComponent<Rigidbody2D>();
-        force = new Vector2(0.0f, 0.0f);
-        forceZero = new Vector2(0.0f, 0.0f);
 
         waitTime = startWaitTime;
 
-        startWaitTimeDuringCombat = 0.5f;
-        waitTimeDuringCombat = startWaitTimeDuringCombat;
         startSpotFirstPhase = 0;
         firstPhase = true;
         firstPhaseMove = true;
@@ -91,8 +64,6 @@ public class BossRotation : MonoBehaviour
         timestampNow = 0.0f;
         timestampAfter = 0.0f;
         phaseCooldown = 10.0f;
-
-
 }
 
 // Update is called once per frame
@@ -191,8 +162,6 @@ void Update()
 
     void MoveUpAndDownFirstPhase()
     {
-        //timestampMoving = Time.time + moveCooldown;
-
         transform.position = Vector2.MoveTowards(transform.position, moveSpotsFirstPhase[startSpotFirstPhase].position, enemySpeed / 5000.0f);
 
         if (Vector2.Distance(transform.position, moveSpotsFirstPhase[startSpotFirstPhase].position) < 0.2f)
