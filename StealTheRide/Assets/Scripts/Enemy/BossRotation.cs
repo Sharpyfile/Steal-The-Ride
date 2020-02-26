@@ -18,6 +18,7 @@ public class BossRotation : MonoBehaviour
     public Transform[] moveSpotsFirstPhase;
     public Transform TNTSpot;
     public Transform MachineGunSpot;
+    public Transform EscapeSpot;
     private int startSpotFirstPhase;
 
     public EnemyWeaponFire enemyWeaponFire;
@@ -36,7 +37,11 @@ public class BossRotation : MonoBehaviour
 
     private float timestampNow;
     private float timestampAfter;
+    private float timestampAfterFirstStage;
     private float phaseCooldown;
+
+    public bool isFirstPhaseActive;
+
 
     // Start is called before the first frame update
     void Start()
@@ -50,11 +55,11 @@ public class BossRotation : MonoBehaviour
         waitTime = startWaitTime;
 
         startSpotFirstPhase = 0;
-        firstPhase = true;
+        //firstPhase = true;
         firstPhaseMove = true;
         firstPhaseTNT = false;
 
-        secondPhase = false;
+        //secondPhase = false;
         secondPhaseTNT = false;
         secondPhaseMachineGun = true;
 
@@ -63,6 +68,7 @@ public class BossRotation : MonoBehaviour
 
         timestampNow = 0.0f;
         timestampAfter = 0.0f;
+        timestampAfterFirstStage = 0.0f;
         phaseCooldown = 10.0f;
 }
 
@@ -77,18 +83,20 @@ void Update()
 
         if(currentHealth/startHealth >= 0.5)
         {
-            firstPhase = true;
-            secondPhase = false;
+            //firstPhase = true;
+            //secondPhase = false;
         }
-
-        if (currentHealth / startHealth < 0.5)
+        
+        if (currentHealth / startHealth < 0.5 && firstPhase == true)
         {
-            firstPhase = false;
-            secondPhase = true;
+            //firstPhase = false;
+            //secondPhase = true;
+
+            Escape();
         }
 
         //pierwsza faza -> szczelanie i dynamit
-        if (firstPhase == true && secondPhase == false)
+        if (firstPhase == true && secondPhase == false && isFirstPhaseActive == true)
         {
             timestampNow = Time.time;
 
@@ -122,7 +130,7 @@ void Update()
         }
 
         //druga faza -> karabin i dynamit
-        if (firstPhase == false && secondPhase == true)
+        if (firstPhase == false && secondPhase == true && isFirstPhaseActive == false)
         {
             firstPhaseMove = false;
             firstPhaseTNT = false;
@@ -191,5 +199,21 @@ void Update()
     void MoveTowardsMachineGun()
     {
         transform.position = Vector2.MoveTowards(transform.position, MachineGunSpot.position, enemySpeed / 5000.0f);
+    }
+
+    void Escape()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, EscapeSpot.position, enemySpeed / 4000.0f);
+
+        timestampNow = Time.time;
+        if (timestampAfterFirstStage == 0.0f)
+        {
+            timestampAfterFirstStage = timestampNow + 1.0f;
+        }
+
+        if (Vector2.Distance(transform.position, EscapeSpot.position) < 0.1f && timestampAfterFirstStage <= timestampNow)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

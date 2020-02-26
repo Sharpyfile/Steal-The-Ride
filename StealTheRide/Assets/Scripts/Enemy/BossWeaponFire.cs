@@ -40,7 +40,7 @@ public class BossWeaponFire : MonoBehaviour
         {
             if (bossRotation.firstPhaseMove == true && bossRotation.firstPhaseTNT == false)
             {
-                if (timestampFiring <= Time.time && Vector2.Distance(transform.position, playerToFollow.position) < 1.5f * range && bulletsInRevolverMagazine > 0)
+                if (timestampFiring <= Time.time && Vector2.Distance(transform.position, playerToFollow.position) < 2.0f * range && bulletsInRevolverMagazine > 0)
                 {
                     Fire();
                 }
@@ -52,7 +52,7 @@ public class BossWeaponFire : MonoBehaviour
             }
             else if (bossRotation.firstPhaseMove == false && bossRotation.firstPhaseTNT == true)
             {
-                if (timestampFiring <= Time.time && Vector2.Distance(transform.position, playerToFollow.position) < 1.5f * range && Vector2.Distance(transform.position, bossRotation.TNTSpot.position) < 0.1f)
+                if (timestampFiring <= Time.time && Vector2.Distance(transform.position, playerToFollow.position) < 2.0f * range && Vector2.Distance(transform.position, bossRotation.TNTSpot.position) < 0.1f)
                 {
                     ThrowTNT();
                 }
@@ -70,7 +70,7 @@ public class BossWeaponFire : MonoBehaviour
             }
             else if (bossRotation.secondPhaseTNT == true && bossRotation.secondPhaseMachineGun == false)
             {
-                if (timestampFiring <= Time.time && Vector2.Distance(transform.position, playerToFollow.position) < 1.5f * range && Vector2.Distance(transform.position, bossRotation.TNTSpot.position) < 0.1f)
+                if (timestampFiring <= Time.time && Vector2.Distance(transform.position, playerToFollow.position) < 2.0f * range && Vector2.Distance(transform.position, bossRotation.TNTSpot.position) < 0.1f)
                 {
                     ThrowTNT();
                 }
