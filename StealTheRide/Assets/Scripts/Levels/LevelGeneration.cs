@@ -21,7 +21,7 @@ public class LevelGeneration : MonoBehaviour
 
     private void Update()
     {
-        if (GameObject.FindGameObjectsWithTag("Enemy").Length < 1 && !levelHasEnded)
+        if ((GameObject.FindGameObjectsWithTag("Enemy").Length < 1 && GameObject.FindGameObjectsWithTag("Boss").Length < 1) && !levelHasEnded)
         {
             Debug.Log("Level has ended");
             levelHasEnded = true;

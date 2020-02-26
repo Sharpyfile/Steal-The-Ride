@@ -7907,7 +7907,7 @@ Tilemap:
   - m_RefCount: 10
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   - m_RefCount: 9
-    m_Data: {r: 0.9942874, g: 0.46832395, b: 0.4990852, a: 1}
+    m_Data: {r: 0.88651097, g: 0.40421638, b: 0.5411496, a: 1}
   - m_RefCount: 0
     m_Data: {r: 0, g: 0, b: 0, a: 0}
   m_AnimationFrameRate: 1
@@ -23325,6 +23325,11 @@ PrefabInstance:
       propertyPath: firstPhase
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 655024946591389232, guid: 45e0553cade2d7842bd1ac87353ac157,
+        type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45e0553cade2d7842bd1ac87353ac157, type: 3}
 --- !u!4 &5926597081881260182 stripped
@@ -23340,6 +23345,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4151250911487357899}
     m_Modifications:
+    - target: {fileID: 1212303825380231192, guid: afbb69a40425af541a164682c2fb6664,
+        type: 3}
+      propertyPath: m_Name
+      value: TilemapDoors
+      objectReference: {fileID: 0}
     - target: {fileID: 9059282463159896533, guid: afbb69a40425af541a164682c2fb6664,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -23394,11 +23404,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1212303825380231192, guid: afbb69a40425af541a164682c2fb6664,
-        type: 3}
-      propertyPath: m_Name
-      value: TilemapDoors
       objectReference: {fileID: 0}
     - target: {fileID: 7631410392965432278, guid: afbb69a40425af541a164682c2fb6664,
         type: 3}

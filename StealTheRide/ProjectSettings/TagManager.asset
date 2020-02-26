@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Wall
   - Barrel
+  - Boss
+  - HealthBar
   layers:
   - Default
   - TransparentFX
