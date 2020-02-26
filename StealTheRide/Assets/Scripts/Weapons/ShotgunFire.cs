@@ -56,11 +56,9 @@ public class ShotgunFire : WeaponFire
 
         if (bulletsInMagazine == 0 && isR == false)
         {
-            Vector3 newPosition = firePoint.position + new Vector3(0.0f, 0.5f, 0.0f);
-            GameObject newR = GameObject.Instantiate(r, newPosition, Quaternion.identity);
+            r.SetActive(true);
             isR = true;
-            StartCoroutine(MyDestroy(0.3f, newR));
-            //Destroy(newR);
+            StartCoroutine(StopR(0.3f));
         }
 
         if (isReloading && timestampReload <= Time.time)
@@ -78,6 +76,41 @@ public class ShotgunFire : WeaponFire
             StopReloading();
         }
     }
+
+
+    public override void Shoot()
+    {
+        GameObject newBullet = GameObject.Instantiate(bullet, firePoint.position, firePoint.rotation);
+        newBullet.SetActive(true);
+        Rigidbody2D rb = newBullet.GetComponent<Rigidbody2D>();
+        rb.AddForce(firePoint.right * speed, ForceMode2D.Impulse);
+        rb.AddForce(firePoint.up * Random.Range(-spreadFactor, spreadFactor), ForceMode2D.Impulse);
+
+        GameObject newBullet1 = GameObject.Instantiate(bullet, firePoint.position, firePoint.rotation);
+        newBullet1.SetActive(true);
+        Rigidbody2D rb1 = newBullet1.GetComponent<Rigidbody2D>();
+        rb1.AddForce(firePoint.right * speed, ForceMode2D.Impulse);
+        rb1.AddForce(firePoint.up * Random.Range(-spreadFactor, spreadFactor), ForceMode2D.Impulse);
+
+        GameObject newBullet2 = GameObject.Instantiate(bullet, firePoint.position, firePoint.rotation);
+        newBullet2.SetActive(true);
+        Rigidbody2D rb2 = newBullet2.GetComponent<Rigidbody2D>();
+        rb2.AddForce(firePoint.right * speed, ForceMode2D.Impulse);
+        rb2.AddForce(firePoint.up * Random.Range(-spreadFactor, spreadFactor), ForceMode2D.Impulse);
+
+        GameObject newBullet3 = GameObject.Instantiate(bullet, firePoint.position, firePoint.rotation);
+        newBullet3.SetActive(true);
+        Rigidbody2D rb3 = newBullet3.GetComponent<Rigidbody2D>();
+        rb3.AddForce(firePoint.right * speed, ForceMode2D.Impulse);
+        rb3.AddForce(firePoint.up * Random.Range(-spreadFactor, spreadFactor), ForceMode2D.Impulse);
+
+        GameObject newBullet4 = GameObject.Instantiate(bullet, firePoint.position, firePoint.rotation);
+        newBullet4.SetActive(true);
+        Rigidbody2D rb4 = newBullet4.GetComponent<Rigidbody2D>();
+        rb4.AddForce(firePoint.right * speed, ForceMode2D.Impulse);
+        rb4.AddForce(firePoint.up * Random.Range(-spreadFactor, spreadFactor), ForceMode2D.Impulse);
+    }
+
 
     private void LeftFire()
     {

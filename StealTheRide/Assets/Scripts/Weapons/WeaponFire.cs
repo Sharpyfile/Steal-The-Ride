@@ -54,17 +54,18 @@ public abstract class WeaponFire : MonoBehaviour
         bulletScript.Damage = damage;
     }
 
-    public IEnumerator MyFalse(float waitTime, GameObject newR)
+    public IEnumerator StartR(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
         isR = false;
     }
 
-    public IEnumerator MyDestroy(float waitTime, GameObject newR)
+    public IEnumerator StopR(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        StartCoroutine(MyFalse(0.1f, newR));
-        Destroy(newR);
+        StartCoroutine(StartR(0.1f));
+        r.SetActive(false);
+        //Destroy(newR);
     }
 
 

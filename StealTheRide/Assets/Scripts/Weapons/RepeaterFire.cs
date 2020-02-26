@@ -66,11 +66,9 @@ public class RepeaterFire : WeaponFire
 
         if (bulletsInMagazine == 0 && isR == false)
         {
-            Vector3 newPosition = firePoint.position + new Vector3(0.0f, 0.5f, 0.0f);
-            GameObject newR = GameObject.Instantiate(r, newPosition, Quaternion.identity);
+            r.SetActive(true);
             isR = true;
-            StartCoroutine(MyDestroy(0.3f, newR));
-            //Destroy(newR);
+            StartCoroutine(StopR(0.3f));
         }
 
         if (isReloading && timestampReload <= Time.time)

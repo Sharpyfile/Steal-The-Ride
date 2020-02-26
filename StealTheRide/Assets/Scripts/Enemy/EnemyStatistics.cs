@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class EnemyStatistics : ALootable
 {
@@ -40,9 +39,10 @@ public class EnemyStatistics : ALootable
             Drop();
             Destroy(enemy);
             
-            if (GameObject.FindGameObjectsWithTag("Enemy").Length <= 1)
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        } else
+           
+                
+        }
+        else
         {
             if (gameObject.tag == "Enemy")
             {

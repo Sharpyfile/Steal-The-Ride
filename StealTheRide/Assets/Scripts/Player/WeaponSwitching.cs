@@ -119,9 +119,12 @@ public class WeaponSwitching : MonoBehaviour
         weaponScript = GameObject.FindObjectOfType<WeaponFire>();
         weaponScript.SetBullet();
         weaponScript.isR = false;
-        r = GameObject.Find("R(Clone)");
-        if(r != null)
-            Destroy(r);
+        r = GameObject.Find("R");
+        if (r != null)
+            r.SetActive(false);
+        //r = GameObject.Find("R(Clone)");
+        //if(r != null)
+        //    Destroy(r);
     }
 
     private void ChangeWeapon()
